@@ -12,14 +12,21 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity
 {
-    MediaPlayer mediaPlayer;
+    /**music managing*/
+    protected MediaPlayer mediaPlayer;
+    protected MusicManagement menuMusicManagement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        playMainMenuMusic();
+
+        //set up music class and play menu music
+        menuMusicManagement = new MusicManagement(mediaPlayer);
+        menuMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);
+        menuMusicManagement.playMainMenuMusic();
+
 
     }
 
@@ -33,11 +40,6 @@ public class MainActivity extends AppCompatActivity
         //go to help scene
     }
 
-    public void playMainMenuMusic()
-    {
-        mediaPlayer = MediaPlayer.create(this, R.raw.menu);
-        mediaPlayer.start();
-    }
 
     public void exitGame (View view)
     {

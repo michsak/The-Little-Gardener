@@ -1,22 +1,29 @@
 package com.project.TheLittleGardener;
 
-import android.content.Context;
 import android.media.MediaPlayer;
 
 public class MusicManagement
 {
-    private Object MainActivity;
-    private MediaPlayer mediaPlayer;
+    public MediaPlayer mp;
+
+    MusicManagement(MediaPlayer mp)
+    {
+        this.mp = mp;
+    }
 
 
     public void playMainMenuMusic()
     {
-        mediaPlayer = MediaPlayer.create((Context) MainActivity, R.raw.menu);
-        mediaPlayer.start();
+        this.mp.start();
+    }
+
+    public void stopMainMenuMusic()
+    {
+        this.mp.stop();
     }
 
     public MediaPlayer getMainMenuMusic()
     {
-        return mediaPlayer;
+        return this.mp;
     }
 }
