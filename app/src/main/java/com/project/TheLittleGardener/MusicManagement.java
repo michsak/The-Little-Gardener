@@ -12,17 +12,17 @@ public class MusicManagement
     }
 
 
-    public void playMainMenuMusic()
+    public void playMusic()
     {
         this.mp.start();
     }
 
-    public void stopMainMenuMusic()
+    public void stopMusic()
     {
         this.mp.stop();
     }
 
-    public MediaPlayer getMainMenuMusic()
+    public MediaPlayer getMusic()
     {
         return this.mp;
     }

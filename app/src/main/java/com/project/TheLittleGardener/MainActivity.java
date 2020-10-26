@@ -10,7 +10,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity
 {
-    /**music managing*/
+    //music managing
     protected MediaPlayer mediaPlayer;
     protected MusicManagement menuMusicManagement;
 
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity
         //set up music class and play menu music
         menuMusicManagement = new MusicManagement(mediaPlayer);
         menuMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);
-        menuMusicManagement.playMainMenuMusic();
+        menuMusicManagement.playMusic();
 
     }
 
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity
     public void playAction(View view)
     {
         startActivity(new Intent(MainActivity.this, PlayGame.class));
+        menuMusicManagement.stopMusic();
     }
 
     /**goes to help Activity*/
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity
         startActivity(new Intent(MainActivity.this, HelpActivity.class));
     }
 
+    /**exits the game*/
     public void exitGame (View view)
     {
         finish();
