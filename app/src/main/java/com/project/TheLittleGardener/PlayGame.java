@@ -2,10 +2,12 @@ package com.project.TheLittleGardener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -26,11 +28,11 @@ public class PlayGame extends AppCompatActivity
         gameMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);      //to be changed
         gameMusicManagement.playMusic();
 
-        //hide status bar
-        Window window = getWindow();
-        window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //hide navigation bar and support bar
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+        getSupportActionBar().hide();
 
         //objects in class Game are rendered to screen
         setContentView(new Game(this));

@@ -48,6 +48,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback
     {
     }
 
+    //debugging purposes
     public void drawUPS(Canvas canvas)
     {
         String averageUPS = Double.toString(gameLoop.getAverageUPS());
@@ -58,6 +59,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback
         canvas.drawText("UPS: " + averageUPS, 100, 100, paint);
     }
 
+    //debugging purposes
     public void drawFPS(Canvas canvas)
     {
         String averageFPS = Double.toString(gameLoop.getAverageFPS());
