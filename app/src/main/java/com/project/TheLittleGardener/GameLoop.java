@@ -66,8 +66,6 @@ public class GameLoop extends Thread
                 {
                     game.update();
                     game.draw(canvas);
-                    game.drawFPS(canvas);
-                    game.drawUPS(canvas);
                     updateCount++;
                 }
             }

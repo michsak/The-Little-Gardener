@@ -13,7 +13,6 @@ import android.view.WindowManager;
 
 public class PlayGame extends AppCompatActivity
 {
-    Boolean isActive = true;
     protected MediaPlayer mediaPlayer;
     protected MusicManagement gameMusicManagement;
 
