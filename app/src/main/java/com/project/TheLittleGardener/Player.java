@@ -1,44 +1,37 @@
 package com.project.TheLittleGardener;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.content.Context;
-import androidx.core.content.ContextCompat;
-
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 public class Player
 {
-    private double positionX;
-    private double positionY;
-    private double radius;
-    private Paint paint;
+    int x;
+    int y;
+    int width;
+    int height;
+    public boolean goUp = false;
+    public boolean goDown = false;
 
-    public Player (Context context, double positionX, double positionY, double radius)
+    Bitmap gardener;
+
+    Player(int screenX, int screenY, Resources res)
     {
-        this.positionX = positionX;
-        this.positionY = positionY;
-        this.radius = radius;
+        this.x = screenX;
+        this.y = screenY;
 
-        paint=new Paint();
-        int color = ContextCompat.getColor(context, R.color.yellow);
-        paint.setColor(color);
+        gardener = BitmapFactory.decodeResource(res, R.drawable.player);
+
+        width = gardener.getWidth()/2;
+        height = gardener.getHeight()/2;
+
+        gardener = Bitmap.createScaledBitmap(gardener, width, height, false);
+        x = screenX/2 ; //to be centered
     }
 
-
-    public void draw(Canvas canvas)  //to be changed
+    public Bitmap getGardener()
     {
-        canvas.drawCircle((float) positionX, (float) positionY, (float) radius, paint);
-
+        return gardener;
     }
 
-    public void update()
-    {
-
-    }
-
-    public void setPosition(double positionX, double positionY)
-    {
-        this.positionX = positionX;
-        this.positionY = positionY;
-    }
 }
