@@ -1,2 +1,3 @@
+include ':joystickView'
 include ':app'
 rootProject.name = "The Little Gardener"
