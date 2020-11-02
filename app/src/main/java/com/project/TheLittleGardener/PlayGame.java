@@ -2,12 +2,13 @@ package com.project.TheLittleGardener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,18 +16,16 @@ import android.widget.TextView;
 import com.zerokol.views.joystickView.JoystickView;
 
 
-public class PlayGame extends AppCompatActivity {
+public class PlayGame extends AppCompatActivity
+{
     protected MediaPlayer mediaPlayer;
     protected MusicManagement gameMusicManagement;
     private ImageView player;
-
-    private TextView angleTextView;
-    private TextView powerTextView;
-    private TextView directionTextView;
     private JoystickView joystick;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_game);
 
@@ -41,66 +40,23 @@ public class PlayGame extends AppCompatActivity {
 
 
         player = findViewById(R.id.playerView);
-        Button moveUp = findViewById(R.id.moveUpButton);
+
         //hide navigation bar and support bar
         /*View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
         getSupportActionBar().hide();
     */
+        //params of screen
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
 
-        angleTextView = (TextView) findViewById(R.id.angleTextView);
-        powerTextView = (TextView) findViewById(R.id.powerTextView);
-        directionTextView = (TextView) findViewById(R.id.directionTextView);
-        //Referencing also other views
-        joystick = (JoystickView) findViewById(R.id.joystickView);
-
-        //Event listener that always returns the variation of the angle in degrees, motion power in percentage and direction of movement
-        joystick.setOnJoystickMoveListener(new JoystickView.OnJoystickMoveListener() {
-
-            @Override
-            public void onValueChanged(int angle, int power, int direction) {
-                // TODO Auto-generated method stub
-                angleTextView.setText(" " + String.valueOf(angle) + "°");
-                powerTextView.setText(" " + String.valueOf(power) + "%");
-                switch (direction) {
-                    case JoystickView.FRONT:
-                        directionTextView.setText(R.string.front_lab);
-                        break;
-                    case JoystickView.FRONT_RIGHT:
-                        directionTextView.setText(R.string.front_right_lab);
-                        break;
-                    case JoystickView.RIGHT:
-                        directionTextView.setText(R.string.right_lab);
-                        break;
-                    case JoystickView.RIGHT_BOTTOM:
-                        directionTextView.setText(R.string.right_bottom_lab);
-                        break;
-                    case JoystickView.BOTTOM:
-                        directionTextView.setText(R.string.bottom_lab);
-                        break;
-                    case JoystickView.BOTTOM_LEFT:
-                        directionTextView.setText(R.string.bottom_left_lab);
-                        break;
-                    case JoystickView.LEFT:
-                        directionTextView.setText(R.string.left_lab);
-                        break;
-                    case JoystickView.LEFT_FRONT:
-                        directionTextView.setText(R.string.left_front_lab);
-                        break;
-                    default:
-                        directionTextView.setText(R.string.center_lab);
-                }
-            }
-        }, JoystickView.DEFAULT_LOOP_INTERVAL);}
-
-
-    public void moveUp(View view)
-    {
-        TranslateAnimation animation = new TranslateAnimation(0.0f, 50.0f, 0.0f, 0.0f);
-        animation.setDuration(700);
-        animation.setFillAfter(true);
-        player.startAnimation(animation);
+        //create joystick and player movement system
+        joystick = findViewById(R.id.joystickView);
+        Joystick mainJoystick = new Joystick(joystick, player, height, width);
+        mainJoystick.createJoysticks();
     }
 
 }

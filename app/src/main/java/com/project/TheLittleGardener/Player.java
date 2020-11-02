@@ -10,8 +10,6 @@ public class Player
     int y;
     int width;
     int height;
-    public boolean goUp = false;
-    public boolean goDown = false;
 
     Bitmap gardener;
 
