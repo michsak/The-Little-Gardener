@@ -38,7 +38,7 @@ public class PlayGame extends AppCompatActivity
         Point point = new Point();
         getWindowManager().getDefaultDisplay().getSize(point);
 
-
+        //take player imageView
         player = findViewById(R.id.playerView);
 
         //hide navigation bar and support bar

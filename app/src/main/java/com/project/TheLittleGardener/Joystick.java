@@ -13,7 +13,11 @@ public class Joystick
     private ImageView player;
 
     private float xPositon = 0f;
-    private float yPosition = 0f;
+    private float yPosition = -10f;
+    private float downPlayerMargin = 12f;
+    private float edgePlayerMarin = 95f;
+    private float topPlayerMargin = 420f;
+    private int durationOfAnim = 100;
     private int height;
     private int width;
 
@@ -72,10 +76,10 @@ public class Joystick
 
     private void moveUp()
     {
-        if (yPosition >= (-height + 180f))
+        if (yPosition >= (-height + topPlayerMargin))
         {
             TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon, yPosition, yPosition - speed);
-            animation.setDuration(100);
+            animation.setDuration(durationOfAnim);
             animation.setFillAfter(true);
             player.startAnimation(animation);
             yPosition = yPosition - speed;
@@ -84,25 +88,23 @@ public class Joystick
 
     private void moveUpRight()
     {
-        if (xPositon <= width/2 - 100f && yPosition >= (-height + 180f))
+        if (xPositon <= width/2 - 100f && yPosition >= (-height + topPlayerMargin))
         {
             TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon + speed, yPosition, yPosition - speed);
-            animation.setDuration(100);
+            animation.setDuration(durationOfAnim);
             animation.setFillAfter(true);
             player.startAnimation(animation);
             yPosition = yPosition - speed;
             xPositon = xPositon + speed;
-
-            Log.i("up right", "here");
         }
     }
 
     private void moveUpLeft()
     {
-        if (xPositon >= (-width/2 + 100f) && yPosition >= (-height + 180f))
+        if (xPositon >= (-width/2 + 100f) && yPosition >= (-height + topPlayerMargin))
         {
             TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon - speed, yPosition, yPosition - speed);
-            animation.setDuration(100);
+            animation.setDuration(durationOfAnim);
             animation.setFillAfter(true);
             player.startAnimation(animation);
             yPosition = yPosition - speed;
@@ -112,10 +114,10 @@ public class Joystick
 
     private void moveDown()
     {
-        if (yPosition <= 0f)
+        if (yPosition <= -downPlayerMargin)
         {
             TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon, yPosition, yPosition + speed);
-            animation.setDuration(100);
+            animation.setDuration(durationOfAnim);
             animation.setFillAfter(true);
             player.startAnimation(animation);
             yPosition = yPosition + speed;
@@ -124,10 +126,10 @@ public class Joystick
 
     private void moveDownLeft()
     {
-        if (yPosition <= 0f && xPositon >= (-width/2 + 100f))
+        if (yPosition <= -downPlayerMargin && xPositon >= (-width/2 + 100f))
         {
             TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon - speed, yPosition, yPosition + speed);
-            animation.setDuration(100);
+            animation.setDuration(durationOfAnim);
             animation.setFillAfter(true);
             player.startAnimation(animation);
             yPosition = yPosition + speed;
@@ -137,10 +139,10 @@ public class Joystick
 
     private void moveDownRight()
     {
-        if (yPosition <= 0f && xPositon <= (width/2 - 100f))
+        if (yPosition <= -downPlayerMargin && xPositon <= (width/2 - 100f))
         {
             TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon + speed, yPosition, yPosition + speed);
-            animation.setDuration(100);
+            animation.setDuration(durationOfAnim);
             animation.setFillAfter(true);
             player.startAnimation(animation);
             yPosition = yPosition + speed;
@@ -150,10 +152,10 @@ public class Joystick
 
     private void moveRight()
     {
-        if (xPositon <= width/2 - 100f)
+        if (xPositon <= width/2 - edgePlayerMarin)
         {
             TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon + speed, yPosition, yPosition);
-            animation.setDuration(100);
+            animation.setDuration(durationOfAnim);
             animation.setFillAfter(true);
             player.startAnimation(animation);
             xPositon = xPositon + speed;
@@ -162,10 +164,10 @@ public class Joystick
 
     private void moveLeft()
     {
-        if (xPositon > (-width/2 + 100f))
+        if (xPositon > (-width/2 + edgePlayerMarin))
         {
             TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon - speed, yPosition, yPosition);
-            animation.setDuration(100);
+            animation.setDuration(durationOfAnim);
             animation.setFillAfter(true);
             player.startAnimation(animation);
             xPositon = xPositon - speed;

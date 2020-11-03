@@ -30,14 +30,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backgroundView" />
 
-    <ImageView
-        android:id="@+id/playerView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/player"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -47,9 +39,98 @@
             android:id="@+id/joystickView"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:layout_marginStart="3dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="733dp"
+            android:layout_height="80dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginLeft="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/flower1Button"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="#FFFFFF"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0px"
+                    android:text="Flower 1" />
+
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="#FFFFFF"
+                    android:id="@+id/flower7Button"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="Flower 4" />
+
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="#FFFFFF"
+                    android:id="@+id/flower3Button"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="Flower 3" />
+
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="#FFFFFF"
+                    android:id="@+id/flower4Button"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="Flower 4" />
+
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="#FFFFFF"
+                    android:id="@+id/flower5Button"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="Flower 5" />
+
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="#FFFFFF"
+                    android:id="@+id/flower6Button"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="Flower 6" />
+
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="#FFFFFF"
+                    android:id="@+id/flower2Button"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="DD LIST" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/playerView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
+        app:srcCompat="@drawable/player"
+        />
 
 </RelativeLayout>
