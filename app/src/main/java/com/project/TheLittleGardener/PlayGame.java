@@ -11,9 +11,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.zerokol.views.joystickView.JoystickView;
+
+import java.util.ArrayList;
 
 
 public class PlayGame extends AppCompatActivity
@@ -57,6 +60,18 @@ public class PlayGame extends AppCompatActivity
         joystick = findViewById(R.id.joystickView);
         Joystick mainJoystick = new Joystick(joystick, player, height, width);
         mainJoystick.createJoysticks();
+
+
+    }
+
+    public void dropDownBoxList (View view)
+    {
+        //instantiate custom adapter
+        MyCustomAdapter adapter = new MyCustomAdapter(this);
+
+        //handle listview and assign adapter
+        ListView lView = (ListView)findViewById(R.id.listView);
+        lView.setAdapter(adapter);
     }
 
 }
