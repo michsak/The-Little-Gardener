@@ -1,94 +1,78 @@
 package com.project.TheLittleGardener;
 
 import android.content.Context;
+import android.sax.RootElement;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import java.util.ArrayList;
+import android.widget.Toast;
 
 /**creates ListView, which has button and TextView*/
 public class MyCustomAdapter extends BaseAdapter implements ListAdapter
 {
     private Context context;
-    private ArrayList<String> listOfAdditionalPlants;
-    private Button[] buttons;
+    String[] result;
+    int [] imageId;
+    boolean[] mVisisbilityList = { false, false, false, false };
+    private static LayoutInflater inflater=null;
 
-
-    public MyCustomAdapter(Context context)
+    public MyCustomAdapter(Context context, String[] ddListText, int[] ddListImages)
     {
+        result = ddListText;
+        imageId = ddListImages;
         this.context = context;
-        listOfAdditionalPlants = new ArrayList<>();
-        buttons = new Button[3];
-        listOfAdditionalPlants.add("item1");
-        listOfAdditionalPlants.add("item2");
+        inflater = ( LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount()
     {
-        return listOfAdditionalPlants.size();
+        return result.length;
     }
 
     @Override
-    public Object getItem(int pos)
+    public Object getItem(int position)
     {
-        return listOfAdditionalPlants.get(pos);
+        return position;
     }
 
     @Override
-    public long getItemId(int pos)
+    public long getItemId(int position)
     {
-        return listOfAdditionalPlants.get(pos).indexOf(pos);
+        return position;
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent)
+    public View getView(final int position, final View convertView, final ViewGroup parent)
     {
-        View view = convertView;
-
-        if (view == null)
-        {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.custom_layout, null);
-        }
-
-        //Handle TextView and display string from your list
-        TextView listItemText = (TextView)view.findViewById(R.id.first_list_item_string);
-        listItemText.setText(listOfAdditionalPlants.get(position));
-        buttons[0] = (Button) view.findViewById(R.id.first_list_button);
-        buttons[0].setText("first");
-
-        TextView listItemText2= (TextView)view.findViewById(R.id.second_list_item_string);
-        listItemText2.setText(listOfAdditionalPlants.get(position));
-        buttons[1] = (Button) view.findViewById(R.id.second_list_button);
-        buttons[1].setText("second");
-
-
-//TRY WITH IMAGE VIEW
-/*
-        firstButton.setOnClickListener(new View.OnClickListener()
+        final ContentHolder contentHolder =new ContentHolder();
+        final View adapterView;
+        adapterView = inflater.inflate(R.layout.custom_layout, null);
+        contentHolder.tv = adapterView.findViewById(R.id.list_TextView);
+        contentHolder.img = adapterView.findViewById(R.id.list_imageView);
+        contentHolder.tv.setText(result[position]);
+        contentHolder.img.setImageResource(imageId[position]);
+        adapterView.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View view)
+            public void onClick(View v)
             {
-                notifyDataSetChanged();
+                Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
+
+                for (int i = 0; i < mVisisbilityList.length; i++)
+                {
+
+                }
             }
         });
-
-        secondButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                notifyDataSetChanged();
-            }
-        });*/
-
-        return view;
+        return adapterView;
     }
+
 }

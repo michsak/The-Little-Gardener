@@ -2,7 +2,6 @@ package com.project.TheLittleGardener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Paint;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -25,6 +24,10 @@ public class PlayGame extends AppCompatActivity
     protected MusicManagement gameMusicManagement;
     private ImageView player;
     private JoystickView joystick;
+
+    //used for custom adapter
+    public static int [] ddListImages={R.drawable.gardenerbackground,R.drawable.gardenerbackground, R.drawable.gardenerbackground, R.drawable.gardenerbackground};
+    public static String [] ddListText={"item 1","item 2", "item3", "item4"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -67,11 +70,10 @@ public class PlayGame extends AppCompatActivity
     public void dropDownBoxList (View view)
     {
         //instantiate custom adapter
-        MyCustomAdapter adapter = new MyCustomAdapter(this);
+        MyCustomAdapter adapter = new MyCustomAdapter(this, ddListText, ddListImages);
 
         //handle listview and assign adapter
-        ListView lView = (ListView)findViewById(R.id.listView);
+        ListView lView = findViewById(R.id.listView);
         lView.setAdapter(adapter);
     }
-
 }

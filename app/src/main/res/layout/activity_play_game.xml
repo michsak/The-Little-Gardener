@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainGameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlayGame">
@@ -10,8 +11,8 @@
         android:id="@+id/backgroundView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
         android:foregroundGravity="center_vertical|center_horizontal"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,9 +23,9 @@
         android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:layout_alignParentRight="true"
         android:text="20"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,8 +60,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:layout_marginLeft="15dp"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,50 +70,50 @@
                 <Button
                     android:id="@+id/flower1Button"
                     style="?android:attr/borderlessButtonStyle"
-                    android:background="#FFFFFF"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_margin="0px"
+                    android:background="#FFFFFF"
                     android:text="Flower 1" />
 
                 <Button
-                    style="?android:attr/borderlessButtonStyle"
-                    android:background="#FFFFFF"
                     android:id="@+id/flower7Button"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
+                    android:background="#FFFFFF"
                     android:text="Flower 4" />
 
                 <Button
-                    style="?android:attr/borderlessButtonStyle"
-                    android:background="#FFFFFF"
                     android:id="@+id/flower3Button"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
+                    android:background="#FFFFFF"
                     android:text="Flower 3" />
 
                 <Button
-                    style="?android:attr/borderlessButtonStyle"
-                    android:background="#FFFFFF"
                     android:id="@+id/flower4Button"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
+                    android:background="#FFFFFF"
                     android:text="Flower 4" />
 
                 <Button
-                    style="?android:attr/borderlessButtonStyle"
-                    android:background="#FFFFFF"
                     android:id="@+id/flower5Button"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
+                    android:background="#FFFFFF"
                     android:text="Flower 5" />
 
                 <Button
-                    style="?android:attr/borderlessButtonStyle"
-                    android:background="#FFFFFF"
                     android:id="@+id/flower6Button"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
+                    android:background="#FFFFFF"
                     android:text="Flower 6" />
 
                 <Button
@@ -133,10 +134,9 @@
         android:id="@+id/playerView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
-        app:srcCompat="@drawable/player"
-        />
+        app:srcCompat="@drawable/player" />
 
 </RelativeLayout>
