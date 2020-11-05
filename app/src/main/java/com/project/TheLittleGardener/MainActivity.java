@@ -10,10 +10,9 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity
 {
-    //music managing
+    /*music managing*/
     protected MediaPlayer mediaPlayer;
     protected MusicManagement menuMusicManagement;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,11 +20,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //set up music class and play menu music
+        /*set up music class and play menu music*/
         menuMusicManagement = new MusicManagement(mediaPlayer);
         menuMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);
         menuMusicManagement.playMusic();
-
     }
 
     /**goes to play Activity*/

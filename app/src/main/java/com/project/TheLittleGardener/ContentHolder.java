@@ -5,6 +5,6 @@ import android.widget.TextView;
 
 public class ContentHolder
 {
-    TextView tv;
-    ImageView img;
+    TextView contentTextView;
+    ImageView contentImageView;
 }

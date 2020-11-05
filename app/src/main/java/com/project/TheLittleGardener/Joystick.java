@@ -39,7 +39,7 @@ public class Joystick
             @Override
             public void onValueChanged(int angle, int power, int direction)
             {
-                //enable player to move
+                /*enable player to move*/
                 //right is actually left, and left is actually right
                 switch (direction)
                 {
@@ -72,7 +72,6 @@ public class Joystick
             }
         }, JoystickView.DEFAULT_LOOP_INTERVAL);
     }
-
 
     private void moveUp()
     {
@@ -172,5 +171,15 @@ public class Joystick
             player.startAnimation(animation);
             xPositon = xPositon - speed;
         }
+    }
+
+    public float getXPositon()
+    {
+        return xPositon;
+    }
+
+    public float getYPosition()
+    {
+        return yPosition;
     }
 }

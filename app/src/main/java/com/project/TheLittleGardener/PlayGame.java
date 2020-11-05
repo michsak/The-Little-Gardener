@@ -22,11 +22,14 @@ public class PlayGame extends AppCompatActivity
 {
     protected MediaPlayer mediaPlayer;
     protected MusicManagement gameMusicManagement;
-    private ImageView player;
     private JoystickView joystick;
+    private ImageView player;
+    private View parentView;
+    public ListView lView;
 
-    //used for custom adapter
-    public static int [] ddListImages={R.drawable.gardenerbackground,R.drawable.gardenerbackground, R.drawable.gardenerbackground, R.drawable.gardenerbackground};
+    /*variables for drop down box list*/
+    public static int [] ddListImages={R.drawable.gardenerbackground,R.drawable.gardenerbackground,
+            R.drawable.gardenerbackground, R.drawable.gardenerbackground};
     public static String [] ddListText={"item 1","item 2", "item3", "item4"};
 
     @Override
@@ -35,45 +38,40 @@ public class PlayGame extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_game);
 
-        //set up music class and play main scene music
+        /*set up music class and play main scene music*/
         gameMusicManagement = new MusicManagement(mediaPlayer);
         gameMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);      //to be changed
         gameMusicManagement.playMusic();
 
-        //take size of the screen
+        //initialize x and y variable, which enables player move*/
         Point point = new Point();
-        getWindowManager().getDefaultDisplay().getSize(point);
 
-        //take player imageView
+        /*find necessary Views*/
         player = findViewById(R.id.playerView);
+        parentView = findViewById(R.id.constraintLayout);
 
-        //hide navigation bar and support bar
-        /*View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-        getSupportActionBar().hide();
-    */
-        //params of screen
+        /*hide navigation bar*
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);*/
+
+        /*get params of screen to enable player move*/
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
 
-        //create joystick and player movement system
+        /*create joystick - player movement system*/
         joystick = findViewById(R.id.joystickView);
         Joystick mainJoystick = new Joystick(joystick, player, height, width);
         mainJoystick.createJoysticks();
-
-
     }
 
+    /*executes on click drop down box list button*/
     public void dropDownBoxList (View view)
     {
-        //instantiate custom adapter
-        MyCustomAdapter adapter = new MyCustomAdapter(this, ddListText, ddListImages);
-
-        //handle listview and assign adapter
-        ListView lView = findViewById(R.id.listView);
+        lView = findViewById(R.id.listView);
+        MyCustomAdapter adapter = new MyCustomAdapter(this, ddListText, ddListImages, parentView, player, lView);
         lView.setAdapter(adapter);
     }
 }
