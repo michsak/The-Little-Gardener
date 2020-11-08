@@ -12,7 +12,6 @@
         <activity android:name=".HelpActivity"></activity>
         <activity
             android:name=".PlayGame"
-            android:theme = "@style/AppTheme.noActionBar"
             android:screenOrientation="landscape">
         </activity>
         <activity android:name=".MainActivity">

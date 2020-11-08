@@ -11,7 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-/**creates custom Adapter, which has ImageView and TextView*/
+/**custom Adapter, which has ImageView and TextView*/
 public class MyCustomAdapter extends BaseAdapter implements ListAdapter
 {
     private Context context;
@@ -52,6 +52,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter
         return position;
     }
 
+    //in case of adding components set invisible every parent view
     @Override
     public View getView(final int position, final View convertView, final ViewGroup parent)
     {
@@ -59,7 +60,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter
         final View adapterView;
 
         parentView.setVisibility(View.INVISIBLE);
-        playerView.setImageResource(R.drawable.gardenerbackground);    //change only to invisible drawable element
+        playerView.setImageResource(R.drawable.empty_player);   //change to invisible drawable element
         lView.setVisibility(View.VISIBLE);
 
         adapterView = inflater.inflate(R.layout.custom_layout, null);

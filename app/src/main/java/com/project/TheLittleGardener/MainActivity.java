@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //checks if a MenuInflater object exists in memory, used to delete double bar icons
+        getMenuInflater();
+
         /*set up music class and play menu music*/
         menuMusicManagement = new MusicManagement(mediaPlayer);
         menuMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);

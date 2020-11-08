@@ -12,5 +12,8 @@ public class HelpActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+
+        //checks if a MenuInflater object exists in memory, used to delete double bar icons
+        getMenuInflater();
     }
 }

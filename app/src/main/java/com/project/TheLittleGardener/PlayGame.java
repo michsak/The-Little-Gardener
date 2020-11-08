@@ -7,6 +7,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,6 +29,8 @@ public class PlayGame extends AppCompatActivity
     private View parentView;
     public ListView lView;
 
+    private MenuInflater mMenuInflater;
+
     /*variables for drop down box list*/
     public static int [] ddListImages={R.drawable.gardenerbackground,R.drawable.gardenerbackground,
             R.drawable.gardenerbackground, R.drawable.gardenerbackground};
@@ -37,6 +41,9 @@ public class PlayGame extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_game);
+
+        //checks if a MenuInflater object exists in memory, used to delete double bar icons
+        getMenuInflater();
 
         /*set up music class and play main scene music*/
         gameMusicManagement = new MusicManagement(mediaPlayer);
