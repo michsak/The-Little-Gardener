@@ -1,7 +1,9 @@
 package com.project.TheLittleGardener;
 
 import android.util.Log;
+import android.view.View;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.zerokol.views.joystickView.JoystickView;
@@ -21,7 +23,7 @@ public class Joystick
     private int height;
     private int width;
 
-    private final float speed = 20f;
+    private final float speed = 15f;
 
 
     Joystick( JoystickView joystick, ImageView player, int height, int width)
@@ -73,6 +75,8 @@ public class Joystick
         }, JoystickView.DEFAULT_LOOP_INTERVAL);
     }
 
+
+    //functions can be written better
     private void moveUp()
     {
         if (yPosition >= (-height + topPlayerMargin))
@@ -175,11 +179,11 @@ public class Joystick
 
     public float getXPositon()
     {
-        return xPositon;
+        return xPositon + 850f; // adding due to change of layout
     }
 
     public float getYPosition()
     {
-        return yPosition;
+        return yPosition + 600f; // adding due to change of layout
     }
 }

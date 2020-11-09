@@ -56,7 +56,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter
     @Override
     public View getView(final int position, final View convertView, final ViewGroup parent)
     {
-        final ContentHolder contentHolder =new ContentHolder();
+        final CustomAdapterContentHolder customAdapterContentHolder =new CustomAdapterContentHolder();
         final View adapterView;
 
         parentView.setVisibility(View.INVISIBLE);
@@ -64,10 +64,10 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter
         lView.setVisibility(View.VISIBLE);
 
         adapterView = inflater.inflate(R.layout.custom_layout, null);
-        contentHolder.contentTextView = adapterView.findViewById(R.id.list_TextView);
-        contentHolder.contentImageView = adapterView.findViewById(R.id.list_imageView);
-        contentHolder.contentTextView.setText(result[position]);
-        contentHolder.contentImageView.setImageResource(imageId[position]);
+        customAdapterContentHolder.contentTextView = adapterView.findViewById(R.id.list_TextView);
+        customAdapterContentHolder.contentImageView = adapterView.findViewById(R.id.list_imageView);
+        customAdapterContentHolder.contentTextView.setText(result[position]);
+        customAdapterContentHolder.contentImageView.setImageResource(imageId[position]);
 
         adapterView.setOnClickListener(new View.OnClickListener()
         {

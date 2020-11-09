@@ -60,12 +60,24 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Button
+                android:id="@+id/seedsImageContainer"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/seed"
+                android:enabled="false"
+                android:onClick="button15ContainerOnClick"
+                app:layout_constraintStart_toEndOf="@+id/button12"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
                 android:id="@+id/button"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button1ContainerOnClick"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button2" />
 
@@ -73,9 +85,9 @@
                 android:id="@+id/button2"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button2ContainerOnClick"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button3" />
 
@@ -85,9 +97,9 @@
                 android:layout_height="62dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="60dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button3ContainerOnClick"
                 app:layout_constraintEnd_toEndOf="@+id/button4"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -98,9 +110,9 @@
                 android:layout_width="62dp"
                 android:layout_height="62dp"
                 android:layout_marginStart="62dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button4ContainerOnClick"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -108,9 +120,9 @@
                 android:id="@+id/button5"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button5ContainerOnClick"
                 app:layout_constraintStart_toEndOf="@+id/button4"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -118,9 +130,9 @@
                 android:id="@+id/button6"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button6ContainerOnClick"
                 app:layout_constraintStart_toEndOf="@+id/button5"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -128,9 +140,9 @@
                 android:id="@+id/button7"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button7ContainerOnClick"
                 app:layout_constraintStart_toEndOf="@+id/button6"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -138,9 +150,9 @@
                 android:id="@+id/button8"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button8ContainerOnClick"
                 app:layout_constraintStart_toEndOf="@+id/button7"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -148,9 +160,9 @@
                 android:id="@+id/button9"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button9ContainerOnClick"
                 app:layout_constraintStart_toEndOf="@+id/button8"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -158,9 +170,9 @@
                 android:id="@+id/button10"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button10ContainerOnClick"
                 app:layout_constraintStart_toEndOf="@+id/button9"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -168,9 +180,9 @@
                 android:id="@+id/button11"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button11ContainerOnClick"
                 app:layout_constraintStart_toEndOf="@+id/button10"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -178,9 +190,9 @@
                 android:id="@+id/button12"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button12ContainerOnClick"
                 app:layout_constraintStart_toEndOf="@+id/button11"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -189,9 +201,9 @@
                 android:layout_width="62dp"
                 android:layout_height="62dp"
                 android:layout_marginTop="50dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button13ContainerOnClick"
                 app:layout_constraintStart_toEndOf="@+id/button12"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -199,9 +211,9 @@
                 android:id="@+id/button14"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button14ContainerOnClick"
                 app:layout_constraintStart_toEndOf="@+id/button12"
                 app:layout_constraintTop_toBottomOf="@+id/button13" />
 
@@ -209,9 +221,9 @@
                 android:id="@+id/button15"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:background="#673AB7"
-                android:enabled="false"
-                android:text="Button"
+                android:background="#453313"
+                android:enabled="true"
+                android:onClick="button15ContainerOnClick"
                 app:layout_constraintStart_toEndOf="@+id/button12"
                 app:layout_constraintTop_toBottomOf="@+id/button14" />
 
@@ -229,7 +241,7 @@
                 android:id="@+id/bottomLineraLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="24dp"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -242,16 +254,24 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_margin="0px"
-                    android:background="#FFFFFF"
-                    android:text="Flower 1" />
+                    android:background="@drawable/tree_with_border"
+                    android:gravity="bottom|center"
+                    android:paddingBottom="4dp"
+                    android:text="tree"
+                    android:textColor="#CDDC39"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/flower7Button"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:background="#FFFFFF"
-                    android:text="Flower 4" />
+                    android:background="@drawable/corn_with_border"
+                    android:gravity="bottom|center"
+                    android:paddingBottom="4dp"
+                    android:text="corn"
+                    android:textColor="#CDDC39"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/flower3Button"
@@ -259,7 +279,9 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:background="#FFFFFF"
-                    android:text="Flower 3" />
+                    android:gravity="bottom|center"
+                    android:paddingBottom="6dp"
+                    android:text="bean" />
 
                 <Button
                     android:id="@+id/flower4Button"
@@ -267,7 +289,9 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:background="#FFFFFF"
-                    android:text="Flower 4" />
+                    android:gravity="bottom|center"
+                    android:paddingBottom="6dp"
+                    android:text="bush" />
 
                 <Button
                     android:id="@+id/flower5Button"
@@ -275,7 +299,9 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:background="#FFFFFF"
-                    android:text="Flower 5" />
+                    android:gravity="bottom|center"
+                    android:paddingBottom="6dp"
+                    android:text="daisy" />
 
                 <Button
                     android:id="@+id/flower6Button"
@@ -283,7 +309,9 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:background="#FFFFFF"
-                    android:text="Flower 6" />
+                    android:gravity="bottom|center"
+                    android:paddingBottom="6dp"
+                    android:text="clover" />
 
                 <Button
                     android:id="@+id/flower2Button"
@@ -293,6 +321,7 @@
                     android:background="#FFFFFF"
                     android:onClick="dropDownBoxList"
                     android:text="DD LIST" />
+
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
