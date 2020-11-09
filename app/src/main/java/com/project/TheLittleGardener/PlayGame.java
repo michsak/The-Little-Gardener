@@ -22,22 +22,17 @@ import java.util.ArrayList;
 
 public class PlayGame extends AppCompatActivity
 {
-    protected MediaPlayer mediaPlayer;
-    protected MusicManagement gameMusicManagement;
-    private JoystickView joystick;
+    private MediaPlayer mediaPlayer;
+    private MusicManagement gameMusicManagement;
+    private JoystickView joystickView;
     private Joystick mainJoystick;
     private ImageView player;
     private View parentView;
-    public ListView lView;
-
+    private ListView lView;
     private float distanceFromButton = 240f;
-    private MenuInflater mMenuInflater;
+    private static int[] dropDownListImages;
+    private static String[] dropDownListText;
 
-    /*variables for drop down box list*/
-    public static int [] ddListImages={R.drawable.gardenerbackground,R.drawable.gardenerbackground,
-            R.drawable.gardenerbackground, R.drawable.gardenerbackground};
-    public static String [] ddListText={"tree","corn", "bean", "bush", "daisy", "clover", "maize", "mushrooms",
-            "sunflower", "nettle", "fern", "moss", "cabbage", "cattail", "dandelion"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -45,25 +40,11 @@ public class PlayGame extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_game);
 
-        //checks if a MenuInflater object exists in memory, used to delete double bar icons
+        /*checks if a MenuInflater object exists in memory, used to delete double bar icons*/
         getMenuInflater();
 
-        /*set up music class and play main scene music*/
-        gameMusicManagement = new MusicManagement(mediaPlayer);
-        gameMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);      //to be changed
-        gameMusicManagement.playMusic();
-
-        //initialize x and y variable, which enables player move*/
+        /*initialize x and y variable, which enables player move*/
         Point point = new Point();
-
-        /*find necessary Views*/
-        player = findViewById(R.id.playerView);
-        parentView = findViewById(R.id.constraintLayout);
-
-        /*hide navigation bar*
-        View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);*/
 
         /*get params of screen to enable player move*/
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -71,23 +52,56 @@ public class PlayGame extends AppCompatActivity
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
 
-        /*create joystick - player movement system*/
-        joystick = findViewById(R.id.joystickView);
-        mainJoystick = new Joystick(joystick, player, height, width);
+        playMainSceneMusic();
+        findNecessaryViews();
+        crateJoystick(height, width);
+        initializeDropDownListParams();
+    }
+
+    private void crateJoystick(int height, int width) {
+        mainJoystick = new Joystick(joystickView, player, height, width);
         mainJoystick.createJoysticks();
     }
 
-    /*executes on click drop down box list button*/
-    public void dropDownBoxList (View view)
+    private void findNecessaryViews() {
+        player = findViewById(R.id.playerView);
+        parentView = findViewById(R.id.constraintLayout);
+        joystickView = findViewById(R.id.joystickView);
+    }
+
+    private void playMainSceneMusic()
+    {
+        gameMusicManagement = new MusicManagement(mediaPlayer);
+        gameMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);      //to be changed
+        gameMusicManagement.playMusic();
+    }
+
+    private void initializeDropDownListParams()
+    {
+        dropDownListText = new String[] {PlantNamesContainer.TREE.name(), PlantNamesContainer.CORN.name(), PlantNamesContainer.BEAN.name(),
+                PlantNamesContainer.BUSH.name(), PlantNamesContainer.DAISY.name(), PlantNamesContainer.CLOVER.name(), PlantNamesContainer.MAIZE.name(),
+                PlantNamesContainer.MUSHROOMS.name(), PlantNamesContainer.SUNFLOWER.name(), PlantNamesContainer.NETTLE.name(),
+                PlantNamesContainer.FERN.name(), PlantNamesContainer.MOSS.name(), PlantNamesContainer.CABBAGE.name(),
+                PlantNamesContainer.CATTAIL.name(), PlantNamesContainer.DANDELION.name()};
+
+        dropDownListImages = new int[] {PlantNamesContainer.TREE.getValue(), PlantNamesContainer.CORN.getValue(), PlantNamesContainer.BEAN.getValue(),
+                PlantNamesContainer.BUSH.getValue(), PlantNamesContainer.DAISY.getValue(), PlantNamesContainer.CLOVER.getValue(),
+                PlantNamesContainer.MAIZE.getValue(), PlantNamesContainer.MUSHROOMS.getValue(), PlantNamesContainer.SUNFLOWER.getValue(),
+                PlantNamesContainer.NETTLE.getValue(), PlantNamesContainer.FERN.getValue(), PlantNamesContainer.MOSS.getValue(),
+                PlantNamesContainer.CABBAGE.getValue(), PlantNamesContainer.CATTAIL.getValue(), PlantNamesContainer.DANDELION.getValue()};
+    }
+
+    public void onClickButtonDropDownBoxList (View view)
     {
         lView = findViewById(R.id.listView);
-        MyCustomAdapter adapter = new MyCustomAdapter(this, ddListText, ddListImages, parentView, player, lView);
+        MyCustomAdapter adapter = new MyCustomAdapter(this, dropDownListText, dropDownListImages, parentView, player, lView);
         lView.setAdapter(adapter);
     }
 
     public void checkPositionAndChangeImage (Button button, int resource)
     {
-        Log.i("button distance", Float.toString(countDistance(button.getX(), button.getY(), mainJoystick.getXPositon(), mainJoystick.getYPosition())));
+        Log.i("button distance", Float.toString(countDistance(button.getX(), button.getY(),
+                mainJoystick.getXPositon(), mainJoystick.getYPosition())));
         if (countDistance(button.getX(), button.getY(), mainJoystick.getXPositon(), mainJoystick.getYPosition()) < distanceFromButton)
         {
             button.setBackgroundResource(resource);

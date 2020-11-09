@@ -1,12 +1,10 @@
 package com.project.TheLittleGardener;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-
 
 public class MainActivity extends AppCompatActivity
 {
@@ -19,14 +17,10 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        playMusic();
 
         //checks if a MenuInflater object exists in memory, used to delete double bar icons
         getMenuInflater();
-
-        /*set up music class and play menu music*/
-        menuMusicManagement = new MusicManagement(mediaPlayer);
-        menuMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);
-        menuMusicManagement.playMusic();
     }
 
     /**goes to play Activity*/
@@ -46,5 +40,13 @@ public class MainActivity extends AppCompatActivity
     public void exitGame (View view)
     {
         finish();
+    }
+
+    /**set up music class and play menu music*/
+    private void playMusic()
+    {
+        menuMusicManagement = new MusicManagement(mediaPlayer);
+        menuMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);
+        menuMusicManagement.playMusic();
     }
 }

@@ -319,7 +319,7 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:background="#FFFFFF"
-                    android:onClick="dropDownBoxList"
+                    android:onClick="onClickButtonDropDownBoxList"
                     android:text="DD LIST" />
 
             </LinearLayout>
