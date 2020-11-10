@@ -5,7 +5,7 @@
     android:id="@+id/mainGameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlayGame">
+    tools:context=".PlayGameActivity">
 
     <ImageView
         android:id="@+id/backgroundView"
@@ -302,20 +302,24 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:background="#FFFFFF"
+                    android:background="@drawable/daisy_bg"
                     android:gravity="bottom|center"
-                    android:paddingBottom="6dp"
-                    android:text="daisy" />
+                    android:paddingBottom="4dp"
+                    android:text="daisy"
+                    android:textColor="#CDDC39"
+                    android:textSize="16sp"/>
 
                 <Button
                     android:id="@+id/flower6Button"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:background="#FFFFFF"
+                    android:background="@drawable/clover_with_border"
                     android:gravity="bottom|center"
-                    android:paddingBottom="6dp"
-                    android:text="clover" />
+                    android:paddingBottom="4dp"
+                    android:text="clover"
+                    android:textColor="#CDDC39"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/flower2Button"

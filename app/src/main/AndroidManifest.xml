@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".HelpActivity"></activity>
         <activity
-            android:name=".PlayGame"
+            android:name=".PlayGameActivity"
             android:screenOrientation="landscape">
         </activity>
         <activity android:name=".MainActivity">

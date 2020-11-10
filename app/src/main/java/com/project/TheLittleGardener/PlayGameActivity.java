@@ -20,7 +20,7 @@ import com.zerokol.views.joystickView.JoystickView;
 import java.util.ArrayList;
 
 
-public class PlayGame extends AppCompatActivity
+public class PlayGameActivity extends AppCompatActivity
 {
     private MediaPlayer mediaPlayer;
     private MusicManagement gameMusicManagement;
@@ -80,17 +80,17 @@ public class PlayGame extends AppCompatActivity
 
     private void initializeDropDownListParams()
     {
-        dropDownListText = new String[] {PlantNamesContainer.TREE.name(), PlantNamesContainer.CORN.name(), PlantNamesContainer.BEAN.name(),
-                PlantNamesContainer.BUSH.name(), PlantNamesContainer.DAISY.name(), PlantNamesContainer.CLOVER.name(), PlantNamesContainer.MAIZE.name(),
-                PlantNamesContainer.MUSHROOMS.name(), PlantNamesContainer.SUNFLOWER.name(), PlantNamesContainer.NETTLE.name(),
-                PlantNamesContainer.FERN.name(), PlantNamesContainer.MOSS.name(), PlantNamesContainer.CABBAGE.name(),
-                PlantNamesContainer.CATTAIL.name(), PlantNamesContainer.DANDELION.name()};
+        dropDownListText = new String[] {PlantContainer.TREE.name(), PlantContainer.CORN.name(), PlantContainer.BEAN.name(),
+                PlantContainer.BUSH.name(), PlantContainer.DAISY.name(), PlantContainer.CLOVER.name(), PlantContainer.MAIZE.name(),
+                PlantContainer.MUSHROOMS.name(), PlantContainer.SUNFLOWER.name(), PlantContainer.NETTLE.name(),
+                PlantContainer.FERN.name(), PlantContainer.MOSS.name(), PlantContainer.CABBAGE.name(),
+                PlantContainer.CATTAIL.name(), PlantContainer.DANDELION.name()};
 
-        dropDownListImages = new int[] {PlantNamesContainer.TREE.getValue(), PlantNamesContainer.CORN.getValue(), PlantNamesContainer.BEAN.getValue(),
-                PlantNamesContainer.BUSH.getValue(), PlantNamesContainer.DAISY.getValue(), PlantNamesContainer.CLOVER.getValue(),
-                PlantNamesContainer.MAIZE.getValue(), PlantNamesContainer.MUSHROOMS.getValue(), PlantNamesContainer.SUNFLOWER.getValue(),
-                PlantNamesContainer.NETTLE.getValue(), PlantNamesContainer.FERN.getValue(), PlantNamesContainer.MOSS.getValue(),
-                PlantNamesContainer.CABBAGE.getValue(), PlantNamesContainer.CATTAIL.getValue(), PlantNamesContainer.DANDELION.getValue()};
+        dropDownListImages = new int[] {PlantContainer.TREE.getValue(), PlantContainer.CORN.getValue(), PlantContainer.BEAN.getValue(),
+                PlantContainer.BUSH.getValue(), PlantContainer.DAISY.getValue(), PlantContainer.CLOVER.getValue(),
+                PlantContainer.MAIZE.getValue(), PlantContainer.MUSHROOMS.getValue(), PlantContainer.SUNFLOWER.getValue(),
+                PlantContainer.NETTLE.getValue(), PlantContainer.FERN.getValue(), PlantContainer.MOSS.getValue(),
+                PlantContainer.CABBAGE.getValue(), PlantContainer.CATTAIL.getValue(), PlantContainer.DANDELION.getValue()};
     }
 
     public void onClickButtonDropDownBoxList (View view)

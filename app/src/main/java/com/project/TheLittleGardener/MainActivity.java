@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity
     /**goes to play Activity*/
     public void playAction(View view)
     {
-        startActivity(new Intent(MainActivity.this, PlayGame.class));
+        startActivity(new Intent(MainActivity.this, PlayGameActivity.class));
         menuMusicManagement.stopMusic();
     }
 
