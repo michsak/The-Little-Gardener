@@ -278,20 +278,24 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:background="#FFFFFF"
+                    android:background="@drawable/bean_with_border"
                     android:gravity="bottom|center"
-                    android:paddingBottom="6dp"
-                    android:text="bean" />
+                    android:paddingBottom="4dp"
+                    android:text="bean"
+                    android:textColor="#CDDC39"
+                    android:textSize="16sp"/>
 
                 <Button
                     android:id="@+id/flower4Button"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:background="#FFFFFF"
+                    android:background="@drawable/bush_with_border"
                     android:gravity="bottom|center"
-                    android:paddingBottom="6dp"
-                    android:text="bush" />
+                    android:paddingBottom="4dp"
+                    android:text="bush"
+                    android:textColor="#CDDC39"
+                    android:textSize="16sp"/>
 
                 <Button
                     android:id="@+id/flower5Button"

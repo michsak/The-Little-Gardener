@@ -4,8 +4,8 @@ public enum PlantNamesContainer
 {
     TREE (R.drawable.grown_tree),
     CORN (R.drawable.corn),
-    BEAN (R.drawable.corn),  //to be changed all below included bean
-    BUSH (R.drawable.corn),
+    BEAN (R.drawable.bean),  //to be changed all below included bean
+    BUSH (R.drawable.bush),
     DAISY (R.drawable.corn),
     CLOVER (R.drawable.corn),
     MAIZE (R.drawable.corn),

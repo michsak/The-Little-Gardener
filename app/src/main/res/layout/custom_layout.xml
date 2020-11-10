@@ -12,11 +12,13 @@
         android:id="@+id/list_imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginRight="5dp" />
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="10dp" />
+
 
     <TextView
         android:id="@+id/list_TextView"
-        android:layout_width="303dp"
+        android:layout_width="295dp"
         android:layout_height="100dp"
         android:layout_marginRight="0dp"
         android:gravity="center"

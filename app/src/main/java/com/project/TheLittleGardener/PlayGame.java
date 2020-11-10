@@ -58,12 +58,14 @@ public class PlayGame extends AppCompatActivity
         initializeDropDownListParams();
     }
 
-    private void crateJoystick(int height, int width) {
+    private void crateJoystick(int height, int width)
+    {
         mainJoystick = new Joystick(joystickView, player, height, width);
         mainJoystick.createJoysticks();
     }
 
-    private void findNecessaryViews() {
+    private void findNecessaryViews()
+    {
         player = findViewById(R.id.playerView);
         parentView = findViewById(R.id.constraintLayout);
         joystickView = findViewById(R.id.joystickView);
