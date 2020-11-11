@@ -11,7 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-/**custom Adapter, which has ImageView and TextView*/
+/**enables user to create custom List View with ImageView and TextView*/
 public class MyCustomAdapter extends BaseAdapter implements ListAdapter
 {
     private Context context;
@@ -31,6 +31,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter
         this.parentView = parentView;
         this.playerView = playerView;
         this.lView = listView;
+        /*instantiate the contents of layout XML files into their corresponding View objects*/
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -52,31 +53,23 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter
         return position;
     }
 
-    //in case of adding components set invisible every parent view
     @Override
     public View getView(final int position, final View convertView, final ViewGroup parent)
     {
-        final CustomAdapterContentHolder customAdapterContentHolder =new CustomAdapterContentHolder();
+        final CustomAdapterContentHolder customAdapterContentHolder = new CustomAdapterContentHolder();
         final View adapterView;
 
-        parentView.setVisibility(View.INVISIBLE);
-        playerView.setImageResource(R.drawable.empty_player);   //change to invisible drawable element
-        lView.setVisibility(View.VISIBLE);
-
         adapterView = inflater.inflate(R.layout.custom_layout, null);
-        customAdapterContentHolder.contentTextView = adapterView.findViewById(R.id.list_TextView);
-        customAdapterContentHolder.contentImageView = adapterView.findViewById(R.id.list_imageView);
-        customAdapterContentHolder.contentTextView.setText(result[position]);
-        customAdapterContentHolder.contentImageView.setImageResource(imageId[position]);
+        changeVisibilityToDropDownListRequirements();
+        findCustomAdapterViews(customAdapterContentHolder, adapterView);
+        setCustomAdapterViewsParams(position, customAdapterContentHolder);
 
         adapterView.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                parentView.setVisibility(View.VISIBLE);
-                playerView.setImageResource(R.drawable.player);
-                lView.setVisibility(View.INVISIBLE);
+                changeVisibilityToPlayScreenRequirements();
 
                 Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
             }
@@ -84,4 +77,27 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter
         return adapterView;
     }
 
+    private void setCustomAdapterViewsParams(int position, CustomAdapterContentHolder customAdapterContentHolder) {
+        customAdapterContentHolder.contentTextView.setText(result[position]);
+        customAdapterContentHolder.contentImageView.setImageResource(imageId[position]);
+    }
+
+    private void findCustomAdapterViews(CustomAdapterContentHolder customAdapterContentHolder, View adapterView) {
+        customAdapterContentHolder.contentTextView = adapterView.findViewById(R.id.list_TextView);
+        customAdapterContentHolder.contentImageView = adapterView.findViewById(R.id.list_imageView);
+    }
+
+    private void changeVisibilityToDropDownListRequirements()
+    {
+        parentView.setVisibility(View.INVISIBLE);
+        playerView.setImageResource(R.drawable.empty_player);
+        lView.setVisibility(View.VISIBLE);
+    }
+
+    private void changeVisibilityToPlayScreenRequirements()
+    {
+        parentView.setVisibility(View.VISIBLE);
+        playerView.setImageResource(R.drawable.player);
+        lView.setVisibility(View.INVISIBLE);
+    }
 }

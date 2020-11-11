@@ -103,8 +103,8 @@ public class PlayGameActivity extends AppCompatActivity
     public void checkPositionAndChangeImage (Button button, int resource)
     {
         Log.i("button distance", Float.toString(countDistance(button.getX(), button.getY(),
-                mainJoystick.getXPositon(), mainJoystick.getYPosition())));
-        if (countDistance(button.getX(), button.getY(), mainJoystick.getXPositon(), mainJoystick.getYPosition()) < distanceFromButton)
+                mainJoystick.getXPosition(), mainJoystick.getYPosition())));
+        if (countDistance(button.getX(), button.getY(), mainJoystick.getXPosition(), mainJoystick.getYPosition()) < distanceFromButton)
         {
             button.setBackgroundResource(resource);
         }

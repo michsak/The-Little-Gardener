@@ -1,11 +1,7 @@
 package com.project.TheLittleGardener;
 
-import android.util.Log;
-import android.view.View;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.ImageView;
-
 import com.zerokol.views.joystickView.JoystickView;
 
 
@@ -14,16 +10,15 @@ public class Joystick
     private JoystickView joystick;
     private ImageView player;
 
-    private float xPositon = 0f;
+    private float xPosition = 0f;
     private float yPosition = -10f;
     private float downPlayerMargin = 12f;
     private float edgePlayerMarin = 95f;
     private float topPlayerMargin = 420f;
     private int durationOfAnim = 100;
+    private final float speed = 15f;
     private int height;
     private int width;
-
-    private final float speed = 15f;
 
 
     Joystick( JoystickView joystick, ImageView player, int height, int width)
@@ -41,33 +36,31 @@ public class Joystick
             @Override
             public void onValueChanged(int angle, int power, int direction)
             {
-                /*enable player to move*/
-                //right is actually left, and left is actually right
                 switch (direction)
                 {
                     case JoystickView.FRONT:
                         moveUp();
                         break;
                     case JoystickView.FRONT_RIGHT:
-                        moveUpLeft();
+                        moveUpRight();
                         break;
                     case JoystickView.RIGHT:
-                        moveLeft();
+                        moveRight();
                         break;
                     case JoystickView.RIGHT_BOTTOM:
-                        moveDownLeft();
+                        moveDownRight();
                         break;
                     case JoystickView.BOTTOM:
                         moveDown();
                         break;
                     case JoystickView.BOTTOM_LEFT:
-                        moveDownRight();
+                        moveDownLeft();
                         break;
                     case JoystickView.LEFT:
-                        moveRight();
+                        moveLeft();
                         break;
                     case JoystickView.LEFT_FRONT:
-                        moveUpRight();
+                        moveUpLeft();
                         break;
                     default:
                 }
@@ -75,43 +68,38 @@ public class Joystick
         }, JoystickView.DEFAULT_LOOP_INTERVAL);
     }
 
+    private void createAndStartAnimation(float xPosition, float xFinalPosition, float yPosition, float yFinalPosition)
+    {
+        TranslateAnimation animation = new TranslateAnimation(xPosition, xFinalPosition, yPosition, yFinalPosition);
+        animation.setDuration(durationOfAnim);
+        animation.setFillAfter(true);
+        player.startAnimation(animation);
+        this.xPosition = xFinalPosition;
+        this.yPosition = yFinalPosition;
+    }
 
     //functions can be written better
     private void moveUp()
     {
         if (yPosition >= (-height + topPlayerMargin))
         {
-            TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon, yPosition, yPosition - speed);
-            animation.setDuration(durationOfAnim);
-            animation.setFillAfter(true);
-            player.startAnimation(animation);
-            yPosition = yPosition - speed;
+            createAndStartAnimation(xPosition, xPosition, yPosition, yPosition - speed);
         }
     }
 
     private void moveUpRight()
     {
-        if (xPositon <= width/2 - 100f && yPosition >= (-height + topPlayerMargin))
+        if (xPosition <= width/2 - 100f && yPosition >= (-height + topPlayerMargin))
         {
-            TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon + speed, yPosition, yPosition - speed);
-            animation.setDuration(durationOfAnim);
-            animation.setFillAfter(true);
-            player.startAnimation(animation);
-            yPosition = yPosition - speed;
-            xPositon = xPositon + speed;
+            createAndStartAnimation(xPosition, xPosition+speed, yPosition, yPosition-speed);
         }
     }
 
     private void moveUpLeft()
     {
-        if (xPositon >= (-width/2 + 100f) && yPosition >= (-height + topPlayerMargin))
+        if (xPosition >= (-width/2 + 100f) && yPosition >= (-height + topPlayerMargin))
         {
-            TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon - speed, yPosition, yPosition - speed);
-            animation.setDuration(durationOfAnim);
-            animation.setFillAfter(true);
-            player.startAnimation(animation);
-            yPosition = yPosition - speed;
-            xPositon = xPositon - speed;
+            createAndStartAnimation(xPosition, xPosition-speed, yPosition, yPosition-speed);
         }
     }
 
@@ -119,67 +107,46 @@ public class Joystick
     {
         if (yPosition <= -downPlayerMargin)
         {
-            TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon, yPosition, yPosition + speed);
-            animation.setDuration(durationOfAnim);
-            animation.setFillAfter(true);
-            player.startAnimation(animation);
-            yPosition = yPosition + speed;
+            createAndStartAnimation(xPosition, xPosition, yPosition, yPosition+speed);
         }
     }
 
     private void moveDownLeft()
     {
-        if (yPosition <= -downPlayerMargin && xPositon >= (-width/2 + 100f))
+        if (yPosition <= -downPlayerMargin && xPosition >= (-width/2 + 100f))
         {
-            TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon - speed, yPosition, yPosition + speed);
-            animation.setDuration(durationOfAnim);
-            animation.setFillAfter(true);
-            player.startAnimation(animation);
-            yPosition = yPosition + speed;
-            xPositon = xPositon - speed;
+            createAndStartAnimation(xPosition, xPosition-speed, yPosition, yPosition+speed);
         }
     }
 
     private void moveDownRight()
     {
-        if (yPosition <= -downPlayerMargin && xPositon <= (width/2 - 100f))
+        if (yPosition <= -downPlayerMargin && xPosition <= (width/2 - 100f))
         {
-            TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon + speed, yPosition, yPosition + speed);
-            animation.setDuration(durationOfAnim);
-            animation.setFillAfter(true);
-            player.startAnimation(animation);
-            yPosition = yPosition + speed;
-            xPositon = xPositon + speed;
+            createAndStartAnimation(xPosition, xPosition+speed, yPosition, yPosition+speed);
         }
     }
 
     private void moveRight()
     {
-        if (xPositon <= width/2 - edgePlayerMarin)
+        if (xPosition <= width/2 - edgePlayerMarin)
         {
-            TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon + speed, yPosition, yPosition);
-            animation.setDuration(durationOfAnim);
-            animation.setFillAfter(true);
-            player.startAnimation(animation);
-            xPositon = xPositon + speed;
+            createAndStartAnimation(xPosition, xPosition+speed, yPosition, yPosition);
         }
     }
 
     private void moveLeft()
     {
-        if (xPositon > (-width/2 + edgePlayerMarin))
+        if (xPosition > (-width/2 + edgePlayerMarin))
         {
-            TranslateAnimation animation = new TranslateAnimation(xPositon, xPositon - speed, yPosition, yPosition);
-            animation.setDuration(durationOfAnim);
-            animation.setFillAfter(true);
-            player.startAnimation(animation);
-            xPositon = xPositon - speed;
+            createAndStartAnimation(xPosition, xPosition-speed, yPosition, yPosition);
         }
     }
 
-    public float getXPositon()
+    //the system has to be changed and improved
+    public float getXPosition()
     {
-        return xPositon + 850f; // adding due to change of layout
+        return xPosition + 850f; // adding due to change of layout
     }
 
     public float getYPosition()
