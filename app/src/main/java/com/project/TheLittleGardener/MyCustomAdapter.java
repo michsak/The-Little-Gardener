@@ -70,6 +70,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter
             public void onClick(View view)
             {
                 changeVisibilityToPlayScreenRequirements();
+                PlayGameActivity.currentPlant = position;
 
                 Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
             }

@@ -14,10 +14,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zerokol.views.joystickView.JoystickView;
 
 import java.util.ArrayList;
+
+import javax.xml.datatype.Duration;
 
 
 public class PlayGameActivity extends AppCompatActivity
@@ -32,6 +35,7 @@ public class PlayGameActivity extends AppCompatActivity
     private float distanceFromButton = 240f;
     private static int[] dropDownListImages;
     private static String[] dropDownListText;
+    public static int currentPlant = 0;
 
 
     @Override
@@ -93,17 +97,8 @@ public class PlayGameActivity extends AppCompatActivity
                 PlantContainer.CABBAGE.getValue(), PlantContainer.CATTAIL.getValue(), PlantContainer.DANDELION.getValue()};
     }
 
-    public void onClickButtonDropDownBoxList (View view)
-    {
-        lView = findViewById(R.id.listView);
-        MyCustomAdapter adapter = new MyCustomAdapter(this, dropDownListText, dropDownListImages, parentView, player, lView);
-        lView.setAdapter(adapter);
-    }
-
     public void checkPositionAndChangeImage (Button button, int resource)
     {
-        Log.i("button distance", Float.toString(countDistance(button.getX(), button.getY(),
-                mainJoystick.getXPosition(), mainJoystick.getYPosition())));
         if (countDistance(button.getX(), button.getY(), mainJoystick.getXPosition(), mainJoystick.getYPosition()) < distanceFromButton)
         {
             button.setBackgroundResource(resource);
@@ -124,6 +119,37 @@ public class PlayGameActivity extends AppCompatActivity
         return distance;
     }
 
+    public void onBottomButtonWithPlantsClick(View view)
+    {
+        switch (view.getTag().toString())
+        {
+            case "tree":
+                this.currentPlant = 0;
+                break;
+            case "corn":
+                this.currentPlant = 1;
+                break;
+            case "bean":
+                this.currentPlant = 2;
+                break;
+            case "bush":
+                this.currentPlant = 3;
+                break;
+            case "daisy":
+                this.currentPlant = 4;
+                break;
+            case "clover":
+                this.currentPlant = 5;
+                break;
+        }
+    }
+
+    public void onClickButtonDropDownBoxList (View view)
+    {
+        lView = findViewById(R.id.listView);
+        MyCustomAdapter adapter = new MyCustomAdapter(this, dropDownListText, dropDownListImages, parentView, player, lView);
+        lView.setAdapter(adapter);
+    }
 
     /*buttons where plants are placed functions*/
     //START

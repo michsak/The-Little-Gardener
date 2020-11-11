@@ -255,8 +255,11 @@
                     android:layout_height="match_parent"
                     android:layout_margin="0px"
                     android:background="@drawable/tree_with_border"
+                    android:enabled="true"
                     android:gravity="bottom|center"
+                    android:onClick="onBottomButtonWithPlantsClick"
                     android:paddingBottom="4dp"
+                    android:tag="tree"
                     android:text="tree"
                     android:textColor="#CDDC39"
                     android:textSize="16sp" />
@@ -267,8 +270,11 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/corn_with_border"
+                    android:enabled="true"
                     android:gravity="bottom|center"
+                    android:onClick="onBottomButtonWithPlantsClick"
                     android:paddingBottom="4dp"
+                    android:tag="corn"
                     android:text="corn"
                     android:textColor="#CDDC39"
                     android:textSize="16sp" />
@@ -279,11 +285,14 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/bean_with_border"
+                    android:enabled="true"
                     android:gravity="bottom|center"
+                    android:onClick="onBottomButtonWithPlantsClick"
                     android:paddingBottom="4dp"
+                    android:tag="bean"
                     android:text="bean"
                     android:textColor="#CDDC39"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/flower4Button"
@@ -291,11 +300,14 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/bush_with_border"
+                    android:enabled="true"
                     android:gravity="bottom|center"
+                    android:onClick="onBottomButtonWithPlantsClick"
                     android:paddingBottom="4dp"
+                    android:tag="bush"
                     android:text="bush"
                     android:textColor="#CDDC39"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/flower5Button"
@@ -303,11 +315,14 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/daisy_bg"
+                    android:enabled="true"
                     android:gravity="bottom|center"
+                    android:onClick="onBottomButtonWithPlantsClick"
                     android:paddingBottom="4dp"
+                    android:tag="daisy"
                     android:text="daisy"
                     android:textColor="#CDDC39"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/flower6Button"
@@ -315,8 +330,11 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/clover_with_border"
+                    android:enabled="true"
                     android:gravity="bottom|center"
+                    android:onClick="onBottomButtonWithPlantsClick"
                     android:paddingBottom="4dp"
+                    android:tag="clover"
                     android:text="clover"
                     android:textColor="#CDDC39"
                     android:textSize="16sp" />
@@ -327,6 +345,7 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:background="#FFFFFF"
+                    android:enabled="true"
                     android:onClick="onClickButtonDropDownBoxList"
                     android:text="DD LIST" />
 
