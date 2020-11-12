@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +20,8 @@ import android.widget.Toast;
 import com.zerokol.views.joystickView.JoystickView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.datatype.Duration;
 
@@ -36,6 +39,11 @@ public class PlayGameActivity extends AppCompatActivity
     private static int[] dropDownListImages;
     private static String[] dropDownListText;
     public static int currentPlant = 0;
+    private HashMap<Integer, InGrowingProcessPlantContainer> growingPlantsContainerWithIndexDict;
+
+    private int timeOfGrowingSeedling = 10000;
+    private int wholeGrowingTime = 10;
+    private int growingTimeInterval = 1000;
 
 
     @Override
@@ -59,6 +67,7 @@ public class PlayGameActivity extends AppCompatActivity
         playMainSceneMusic();
         findNecessaryViews();
         crateJoystick(height, width);
+        indexToPlants();
         initializeDropDownListParams();
     }
 
@@ -119,6 +128,26 @@ public class PlayGameActivity extends AppCompatActivity
         return distance;
     }
 
+    private void indexToPlants()
+    {
+        growingPlantsContainerWithIndexDict = new HashMap<>();
+        growingPlantsContainerWithIndexDict.put(0, InGrowingProcessPlantContainer.TREE);
+        growingPlantsContainerWithIndexDict.put(1, InGrowingProcessPlantContainer.CORN);
+        growingPlantsContainerWithIndexDict.put(2, InGrowingProcessPlantContainer.BEAN);
+        growingPlantsContainerWithIndexDict.put(3, InGrowingProcessPlantContainer.BUSH);
+        growingPlantsContainerWithIndexDict.put(4, InGrowingProcessPlantContainer.DAISY);
+        growingPlantsContainerWithIndexDict.put(5, InGrowingProcessPlantContainer.CLOVER);
+        growingPlantsContainerWithIndexDict.put(6, InGrowingProcessPlantContainer.MAIZE);
+        growingPlantsContainerWithIndexDict.put(7, InGrowingProcessPlantContainer.MUSHROOMS);
+        growingPlantsContainerWithIndexDict.put(8, InGrowingProcessPlantContainer.SUNFLOWER);
+        growingPlantsContainerWithIndexDict.put(9, InGrowingProcessPlantContainer.NETTLE);
+        growingPlantsContainerWithIndexDict.put(10, InGrowingProcessPlantContainer.FERN);
+        growingPlantsContainerWithIndexDict.put(11, InGrowingProcessPlantContainer.MOSS);
+        growingPlantsContainerWithIndexDict.put(12, InGrowingProcessPlantContainer.CABBAGE);
+        growingPlantsContainerWithIndexDict.put(13, InGrowingProcessPlantContainer.CATTAIL);
+        growingPlantsContainerWithIndexDict.put(14, InGrowingProcessPlantContainer.DANDELION);
+    }
+
     public void onBottomButtonWithPlantsClick(View view)
     {
         switch (view.getTag().toString())
@@ -151,82 +180,124 @@ public class PlayGameActivity extends AppCompatActivity
         lView.setAdapter(adapter);
     }
 
+    private void CountDownToPlantSeedling(final Button button)
+    {
+        new CountDownTimer(timeOfGrowingSeedling, growingTimeInterval)
+        {
+            int currentTime = wholeGrowingTime;
+            int growingPlantIndex = growingPlantsContainerWithIndexDict.get(currentPlant).getValue();
+
+            @Override
+            public void onTick(long l)
+            {
+                currentTime -= 1;
+                if (currentTime <= 0)
+                {
+                    button.setBackgroundResource(growingPlantIndex);
+                    button.setEnabled(false);
+                    currentTime = wholeGrowingTime;
+                }
+            }
+
+            @Override
+            public void onFinish()
+            {
+
+            }
+        }.start();
+    }
+
     /*buttons where plants are placed functions*/
     //START
     public void button1ContainerOnClick(View view)
     {
         Button button1 = findViewById(R.id.button);
-        checkPositionAndChangeImage(button1, R.drawable.empty_player);
+        checkPositionAndChangeImage(button1, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button1);
     }
     public void button2ContainerOnClick(View view)
     {
         Button button2 = findViewById(R.id.button2);
-        checkPositionAndChangeImage(button2, R.drawable.empty_player);
+        checkPositionAndChangeImage(button2, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button2);
     }
     public void button3ContainerOnClick(View view)
     {
         Button button3 = findViewById(R.id.button3);
-        checkPositionAndChangeImage(button3, R.drawable.empty_player);
+        checkPositionAndChangeImage(button3, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button3);
     }
     public void button4ContainerOnClick(View view)
     {
         Button button4 = findViewById(R.id.button4);
-        checkPositionAndChangeImage(button4, R.drawable.empty_player);
+        checkPositionAndChangeImage(button4, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button4);
     }
     public void button5ContainerOnClick(View view)
     {
         Button button5 = findViewById(R.id.button5);
-        checkPositionAndChangeImage(button5, R.drawable.empty_player);
+        checkPositionAndChangeImage(button5, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button5);
     }
     public void button6ContainerOnClick(View view)
     {
         Button button6 = findViewById(R.id.button6);
-        checkPositionAndChangeImage(button6, R.drawable.empty_player);
+        checkPositionAndChangeImage(button6, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button6);
     }
     public void button7ContainerOnClick(View view)
     {
         Button button7 = findViewById(R.id.button7);
-        checkPositionAndChangeImage(button7, R.drawable.empty_player);
+        checkPositionAndChangeImage(button7, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button7);
     }
     public void button8ContainerOnClick(View view)
     {
         Button button8 = findViewById(R.id.button8);
-        checkPositionAndChangeImage(button8, R.drawable.empty_player);
+        checkPositionAndChangeImage(button8, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button8);
     }
     public void button9ContainerOnClick(View view)
     {
         Button button9 = findViewById(R.id.button9);
-        checkPositionAndChangeImage(button9, R.drawable.empty_player);
+        checkPositionAndChangeImage(button9, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button9);
     }
     public void button10ContainerOnClick(View view)
     {
         Button button10 = findViewById(R.id.button10);
-        checkPositionAndChangeImage(button10, R.drawable.empty_player);
+        checkPositionAndChangeImage(button10, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button10);
     }
     public void button11ContainerOnClick(View view)
     {
         Button button11 = findViewById(R.id.button11);
-        checkPositionAndChangeImage(button11, R.drawable.empty_player);
+        checkPositionAndChangeImage(button11, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button11);
     }
     public void button12ContainerOnClick(View view)
     {
         Button button12 = findViewById(R.id.button12);
-        checkPositionAndChangeImage(button12, R.drawable.empty_player);
+        checkPositionAndChangeImage(button12, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button12);
     }
     public void button13ContainerOnClick(View view)
     {
         Button button13 = findViewById(R.id.button13);
-        checkPositionAndChangeImage(button13, R.drawable.empty_player);
+        checkPositionAndChangeImage(button13, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button13);
     }
     public void button14ContainerOnClick(View view)
     {
         Button button14 = findViewById(R.id.button14);
-        checkPositionAndChangeImage(button14, R.drawable.empty_player);
+        checkPositionAndChangeImage(button14, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button14);
     }
     public void button15ContainerOnClick(View view)
     {
         Button button15 = findViewById(R.id.button15);
-        checkPositionAndChangeImage(button15, R.drawable.empty_player);
+        checkPositionAndChangeImage(button15, InGrowingProcessPlantContainer.PLANT.getValue());
+        CountDownToPlantSeedling(button15);
     }
     //END
 }

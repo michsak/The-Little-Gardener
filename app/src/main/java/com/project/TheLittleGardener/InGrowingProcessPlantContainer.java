@@ -2,6 +2,7 @@ package com.project.TheLittleGardener;
 
 public enum InGrowingProcessPlantContainer
 {
+    PLANT (R.drawable.small_plant_bg),
     TREE (R.drawable.grown_tree_bg),
     CORN (R.drawable.grown_corn_bg),
     BEAN (R.drawable.grown_bean_bg),
@@ -29,4 +30,5 @@ public enum InGrowingProcessPlantContainer
     {
         return pictureNumber;
     }
+
 }
