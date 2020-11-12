@@ -2,6 +2,9 @@ package com.project.TheLittleGardener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -35,6 +38,7 @@ public class PlayGameActivity extends AppCompatActivity
     private ImageView player;
     private View parentView;
     private ListView lView;
+    private  TextView plantInfoTextView;
     private float distanceFromButton = 240f;
     private static int[] dropDownListImages;
     private static String[] dropDownListText;
@@ -82,6 +86,7 @@ public class PlayGameActivity extends AppCompatActivity
         player = findViewById(R.id.playerView);
         parentView = findViewById(R.id.constraintLayout);
         joystickView = findViewById(R.id.joystickView);
+        plantInfoTextView = findViewById(R.id.plantInfoTextView);
     }
 
     private void playMainSceneMusic()
@@ -154,21 +159,27 @@ public class PlayGameActivity extends AppCompatActivity
         {
             case "tree":
                 this.currentPlant = 0;
+                resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.TREE.name());
                 break;
             case "corn":
                 this.currentPlant = 1;
+                resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.CORN.name());
                 break;
             case "bean":
                 this.currentPlant = 2;
+                resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.BEAN.name());
                 break;
             case "bush":
                 this.currentPlant = 3;
+                resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.BUSH.name());
                 break;
             case "daisy":
                 this.currentPlant = 4;
+                resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.DAISY.name());
                 break;
             case "clover":
                 this.currentPlant = 5;
+                resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.CLOVER.name());
                 break;
         }
     }
@@ -180,7 +191,38 @@ public class PlayGameActivity extends AppCompatActivity
         lView.setAdapter(adapter);
     }
 
-    private void CountDownToPlantSeedling(final Button button)
+    private void resizePlantTextViewInfoOnBottomButtonClick(String text)
+    {
+        int startTextSize = 20;
+        int endTextSize = 60;
+        int animationDuration = 2000;
+        plantInfoTextView.setText(text);
+        plantInfoTextView.setVisibility(View.VISIBLE);
+
+        /*animate changing size of TextView*/
+        ValueAnimator animator = ValueAnimator.ofFloat(startTextSize, endTextSize);
+        animator.setDuration(animationDuration);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+        {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator)
+            {
+                float animatedValue = (float) valueAnimator.getAnimatedValue();
+                plantInfoTextView.setTextSize(animatedValue);
+            }
+        });
+        animator.addListener(new AnimatorListenerAdapter()
+        {
+            @Override
+            public void onAnimationEnd(Animator animation)
+            {
+                plantInfoTextView.setVisibility(View.INVISIBLE);
+            }
+        });
+        animator.start();
+    }
+
+    private void countDownToPlantSeedling(final Button button)
     {
         new CountDownTimer(timeOfGrowingSeedling, growingTimeInterval)
         {
@@ -213,91 +255,91 @@ public class PlayGameActivity extends AppCompatActivity
     {
         Button button1 = findViewById(R.id.button);
         checkPositionAndChangeImage(button1, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button1);
+        countDownToPlantSeedling(button1);
     }
     public void button2ContainerOnClick(View view)
     {
         Button button2 = findViewById(R.id.button2);
         checkPositionAndChangeImage(button2, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button2);
+        countDownToPlantSeedling(button2);
     }
     public void button3ContainerOnClick(View view)
     {
         Button button3 = findViewById(R.id.button3);
         checkPositionAndChangeImage(button3, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button3);
+        countDownToPlantSeedling(button3);
     }
     public void button4ContainerOnClick(View view)
     {
         Button button4 = findViewById(R.id.button4);
         checkPositionAndChangeImage(button4, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button4);
+        countDownToPlantSeedling(button4);
     }
     public void button5ContainerOnClick(View view)
     {
         Button button5 = findViewById(R.id.button5);
         checkPositionAndChangeImage(button5, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button5);
+        countDownToPlantSeedling(button5);
     }
     public void button6ContainerOnClick(View view)
     {
         Button button6 = findViewById(R.id.button6);
         checkPositionAndChangeImage(button6, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button6);
+        countDownToPlantSeedling(button6);
     }
     public void button7ContainerOnClick(View view)
     {
         Button button7 = findViewById(R.id.button7);
         checkPositionAndChangeImage(button7, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button7);
+        countDownToPlantSeedling(button7);
     }
     public void button8ContainerOnClick(View view)
     {
         Button button8 = findViewById(R.id.button8);
         checkPositionAndChangeImage(button8, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button8);
+        countDownToPlantSeedling(button8);
     }
     public void button9ContainerOnClick(View view)
     {
         Button button9 = findViewById(R.id.button9);
         checkPositionAndChangeImage(button9, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button9);
+        countDownToPlantSeedling(button9);
     }
     public void button10ContainerOnClick(View view)
     {
         Button button10 = findViewById(R.id.button10);
         checkPositionAndChangeImage(button10, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button10);
+        countDownToPlantSeedling(button10);
     }
     public void button11ContainerOnClick(View view)
     {
         Button button11 = findViewById(R.id.button11);
         checkPositionAndChangeImage(button11, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button11);
+        countDownToPlantSeedling(button11);
     }
     public void button12ContainerOnClick(View view)
     {
         Button button12 = findViewById(R.id.button12);
         checkPositionAndChangeImage(button12, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button12);
+        countDownToPlantSeedling(button12);
     }
     public void button13ContainerOnClick(View view)
     {
         Button button13 = findViewById(R.id.button13);
         checkPositionAndChangeImage(button13, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button13);
+        countDownToPlantSeedling(button13);
     }
     public void button14ContainerOnClick(View view)
     {
         Button button14 = findViewById(R.id.button14);
         checkPositionAndChangeImage(button14, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button14);
+        countDownToPlantSeedling(button14);
     }
     public void button15ContainerOnClick(View view)
     {
         Button button15 = findViewById(R.id.button15);
         checkPositionAndChangeImage(button15, InGrowingProcessPlantContainer.PLANT.getValue());
-        CountDownToPlantSeedling(button15);
+        countDownToPlantSeedling(button15);
     }
     //END
 }
