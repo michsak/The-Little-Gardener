@@ -78,7 +78,6 @@ public class Joystick
         this.yPosition = yFinalPosition;
     }
 
-    //functions can be written better
     private void moveUp()
     {
         if (yPosition >= (-height + topPlayerMargin))
@@ -143,6 +142,7 @@ public class Joystick
         }
     }
 
+    //TODO
     //the system has to be changed and improved
     public float getXPosition()
     {

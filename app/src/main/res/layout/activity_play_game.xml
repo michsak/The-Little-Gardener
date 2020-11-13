@@ -83,7 +83,7 @@
                 android:id="@+id/button"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:background="#453313"
+                android:background="@color/brown"
                 android:enabled="true"
                 android:onClick="button1ContainerOnClick"
                 app:layout_constraintStart_toStartOf="parent"
