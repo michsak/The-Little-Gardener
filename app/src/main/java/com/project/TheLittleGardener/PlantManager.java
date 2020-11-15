@@ -1,10 +1,10 @@
 package com.project.TheLittleGardener;
 
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.widget.Button;
-
+import java.util.ArrayDeque;
 import java.util.HashMap;
+import java.util.Queue;
 
 public class PlantManager
 {
@@ -12,13 +12,14 @@ public class PlantManager
     private int wholeGrowingTime = 10;
     private int growingTimeInterval = 1000;
     private HashMap<Integer, InGrowingProcessPlantContainer> growingPlantsContainerWithIndexDict;
-    private boolean isReadyToBeCollected[] = {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false};
-    private int currentButton;
+    private HashMap<String, Integer> costOfEachPlant;
+    private Queue<String> plantedPlants = new ArrayDeque<>();
+    private boolean isReadyToBeCollected = false;
 
-    PlantManager(Button button, int currentButton)
+    PlantManager(Button button)
     {
-        this.currentButton = currentButton;
         indexToPlants();
+        giveCostToEachPlant();
         collectOrSetUpPlant(button, InGrowingProcessPlantContainer.PLANT.getValue());
         countDownToPlantSeedling(button);
     }
@@ -43,15 +44,36 @@ public class PlantManager
         growingPlantsContainerWithIndexDict.put(14, InGrowingProcessPlantContainer.DANDELION);
     }
 
+    private void giveCostToEachPlant()
+    {
+        costOfEachPlant = new HashMap<>();
+        costOfEachPlant.put(PlantContainer.TREE.name(), 1);
+        costOfEachPlant.put(PlantContainer.CORN.name(), 1);
+        costOfEachPlant.put(PlantContainer.BEAN.name(), 2);
+        costOfEachPlant.put(PlantContainer.BUSH.name(), 2);
+        costOfEachPlant.put(PlantContainer.DAISY.name(), 2);
+        costOfEachPlant.put(PlantContainer.CLOVER.name(), 3);
+        costOfEachPlant.put(PlantContainer.MAIZE.name(), 3);
+        costOfEachPlant.put(PlantContainer.MUSHROOMS.name(), 4);
+        costOfEachPlant.put(PlantContainer.SUNFLOWER.name(), 4);
+        costOfEachPlant.put(PlantContainer.NETTLE.name(), 5);
+        costOfEachPlant.put(PlantContainer.FERN.name(), 6);
+        costOfEachPlant.put(PlantContainer.MOSS.name(), 8);
+        costOfEachPlant.put(PlantContainer.CABBAGE.name(), 10);
+        costOfEachPlant.put(PlantContainer.CATTAIL.name(), 12);
+        costOfEachPlant.put(PlantContainer.DANDELION.name(), 15);
+    }
+
     private void countDownToPlantSeedling(final Button button)
     {
         button.setEnabled(false);
-        isReadyToBeCollected[PlayGameActivity.currentPlant] = false;
+        isReadyToBeCollected = false;
+        plantedPlants.add(growingPlantsContainerWithIndexDict.get(PlayGameActivity.currentPlant).name());
+
         new CountDownTimer(timeOfGrowingSeedling, growingTimeInterval)
         {
             int currentTime = wholeGrowingTime;
             int growingPlantResource = growingPlantsContainerWithIndexDict.get(PlayGameActivity.currentPlant).getValue();
-            int growingPlantIndex = PlayGameActivity.currentPlant;
 
             @Override
             public void onTick(long l)
@@ -62,7 +84,7 @@ public class PlantManager
                     button.setBackgroundResource(growingPlantResource);
                     button.setEnabled(true);
                     currentTime = wholeGrowingTime;
-                    isReadyToBeCollected[currentButton] = true;
+                    isReadyToBeCollected = true;
                 }
             }
 
@@ -76,20 +98,43 @@ public class PlantManager
 
     public void collectOrSetUpPlant(Button button, int resource)
     {
-        if (isReadyToBeCollected[currentButton])
+        if (isReadyToBeCollected)
         {
             button.setBackgroundResource(R.color.brown);
-            isReadyToBeCollected[currentButton] = false;
-            //TODO
-            //add points
+            isReadyToBeCollected = false;
+            addNumberOfSeedsAndSetText();
         }
 
         else
         {
-            button.setBackgroundResource(resource);
-            countDownToPlantSeedling(button);
-            //TODO
-            //take points for planting
+            String nameOfCurrentPlant = growingPlantsContainerWithIndexDict.get(PlayGameActivity.currentPlant).name();
+
+            if ((PlayGameActivity.numberOfSeeds - costOfEachPlant.get(nameOfCurrentPlant)) >= 0)
+            {
+                decreaseNumberOfSeedsAndSetText(nameOfCurrentPlant);
+                button.setBackgroundResource(resource);
+                countDownToPlantSeedling(button);
+            }
+        }
+    }
+
+    private void decreaseNumberOfSeedsAndSetText(String nameOfCurrentPlant)
+    {
+        PlayGameActivity.numberOfSeeds -= costOfEachPlant.get(nameOfCurrentPlant);
+        PlayGameActivity.setScoreText();
+    }
+
+    private void addNumberOfSeedsAndSetText()
+    {
+        try
+        {
+            String nameOfCollectedPlant = plantedPlants.remove();
+            PlayGameActivity.numberOfSeeds += costOfEachPlant.get(nameOfCollectedPlant);
+            PlayGameActivity.setScoreText();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }
 }

@@ -33,7 +33,7 @@ import javax.xml.datatype.Duration;
 //TODO
 //adding points
 //quests
-//watering animation
+//watering animation with watering system
 //help description with changing languages
 
 
@@ -47,11 +47,13 @@ public class PlayGameActivity extends AppCompatActivity
     private ImageView player;
     private View parentView;
     private ListView lView;
-    private  TextView plantInfoTextView;
+    private TextView plantInfoTextView;
+    private static TextView scoreTextView;
     private float distanceFromButton = 240f;
     private static int[] dropDownListImages;
     private static String[] dropDownListText;
     public static int currentPlant = 0;
+    public static int numberOfSeeds = 20;
     private HashSet<Integer> alreadyClickedPlantingButtons;
 
     @Override
@@ -75,6 +77,7 @@ public class PlayGameActivity extends AppCompatActivity
         initializePlantsParams();
         playMainSceneMusic();
         findNecessaryViews();
+        setScoreText();
         crateJoystick(height, width);
         initializeDropDownListParams();
     }
@@ -85,10 +88,11 @@ public class PlayGameActivity extends AppCompatActivity
         alreadyClickedPlantingButtons = new HashSet<>();
     }
 
-    private void crateJoystick(int height, int width)
+    private void playMainSceneMusic()
     {
-        mainJoystick = new Joystick(joystickView, player, height, width);
-        mainJoystick.createJoysticks();
+        gameMusicManagement = new MusicManagement(mediaPlayer);
+        gameMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);      //to be changed
+        gameMusicManagement.playMusic();
     }
 
     private void findNecessaryViews()
@@ -97,13 +101,18 @@ public class PlayGameActivity extends AppCompatActivity
         parentView = findViewById(R.id.constraintLayout);
         joystickView = findViewById(R.id.joystickView);
         plantInfoTextView = findViewById(R.id.plantInfoTextView);
+        scoreTextView = findViewById(R.id.scoreText);
     }
 
-    private void playMainSceneMusic()
+    public static void setScoreText()
     {
-        gameMusicManagement = new MusicManagement(mediaPlayer);
-        gameMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);      //to be changed
-        gameMusicManagement.playMusic();
+        scoreTextView.setText(Integer.toString(numberOfSeeds));
+    }
+
+    private void crateJoystick(int height, int width)
+    {
+        mainJoystick = new Joystick(joystickView, player, height, width);
+        mainJoystick.createJoysticks();
     }
 
     private void initializeDropDownListParams()
@@ -127,7 +136,7 @@ public class PlayGameActivity extends AppCompatActivity
         {
             if (!alreadyClickedPlantingButtons.contains(buttonIndex))
             {
-                plantManager[buttonIndex] = new PlantManager(button, buttonIndex);
+                plantManager[buttonIndex] = new PlantManager(button);
             }
             else
             {
@@ -138,7 +147,7 @@ public class PlayGameActivity extends AppCompatActivity
                catch (Exception e)
                 {
                     e.printStackTrace();
-                    plantManager[buttonIndex] = new PlantManager(button, buttonIndex);
+                    plantManager[buttonIndex] = new PlantManager(button);
                 }
             }
         }
