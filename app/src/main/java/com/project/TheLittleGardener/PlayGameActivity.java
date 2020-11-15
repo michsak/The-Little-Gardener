@@ -5,29 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.zerokol.views.joystickView.JoystickView;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
-
-import javax.xml.datatype.Duration;
 
 
 //TODO
@@ -41,19 +30,15 @@ public class PlayGameActivity extends AppCompatActivity
     private MediaPlayer mediaPlayer;
     private MusicManagement gameMusicManagement;
     private PlantManager[] plantManager;
-    private JoystickView joystickView;
+    private ViewsHolder viewsHolder;
     private Joystick mainJoystick;
-    private ImageView player;
-    private View parentView;
-    private ListView lView;
-    private TextView plantInfoTextView;
     private static TextView scoreTextView;
-    private float distanceFromButton = 240f;
     private static int[] dropDownListImages;
     private static String[] dropDownListText;
+    private HashSet<Integer> alreadyClickedPlantingButtons;
+    private float distanceFromButton = 240f;
     public static int currentPlant = 0;
     public static int numberOfSeeds = 20;
-    private HashSet<Integer> alreadyClickedPlantingButtons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -96,10 +81,8 @@ public class PlayGameActivity extends AppCompatActivity
 
     private void findNecessaryViews()
     {
-        player = findViewById(R.id.playerView);
-        parentView = findViewById(R.id.constraintLayout);
-        joystickView = findViewById(R.id.joystickView);
-        plantInfoTextView = findViewById(R.id.plantInfoTextView);
+        viewsHolder = new ViewsHolder(findViewById(R.id.playerView), findViewById(R.id.constraintLayout),
+                findViewById(R.id.joystickView), findViewById(R.id.plantInfoTextView), findViewById(R.id.listView));
         scoreTextView = findViewById(R.id.scoreText);
     }
 
@@ -110,7 +93,7 @@ public class PlayGameActivity extends AppCompatActivity
 
     private void crateJoystick(int height, int width)
     {
-        mainJoystick = new Joystick(joystickView, player, height, width);
+        mainJoystick = new Joystick(viewsHolder.joystickView, viewsHolder.player, height, width);
         mainJoystick.createJoysticks();
     }
 
@@ -199,9 +182,9 @@ public class PlayGameActivity extends AppCompatActivity
 
     public void onClickButtonDropDownBoxList (View view)
     {
-        lView = findViewById(R.id.listView);
-        MyCustomAdapter adapter = new MyCustomAdapter(this, dropDownListText, dropDownListImages, parentView, player, lView);
-        lView.setAdapter(adapter);
+        CustomAdapter adapter = new CustomAdapter(this, dropDownListText, dropDownListImages, viewsHolder.parentView,
+                viewsHolder.player, viewsHolder.listView);
+        viewsHolder.listView.setAdapter(adapter);
     }
 
     private void resizePlantTextViewInfoOnBottomButtonClick(String text)
@@ -209,8 +192,8 @@ public class PlayGameActivity extends AppCompatActivity
         int startTextSize = 20;
         int endTextSize = 60;
         int animationDuration = 2000;
-        plantInfoTextView.setText(text);
-        plantInfoTextView.setVisibility(View.VISIBLE);
+        viewsHolder.plantInfoTextView.setText(text);
+        viewsHolder.plantInfoTextView.setVisibility(View.VISIBLE);
 
         /*animate changing size of TextView*/
         ValueAnimator animator = ValueAnimator.ofFloat(startTextSize, endTextSize);
@@ -221,7 +204,7 @@ public class PlayGameActivity extends AppCompatActivity
             public void onAnimationUpdate(ValueAnimator valueAnimator)
             {
                 float animatedValue = (float) valueAnimator.getAnimatedValue();
-                plantInfoTextView.setTextSize(animatedValue);
+                viewsHolder.plantInfoTextView.setTextSize(animatedValue);
             }
         });
         animator.addListener(new AnimatorListenerAdapter()
@@ -229,7 +212,7 @@ public class PlayGameActivity extends AppCompatActivity
             @Override
             public void onAnimationEnd(Animator animation)
             {
-                plantInfoTextView.setVisibility(View.INVISIBLE);
+                viewsHolder.plantInfoTextView.setVisibility(View.INVISIBLE);
             }
         });
         animator.start();

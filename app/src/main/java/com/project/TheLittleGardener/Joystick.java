@@ -12,7 +12,7 @@ public class Joystick
 
     private float xPosition = 0f;
     private float yPosition = -10f;
-    private float downPlayerMargin = 12f;
+    private float downPlayerMargin = 12f;  //data storage for margins
     private float edgePlayerMarin = 95f;
     private float topPlayerMargin = 420f;
     private int durationOfAnim = 100;

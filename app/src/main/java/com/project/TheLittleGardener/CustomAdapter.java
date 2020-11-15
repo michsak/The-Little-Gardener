@@ -12,18 +12,17 @@ import android.widget.Toast;
 
 
 /**enables user to create custom List View with ImageView and TextView*/
-public class MyCustomAdapter extends BaseAdapter implements ListAdapter
+public class CustomAdapter extends BaseAdapter implements ListAdapter
 {
     private Context context;
     private View parentView;
     private ImageView playerView;
     private ListView lView;
-
-    String[] result;
-    int [] imageId;
+    private String[] result;
+    private int [] imageId;
     private static LayoutInflater inflater=null;
 
-    public MyCustomAdapter(Context context, String[] ddListText, int[] ddListImages, View parentView, ImageView playerView, ListView listView)
+    public CustomAdapter(Context context, String[] ddListText, int[] ddListImages, View parentView, ImageView playerView, ListView listView)
     {
         result = ddListText;
         imageId = ddListImages;
