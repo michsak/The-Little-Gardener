@@ -4,6 +4,7 @@ import android.os.CountDownTimer;
 import android.widget.Button;
 import java.util.HashMap;
 
+/**manages growing growing plant process*/
 public class PlantManager
 {
     private final int timeOfGrowingSeedling = 10000;

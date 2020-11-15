@@ -1,5 +1,6 @@
 package com.project.TheLittleGardener;
 
+/**holder of drop down list resources*/
 public enum PlantContainer
 {
     TREE (R.drawable.grown_tree),

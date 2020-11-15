@@ -6,11 +6,11 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 
+/**main game menu*/
 public class MainActivity extends AppCompatActivity
 {
-    /*music managing*/
-    protected MediaPlayer mediaPlayer;
-    protected MusicManagement menuMusicManagement;
+    private MediaPlayer mediaPlayer;
+    private MusicManagement menuMusicManagement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -23,26 +23,22 @@ public class MainActivity extends AppCompatActivity
         getMenuInflater();
     }
 
-    /**goes to play Activity*/
     public void playAction(View view)
     {
         startActivity(new Intent(MainActivity.this, PlayGameActivity.class));
         menuMusicManagement.stopMusic();
     }
 
-    /**goes to help Activity*/
     public void helpAction(View view)
     {
         startActivity(new Intent(MainActivity.this, HelpActivity.class));
     }
 
-    /**exits the game*/
     public void exitGame (View view)
     {
         finish();
     }
 
-    /**set up music class and play menu music*/
     private void playMusic()
     {
         menuMusicManagement = new MusicManagement(mediaPlayer);

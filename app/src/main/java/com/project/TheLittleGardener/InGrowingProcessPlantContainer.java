@@ -1,5 +1,6 @@
 package com.project.TheLittleGardener;
 
+/**holder of growing plants resources*/
 public enum InGrowingProcessPlantContainer
 {
     PLANT (R.drawable.small_plant_bg),

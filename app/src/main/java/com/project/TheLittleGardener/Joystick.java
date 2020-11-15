@@ -4,7 +4,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import com.zerokol.views.joystickView.JoystickView;
 
-
+/**creates joystick and enables user move in the wanted direction*/
 public class Joystick
 {
     private JoystickView joystick;

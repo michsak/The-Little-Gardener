@@ -11,7 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-/**enables user to create custom List View with ImageView and TextView*/
+/**creates custom List View with ImageView and TextView*/
 public class CustomAdapter extends BaseAdapter implements ListAdapter
 {
     private Context context;

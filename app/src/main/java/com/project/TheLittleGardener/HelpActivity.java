@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+/**description of game*/
 public class HelpActivity extends AppCompatActivity
 {
 

@@ -21,9 +21,4 @@ public class MusicManagement
     {
         this.mp.stop();
     }
-
-    public MediaPlayer getMusic()
-    {
-        return this.mp;
-    }
 }
