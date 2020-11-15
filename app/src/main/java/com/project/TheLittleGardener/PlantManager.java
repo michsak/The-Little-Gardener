@@ -2,18 +2,16 @@ package com.project.TheLittleGardener;
 
 import android.os.CountDownTimer;
 import android.widget.Button;
-import java.util.ArrayDeque;
 import java.util.HashMap;
-import java.util.Queue;
 
 public class PlantManager
 {
-    private int timeOfGrowingSeedling = 10000;
-    private int wholeGrowingTime = 10;
-    private int growingTimeInterval = 1000;
+    private final int timeOfGrowingSeedling = 10000;
+    private final int wholeGrowingTime = 10;
+    private final int growingTimeInterval = 1000;
     private HashMap<Integer, InGrowingProcessPlantContainer> growingPlantsContainerWithIndexDict;
     private HashMap<String, Integer> costOfEachPlant;
-    private Queue<String> plantedPlants = new ArrayDeque<>();
+    private String plantedPlant;
     private boolean isReadyToBeCollected = false;
 
     PlantManager(Button button)
@@ -68,7 +66,7 @@ public class PlantManager
     {
         button.setEnabled(false);
         isReadyToBeCollected = false;
-        plantedPlants.add(growingPlantsContainerWithIndexDict.get(PlayGameActivity.currentPlant).name());
+        plantedPlant = growingPlantsContainerWithIndexDict.get(PlayGameActivity.currentPlant).name();
 
         new CountDownTimer(timeOfGrowingSeedling, growingTimeInterval)
         {
@@ -126,15 +124,9 @@ public class PlantManager
 
     private void addNumberOfSeedsAndSetText()
     {
-        try
-        {
-            String nameOfCollectedPlant = plantedPlants.remove();
-            PlayGameActivity.numberOfSeeds += costOfEachPlant.get(nameOfCollectedPlant);
-            PlayGameActivity.setScoreText();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        String nameOfCollectedPlant = plantedPlant;
+        plantedPlant = "";
+        PlayGameActivity.numberOfSeeds += costOfEachPlant.get(nameOfCollectedPlant);
+        PlayGameActivity.setScoreText();
     }
 }

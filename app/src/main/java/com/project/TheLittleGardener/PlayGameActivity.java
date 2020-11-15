@@ -31,7 +31,6 @@ import javax.xml.datatype.Duration;
 
 
 //TODO
-//adding points
 //quests
 //watering animation with watering system
 //help description with changing languages
