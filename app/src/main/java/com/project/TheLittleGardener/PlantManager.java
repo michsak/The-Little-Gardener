@@ -5,11 +5,8 @@ import android.widget.Button;
 import java.util.HashMap;
 
 /**manages growing growing plant process*/
-public class PlantManager
+public class PlantManager extends CurrentPlantAndNumberOfSeeds implements GrowingTimeContainer
 {
-    private final int timeOfGrowingSeedling = 10000;
-    private final int wholeGrowingTime = 10;
-    private final int growingTimeInterval = 1000;
     private HashMap<Integer, InGrowingProcessPlantContainer> growingPlantsContainerWithIndexDict;
     private HashMap<String, Integer> costOfEachPlant;
     private String plantedPlant;
@@ -67,12 +64,12 @@ public class PlantManager
     {
         button.setEnabled(false);
         isReadyToBeCollected = false;
-        plantedPlant = growingPlantsContainerWithIndexDict.get(PlayGameActivity.currentPlant).name();
+        plantedPlant = growingPlantsContainerWithIndexDict.get(getCurrentPlant()).name();
 
         new CountDownTimer(timeOfGrowingSeedling, growingTimeInterval)
         {
             int currentTime = wholeGrowingTime;
-            int growingPlantResource = growingPlantsContainerWithIndexDict.get(PlayGameActivity.currentPlant).getValue();
+            int growingPlantResource = growingPlantsContainerWithIndexDict.get(getCurrentPlant()).getValue();
 
             @Override
             public void onTick(long l)
@@ -106,9 +103,9 @@ public class PlantManager
 
         else
         {
-            String nameOfCurrentPlant = growingPlantsContainerWithIndexDict.get(PlayGameActivity.currentPlant).name();
+            String nameOfCurrentPlant = growingPlantsContainerWithIndexDict.get(getCurrentPlant()).name();
 
-            if ((PlayGameActivity.numberOfSeeds - costOfEachPlant.get(nameOfCurrentPlant)) >= 0)
+            if ((getNumberOfSeeds() - costOfEachPlant.get(nameOfCurrentPlant)) >= 0)
             {
                 decreaseNumberOfSeedsAndSetText(nameOfCurrentPlant);
                 button.setBackgroundResource(resource);
@@ -119,15 +116,23 @@ public class PlantManager
 
     private void decreaseNumberOfSeedsAndSetText(String nameOfCurrentPlant)
     {
-        PlayGameActivity.numberOfSeeds -= costOfEachPlant.get(nameOfCurrentPlant);
+        int numberOfSeeds;
+
+        numberOfSeeds = getNumberOfSeeds();
+        numberOfSeeds -= costOfEachPlant.get(nameOfCurrentPlant);
+        setNumberOfSeeds(numberOfSeeds);
         PlayGameActivity.setScoreText();
     }
 
     private void addNumberOfSeedsAndSetText()
     {
         String nameOfCollectedPlant = plantedPlant;
+        int numberOfSeeds;
+
         plantedPlant = "";
-        PlayGameActivity.numberOfSeeds += costOfEachPlant.get(nameOfCollectedPlant);
+        numberOfSeeds = getNumberOfSeeds();
+        numberOfSeeds += costOfEachPlant.get(nameOfCollectedPlant);
+        setNumberOfSeeds(numberOfSeeds);
         PlayGameActivity.setScoreText();
     }
 }

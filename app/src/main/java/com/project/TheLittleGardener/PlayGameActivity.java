@@ -9,6 +9,7 @@ import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -29,12 +30,10 @@ public class PlayGameActivity extends AppCompatActivity
     private ViewsHolder viewsHolder;
     private Joystick mainJoystick;
     private static TextView scoreTextView;
-    private static int[] dropDownListImages;
-    private static String[] dropDownListText;
+    private int[] dropDownListImages;
+    private String[] dropDownListText;
     private HashSet<Integer> alreadyClickedPlantingButtons;
     private float distanceFromButton = 240f;
-    public static int currentPlant = 0;
-    public static int numberOfSeeds = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -84,7 +83,7 @@ public class PlayGameActivity extends AppCompatActivity
 
     public static void setScoreText()
     {
-        scoreTextView.setText(Integer.toString(numberOfSeeds));
+        scoreTextView.setText(Integer.toString(CurrentPlantAndNumberOfSeeds.getNumberOfSeeds()));
     }
 
     private void crateJoystick(int height, int width)
@@ -120,14 +119,14 @@ public class PlayGameActivity extends AppCompatActivity
             {
                 try
                 {
-                    plantManager[buttonIndex].collectOrSetUpPlant(button ,InGrowingProcessPlantContainer.PLANT.getValue());
+                    plantManager[buttonIndex].collectOrSetUpPlant(button, InGrowingProcessPlantContainer.PLANT.getValue());
                 }
                catch (Exception e)
                 {
                     e.printStackTrace();
-                    plantManager[buttonIndex] = new PlantManager(button);
                 }
             }
+            alreadyClickedPlantingButtons.add(buttonIndex);
         }
         /*
         Log.i("player x pos", Float.toString(mainJoystick.getXPositon()));
@@ -150,27 +149,27 @@ public class PlayGameActivity extends AppCompatActivity
         switch (view.getTag().toString())
         {
             case "tree":
-                this.currentPlant = 0;
+                CurrentPlantAndNumberOfSeeds.setCurrentPlant(0);
                 resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.TREE.name());
                 break;
             case "corn":
-                this.currentPlant = 1;
+                CurrentPlantAndNumberOfSeeds.setCurrentPlant(1);
                 resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.CORN.name());
                 break;
             case "bean":
-                this.currentPlant = 2;
+                CurrentPlantAndNumberOfSeeds.setCurrentPlant(2);
                 resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.BEAN.name());
                 break;
             case "bush":
-                this.currentPlant = 3;
+                CurrentPlantAndNumberOfSeeds.setCurrentPlant(3);
                 resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.BUSH.name());
                 break;
             case "daisy":
-                this.currentPlant = 4;
+                CurrentPlantAndNumberOfSeeds.setCurrentPlant(4);
                 resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.DAISY.name());
                 break;
             case "clover":
-                this.currentPlant = 5;
+                CurrentPlantAndNumberOfSeeds.setCurrentPlant(5);
                 resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.CLOVER.name());
                 break;
         }
@@ -221,105 +220,90 @@ public class PlayGameActivity extends AppCompatActivity
         int buttonIndex = 0;
         Button button1 = findViewById(R.id.button);
         checkPositionAndChangeImage(button1, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button2ContainerOnClick(View view)
     {
         int buttonIndex = 1;
         Button button2 = findViewById(R.id.button2);
         checkPositionAndChangeImage(button2, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button3ContainerOnClick(View view)
     {
         int buttonIndex = 2;
         Button button3 = findViewById(R.id.button3);
         checkPositionAndChangeImage(button3, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button4ContainerOnClick(View view)
     {
         int buttonIndex = 3;
         Button button4 = findViewById(R.id.button4);
         checkPositionAndChangeImage(button4, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button5ContainerOnClick(View view)
     {
         int buttonIndex = 4;
         Button button5 = findViewById(R.id.button5);
         checkPositionAndChangeImage(button5, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button6ContainerOnClick(View view)
     {
         int buttonIndex = 5;
         Button button6 = findViewById(R.id.button6);
         checkPositionAndChangeImage(button6, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button7ContainerOnClick(View view)
     {
         int buttonIndex = 6;
         Button button7 = findViewById(R.id.button7);
         checkPositionAndChangeImage(button7, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button8ContainerOnClick(View view)
     {
         int buttonIndex = 7;
         Button button8 = findViewById(R.id.button8);
         checkPositionAndChangeImage(button8, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button9ContainerOnClick(View view)
     {
         int buttonIndex = 8;
         Button button9 = findViewById(R.id.button9);
         checkPositionAndChangeImage(button9, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button10ContainerOnClick(View view)
     {
         int buttonIndex = 9;
         Button button10 = findViewById(R.id.button10);
         checkPositionAndChangeImage(button10, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button11ContainerOnClick(View view)
     {
         int buttonIndex = 10;
         Button button11 = findViewById(R.id.button11);
         checkPositionAndChangeImage(button11, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button12ContainerOnClick(View view)
     {
         int buttonIndex = 11;
         Button button12 = findViewById(R.id.button12);
         checkPositionAndChangeImage(button12, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button13ContainerOnClick(View view)
     {
         int buttonIndex = 12;
         Button button13 = findViewById(R.id.button13);
         checkPositionAndChangeImage(button13, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button14ContainerOnClick(View view)
     {
         int buttonIndex = 13;
         Button button14 = findViewById(R.id.button14);
         checkPositionAndChangeImage(button14, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     public void button15ContainerOnClick(View view)
     {
         int buttonIndex = 14;
         Button button15 = findViewById(R.id.button15);
         checkPositionAndChangeImage(button15, buttonIndex);
-        alreadyClickedPlantingButtons.add(buttonIndex);
     }
     //END
 }

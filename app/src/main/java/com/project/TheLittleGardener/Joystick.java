@@ -5,17 +5,13 @@ import android.widget.ImageView;
 import com.zerokol.views.joystickView.JoystickView;
 
 /**creates joystick and enables user move in the wanted direction*/
-public class Joystick
+public class Joystick implements MarginsOfScreen
 {
     private JoystickView joystick;
     private ImageView player;
-
     private float xPosition = 0f;
     private float yPosition = -10f;
-    private float downPlayerMargin = 12f;  //data storage for margins
-    private float edgePlayerMarin = 95f;
-    private float topPlayerMargin = 420f;
-    private int durationOfAnim = 100;
+    private final int durationOfAnim = 100;
     private final float speed = 15f;
     private int height;
     private int width;
