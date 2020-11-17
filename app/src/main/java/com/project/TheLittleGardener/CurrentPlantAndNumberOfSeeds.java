@@ -1,11 +1,9 @@
 package com.project.TheLittleGardener;
 
-import java.util.ArrayList;
-
 public class CurrentPlantAndNumberOfSeeds
 {
     private static int currentPlant = 0;
-    private static int numberOfSeeds = 20;
+    private static int numberOfSeeds = 35;
 
     public static void setCurrentPlant(int value)
     {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class QuestDataManager
+public class QuestDataManager extends QuestGeneralDescription
 {
     private static ArrayList<String> PlantedPlantsForQuest = new ArrayList<>();
     private static boolean[] firstOccurrenceOfQuest = {false, false, false, false, false};
@@ -60,7 +60,7 @@ public class QuestDataManager
         return questReward[number];
     }
 
-    private static HashMap <String, Integer> getQuestRequirements(int questNumber)
+    public static HashMap <String, Integer> getQuestRequirements(int questNumber)
     {
         switch (questNumber)
         {
@@ -78,35 +78,21 @@ public class QuestDataManager
         return null;
     }
 
-
-    //TODO
-    //THIS METHOD SHOULD BE PLACED IN ANOTHER CLASS MAYBE IN QUEST SYSTEM
-    public static boolean checkIfQuestIsCompleted()
+    public static String getQuestDescription()
     {
-        String[] key = {"", ""};
-        int[] value = {0, 0};
-        int i = 0;
-
-        for (String name : getQuestRequirements(currentNumberOfQuest).keySet())
+        switch (currentNumberOfQuest)
         {
-            key[i] = name;
-            i++;
+            case 0:
+                return firstQuest();
+            case 1:
+                return secondQuest();
+            case 2:
+                return thirdQuest();
+            case 3:
+                return fourthQuest();
+            case 4:
+                return fifthQuest();
         }
-        i = 0;
-        for (int number : getQuestRequirements(currentNumberOfQuest).values())
-        {
-            value[i] = number;
-            i++;
-        }
-
-        int firstKeyOccurrences = Collections.frequency(QuestDataManager.getPlantedPlantsForQuest(), key[0]);
-        int secondKeyOccurrences = Collections.frequency(QuestDataManager.getPlantedPlantsForQuest(), key[1]);
-
-        if (firstKeyOccurrences >= value[0] && secondKeyOccurrences >= value[1])
-        {
-            clearListOfPlantedPlantsForQuest();
-            return true;
-        }
-        return false;
+        return "";
     }
 }

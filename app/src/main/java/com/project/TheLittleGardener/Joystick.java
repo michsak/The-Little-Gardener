@@ -138,8 +138,6 @@ public class Joystick implements MarginsOfScreen
         }
     }
 
-    //TODO
-    //the system has to be changed and improved
     public float getXPosition()
     {
         return xPosition + 850f; // adding due to change of layout
@@ -147,6 +145,6 @@ public class Joystick implements MarginsOfScreen
 
     public float getYPosition()
     {
-        return yPosition + 600f; // adding due to change of layout
+        return yPosition*0.9f + 600f; // adding due to change of layout
     }
 }

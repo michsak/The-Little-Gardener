@@ -1,23 +1,16 @@
 package com.project.TheLittleGardener;
 
-import android.os.Build;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.widget.Button;
 
-import androidx.annotation.RequiresApi;
-
-import java.net.Inet4Address;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
 
 /**manages growing growing plant process*/
-public class PlantManager extends CurrentPlantAndNumberOfSeeds implements GrowingTimeContainer
+public class PlantManager extends CurrentPlantAndNumberOfSeeds implements GrowingUpParams
 {
     private HashMap<Integer, InGrowingProcessPlantContainer> growingPlantsContainerWithIndexDict;
     private HashMap<String, Integer> costOfEachPlant;
+    private HashMap<String, Integer> rewardForEachPlant;
     private String plantedPlant;
     private boolean isReadyToBeCollected = false;
 
@@ -25,6 +18,7 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
     {
         indexToPlants();
         giveCostToEachPlant();
+        giveRewardForEachPlant();
         collectOrSetUpPlant(button, InGrowingProcessPlantContainer.PLANT.getValue());
         countDownToPlantSeedling(button);
     }
@@ -49,24 +43,44 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         growingPlantsContainerWithIndexDict.put(14, InGrowingProcessPlantContainer.DANDELION);
     }
 
+    private void giveRewardForEachPlant()
+    {
+        rewardForEachPlant = new HashMap<>();
+        rewardForEachPlant.put(PlantContainer.TREE.name(), 1);
+        rewardForEachPlant.put(PlantContainer.CORN.name(), 2);
+        rewardForEachPlant.put(PlantContainer.BEAN.name(), 2);
+        rewardForEachPlant.put(PlantContainer.BUSH.name(), 3);
+        rewardForEachPlant.put(PlantContainer.DAISY.name(), 4);
+        rewardForEachPlant.put(PlantContainer.CLOVER.name(), 4);
+        rewardForEachPlant.put(PlantContainer.MAIZE.name(), 5);
+        rewardForEachPlant.put(PlantContainer.MUSHROOMS.name(), 6);
+        rewardForEachPlant.put(PlantContainer.SUNFLOWER.name(), 8);
+        rewardForEachPlant.put(PlantContainer.NETTLE.name(), 8);
+        rewardForEachPlant.put(PlantContainer.FERN.name(), 10);
+        rewardForEachPlant.put(PlantContainer.MOSS.name(), 11);
+        rewardForEachPlant.put(PlantContainer.CABBAGE.name(), 12);
+        rewardForEachPlant.put(PlantContainer.CATTAIL.name(), 13);
+        rewardForEachPlant.put(PlantContainer.DANDELION.name(), 15);
+    }
+
     private void giveCostToEachPlant()
     {
         costOfEachPlant = new HashMap<>();
-        costOfEachPlant.put(PlantContainer.TREE.name(), 1);
-        costOfEachPlant.put(PlantContainer.CORN.name(), 1);
-        costOfEachPlant.put(PlantContainer.BEAN.name(), 2);
-        costOfEachPlant.put(PlantContainer.BUSH.name(), 2);
-        costOfEachPlant.put(PlantContainer.DAISY.name(), 2);
-        costOfEachPlant.put(PlantContainer.CLOVER.name(), 3);
-        costOfEachPlant.put(PlantContainer.MAIZE.name(), 3);
-        costOfEachPlant.put(PlantContainer.MUSHROOMS.name(), 4);
-        costOfEachPlant.put(PlantContainer.SUNFLOWER.name(), 4);
-        costOfEachPlant.put(PlantContainer.NETTLE.name(), 5);
-        costOfEachPlant.put(PlantContainer.FERN.name(), 6);
-        costOfEachPlant.put(PlantContainer.MOSS.name(), 8);
-        costOfEachPlant.put(PlantContainer.CABBAGE.name(), 10);
-        costOfEachPlant.put(PlantContainer.CATTAIL.name(), 12);
-        costOfEachPlant.put(PlantContainer.DANDELION.name(), 15);
+        costOfEachPlant.put(PlantContainer.TREE.name(), 2);
+        costOfEachPlant.put(PlantContainer.CORN.name(), 3);
+        costOfEachPlant.put(PlantContainer.BEAN.name(), 3);
+        costOfEachPlant.put(PlantContainer.BUSH.name(), 4);
+        costOfEachPlant.put(PlantContainer.DAISY.name(), 5);
+        costOfEachPlant.put(PlantContainer.CLOVER.name(), 5);
+        costOfEachPlant.put(PlantContainer.MAIZE.name(), 7);
+        costOfEachPlant.put(PlantContainer.MUSHROOMS.name(), 8);
+        costOfEachPlant.put(PlantContainer.SUNFLOWER.name(), 10);
+        costOfEachPlant.put(PlantContainer.NETTLE.name(), 10);
+        costOfEachPlant.put(PlantContainer.FERN.name(), 12);
+        costOfEachPlant.put(PlantContainer.MOSS.name(), 13);
+        costOfEachPlant.put(PlantContainer.CABBAGE.name(), 15);
+        costOfEachPlant.put(PlantContainer.CATTAIL.name(), 17);
+        costOfEachPlant.put(PlantContainer.DANDELION.name(), 20);
     }
 
     @Override
@@ -113,10 +127,12 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
             addNumberOfSeedsAndSetText();
 
             /*checking if quest is completed*/
-            if (QuestDataManager.checkIfQuestIsCompleted() && !QuestDataManager.getOccurrenceOfQuest()[QuestDataManager.getCurrentNumberOfQuest()])
+            if (QuestCompletionChecker.checkIfQuestIsCompleted() && !QuestDataManager.getOccurrenceOfQuest()[QuestDataManager.getCurrentNumberOfQuest()])
             {
                 addAdditionalSeeds(QuestDataManager.getQuestReward(QuestDataManager.getCurrentNumberOfQuest()));
                 QuestDataManager.changeOccurrenceOfQuest(QuestDataManager.getCurrentNumberOfQuest());
+                PlayGameActivity.showQuestMessage("Congratulations! You have completed quest " +
+                        QuestDataManager.getCurrentNumberOfQuest() + ".\nNow ");
             }
         }
 
@@ -148,7 +164,7 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         int numberOfSeeds;
         plantedPlant = "";
         numberOfSeeds = getNumberOfSeeds();
-        numberOfSeeds += costOfEachPlant.get(nameOfCollectedPlant);
+        numberOfSeeds += rewardForEachPlant.get(nameOfCollectedPlant);
         setNumberOfSeeds(numberOfSeeds);
         PlayGameActivity.setScoreText();
     }

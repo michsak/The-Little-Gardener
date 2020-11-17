@@ -1,25 +1,23 @@
 package com.project.TheLittleGardener;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.HashSet;
 
-
 //TODO
-//showing description of current quest
+//BETTER QUESTS, BETTER REWARDS, BETTER COST OF PLANTS
 //watering animation with watering system
 //help description with changing languages
 
@@ -32,11 +30,11 @@ public class PlayGameActivity extends AppCompatActivity
     private ViewsHolder viewsHolder;
     private Joystick mainJoystick;
     private static TextView scoreTextView;
+    private static TextView plantQuestTextView;
     private int[] dropDownListImages;
     private String[] dropDownListText;
     private HashSet<Integer> alreadyClickedPlantingButtons;
-    private String questText;
-    private float distanceFromButton = 240f;
+    private float distanceFromButton = 230f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -62,6 +60,7 @@ public class PlayGameActivity extends AppCompatActivity
         setScoreText();
         crateJoystick(height, width);
         initializeDropDownListParams();
+        showQuestMessage("");
     }
 
     private void initializePlantsParams()
@@ -82,6 +81,7 @@ public class PlayGameActivity extends AppCompatActivity
         viewsHolder = new ViewsHolder(findViewById(R.id.playerView), findViewById(R.id.constraintLayout),
                 findViewById(R.id.joystickView), findViewById(R.id.plantInfoTextView), findViewById(R.id.listView));
         scoreTextView = findViewById(R.id.scoreText);
+        plantQuestTextView = findViewById(R.id.plantQuestTextView);
     }
 
     public static void setScoreText()
@@ -131,8 +131,9 @@ public class PlayGameActivity extends AppCompatActivity
             }
             alreadyClickedPlantingButtons.add(buttonIndex);
         }
+
         /*
-        Log.i("player x pos", Float.toString(mainJoystick.getXPositon()));
+        Log.i("player x pos", Float.toString(mainJoystick.getXPosition()));
         Log.i("player y pos", Float.toString(mainJoystick.getYPosition()));
         Log.i("player button x pos", Float.toString(button.getX()));
         Log.i("player button y pos", Float.toString(button.getY()));*/
@@ -145,16 +146,6 @@ public class PlayGameActivity extends AppCompatActivity
         double difference = xSquareDifference + ySquareDifference;
         float distance = (float) Math.sqrt(difference);
         return distance;
-    }
-
-    public void setQuestText(String text)
-    {
-        questText = text;
-    }
-
-    public void displayQuestText()
-    {
-        Toast.makeText(getApplicationContext(), questText, Toast.LENGTH_LONG);
     }
 
     public void onBottomButtonWithPlantsClick(View view)
@@ -224,6 +215,32 @@ public class PlayGameActivity extends AppCompatActivity
             }
         });
         animator.start();
+    }
+
+    public void showQuestDescription(View view)
+    {
+        String questDescription = QuestDataManager.getQuestDescription();
+        Toast.makeText(getApplicationContext(), questDescription, Toast.LENGTH_LONG).show();
+    }
+
+    public static void showQuestMessage(String beforeQuestDescriptionText)
+    {
+        plantQuestTextView.setVisibility(View.VISIBLE);
+        String wholeText = beforeQuestDescriptionText + QuestDataManager.getQuestDescription();
+        plantQuestTextView.setText(wholeText);
+        CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
+            @Override
+            public void onTick(long l)
+            {
+            }
+
+            @Override
+            public void onFinish()
+            {
+                plantQuestTextView.setText("");
+                plantQuestTextView.setVisibility(View.INVISIBLE);
+            }
+        }.start();
     }
 
     /*buttons where plants are placed functions*/
