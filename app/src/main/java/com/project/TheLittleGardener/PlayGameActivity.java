@@ -13,11 +13,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.HashSet;
 
 
 //TODO
-//quests
+//showing description of current quest
 //watering animation with watering system
 //help description with changing languages
 
@@ -33,6 +35,7 @@ public class PlayGameActivity extends AppCompatActivity
     private int[] dropDownListImages;
     private String[] dropDownListText;
     private HashSet<Integer> alreadyClickedPlantingButtons;
+    private String questText;
     private float distanceFromButton = 240f;
 
     @Override
@@ -142,6 +145,16 @@ public class PlayGameActivity extends AppCompatActivity
         double difference = xSquareDifference + ySquareDifference;
         float distance = (float) Math.sqrt(difference);
         return distance;
+    }
+
+    public void setQuestText(String text)
+    {
+        questText = text;
+    }
+
+    public void displayQuestText()
+    {
+        Toast.makeText(getApplicationContext(), questText, Toast.LENGTH_LONG);
     }
 
     public void onBottomButtonWithPlantsClick(View view)

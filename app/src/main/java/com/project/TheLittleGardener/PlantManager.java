@@ -1,8 +1,17 @@
 package com.project.TheLittleGardener;
 
+import android.os.Build;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.widget.Button;
+
+import androidx.annotation.RequiresApi;
+
+import java.net.Inet4Address;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 /**manages growing growing plant process*/
 public class PlantManager extends CurrentPlantAndNumberOfSeeds implements GrowingTimeContainer
@@ -60,7 +69,8 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         costOfEachPlant.put(PlantContainer.DANDELION.name(), 15);
     }
 
-    private void countDownToPlantSeedling(final Button button)
+    @Override
+    public void countDownToPlantSeedling(final Button button)
     {
         button.setEnabled(false);
         isReadyToBeCollected = false;
@@ -92,13 +102,22 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         }.start();
     }
 
+    @Override
     public void collectOrSetUpPlant(Button button, int resource)
     {
         if (isReadyToBeCollected)
         {
             button.setBackgroundResource(R.color.brown);
             isReadyToBeCollected = false;
+            QuestDataManager.addToPlantedPlantsForQuest(plantedPlant);
             addNumberOfSeedsAndSetText();
+
+            /*checking if quest is completed*/
+            if (QuestDataManager.checkIfQuestIsCompleted() && !QuestDataManager.getOccurrenceOfQuest()[QuestDataManager.getCurrentNumberOfQuest()])
+            {
+                addAdditionalSeeds(QuestDataManager.getQuestReward(QuestDataManager.getCurrentNumberOfQuest()));
+                QuestDataManager.changeOccurrenceOfQuest(QuestDataManager.getCurrentNumberOfQuest());
+            }
         }
 
         else
@@ -117,7 +136,6 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
     private void decreaseNumberOfSeedsAndSetText(String nameOfCurrentPlant)
     {
         int numberOfSeeds;
-
         numberOfSeeds = getNumberOfSeeds();
         numberOfSeeds -= costOfEachPlant.get(nameOfCurrentPlant);
         setNumberOfSeeds(numberOfSeeds);
@@ -128,11 +146,19 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
     {
         String nameOfCollectedPlant = plantedPlant;
         int numberOfSeeds;
-
         plantedPlant = "";
         numberOfSeeds = getNumberOfSeeds();
         numberOfSeeds += costOfEachPlant.get(nameOfCollectedPlant);
         setNumberOfSeeds(numberOfSeeds);
+        PlayGameActivity.setScoreText();
+    }
+
+    private void addAdditionalSeeds(int number)
+    {
+        int wholeNumberOfSeeds;
+        wholeNumberOfSeeds = getNumberOfSeeds();
+        wholeNumberOfSeeds += number;
+        setNumberOfSeeds(wholeNumberOfSeeds);
         PlayGameActivity.setScoreText();
     }
 }
