@@ -54,5 +54,55 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/howToPlayTextView" />
 
+    <Button
+        android:id="@+id/polishTextButton"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="348dp"
+        android:background="@drawable/polandflag"
+        android:onClick="textInPolish"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/englishTextButton"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:background="@drawable/ukflag"
+        android:onClick="textInEnglish"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/polishTextButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/exitTheGameButton"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="16dp"
+        android:background="#219F27"
+        android:onClick="exitGame"
+        android:text="Exit"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/startTheGameButton"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="16dp"
+        android:background="#219F27"
+        android:onClick="playGame"
+        android:text="Play"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/exitTheGameButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

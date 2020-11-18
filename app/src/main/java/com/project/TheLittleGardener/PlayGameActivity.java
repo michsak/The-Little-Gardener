@@ -18,8 +18,9 @@ import java.util.HashSet;
 
 //TODO
 //BETTER QUESTS, BETTER REWARDS, BETTER COST OF PLANTS
+//images of plants, add cost to them
+//image of player
 //watering animation with watering system
-//help description with changing languages
 
 
 public class PlayGameActivity extends AppCompatActivity
