@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-/**main game menu*/
+/**Main game menu*/
 public class MainActivity extends AppCompatActivity
 {
     private MediaPlayer mediaPlayer;

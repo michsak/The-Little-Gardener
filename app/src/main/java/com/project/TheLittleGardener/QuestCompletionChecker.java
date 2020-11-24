@@ -2,6 +2,7 @@ package com.project.TheLittleGardener;
 
 import java.util.Collections;
 
+/**Checks if quest is completed*/
 public class QuestCompletionChecker
 {
     public static boolean checkIfQuestIsCompleted()

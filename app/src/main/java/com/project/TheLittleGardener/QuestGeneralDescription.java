@@ -1,5 +1,6 @@
 package com.project.TheLittleGardener;
 
+/**Description of quests*/
 public class QuestGeneralDescription
 {
     public static String firstQuest()

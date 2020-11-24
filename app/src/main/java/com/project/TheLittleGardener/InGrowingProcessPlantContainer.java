@@ -1,6 +1,6 @@
 package com.project.TheLittleGardener;
 
-/**holder of growing plants resources*/
+/**Holder of growing plants resources*/
 public enum InGrowingProcessPlantContainer
 {
     PLANT (R.drawable.small_plant_bg),
@@ -10,9 +10,9 @@ public enum InGrowingProcessPlantContainer
     BUSH (R.drawable.grown_bush_bg),
     DAISY (R.drawable.grown_daisy_bg),
     CLOVER (R.drawable.grown_clover_2_bg),
-    MAIZE (R.drawable.corn),
-    MUSHROOMS (R.drawable.corn),
-    SUNFLOWER (R.drawable.corn),
+    CACTUS (R.drawable.grown_cactus_bg),
+    MUSHROOMS (R.drawable.grown_mushrooms_bg),
+    SUNFLOWER (R.drawable.grown_sunflower_bg),
     NETTLE (R.drawable.corn),
     FERN (R.drawable.corn),
     MOSS (R.drawable.corn),
@@ -31,5 +31,4 @@ public enum InGrowingProcessPlantContainer
     {
         return pictureNumber;
     }
-
 }

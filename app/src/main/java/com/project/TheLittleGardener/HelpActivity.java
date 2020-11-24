@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-/**description of game*/
+/**Description of game*/
 public class HelpActivity extends AppCompatActivity
 {
     private MediaPlayer mediaPlayer;
@@ -100,5 +100,4 @@ public class HelpActivity extends AppCompatActivity
         helpMenuMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);
         helpMenuMusicManagement.playMusic();
     }
-
 }

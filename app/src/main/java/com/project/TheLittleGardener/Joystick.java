@@ -1,28 +1,27 @@
 package com.project.TheLittleGardener;
 
+import android.content.Context;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import com.zerokol.views.joystickView.JoystickView;
 
-/**creates joystick and enables user move in the wanted direction*/
-public class Joystick implements MarginsOfScreen
+/**Creates joystick and enables user move in the wanted direction*/
+public class Joystick extends MetricsOfScreen
 {
     private JoystickView joystick;
     private ImageView player;
+    private MarginsOfScreen marginsOfScreen;
     private float xPosition = 0f;
     private float yPosition = -10f;
     private final int durationOfAnim = 100;
-    private final float speed = 15f;
-    private int height;
-    private int width;
+    private final float playerMovingSpeed = 15f;
 
-
-    Joystick( JoystickView joystick, ImageView player, int height, int width)
+    Joystick(JoystickView joystick, ImageView player, Context context)
     {
+        super(context);
         this.joystick = joystick;
         this.player = player;
-        this.height = height;
-        this.width = width;
+        marginsOfScreen = new MarginsOfScreen();
     }
 
     public void createJoysticks()
@@ -76,72 +75,72 @@ public class Joystick implements MarginsOfScreen
 
     private void moveUp()
     {
-        if (yPosition >= (-height + topPlayerMargin))
+        if (yPosition >= (-height + marginsOfScreen.topPlayerMargin))
         {
-            createAndStartAnimation(xPosition, xPosition, yPosition, yPosition - speed);
+            createAndStartAnimation(xPosition, xPosition, yPosition, yPosition - playerMovingSpeed);
             player.setImageResource(R.drawable.gardener_back);
         }
     }
 
     private void moveUpRight()
     {
-        if (xPosition <= width/2 - 100f && yPosition >= (-height + topPlayerMargin))
+        if (xPosition <= width/2 - 100f && yPosition >= (-height + marginsOfScreen.topPlayerMargin))
         {
-            createAndStartAnimation(xPosition, xPosition+speed, yPosition, yPosition-speed);
+            createAndStartAnimation(xPosition, xPosition+ playerMovingSpeed, yPosition, yPosition- playerMovingSpeed);
             player.setImageResource(R.drawable.gardener_back);
         }
     }
 
     private void moveUpLeft()
     {
-        if (xPosition >= (-width/2 + 100f) && yPosition >= (-height + topPlayerMargin))
+        if (xPosition >= (-width/2 + 100f) && yPosition >= (-height + marginsOfScreen.topPlayerMargin))
         {
-            createAndStartAnimation(xPosition, xPosition-speed, yPosition, yPosition-speed);
+            createAndStartAnimation(xPosition, xPosition- playerMovingSpeed, yPosition, yPosition- playerMovingSpeed);
             player.setImageResource(R.drawable.gardener_back);
         }
     }
 
     private void moveDown()
     {
-        if (yPosition <= -downPlayerMargin)
+        if (yPosition <= -marginsOfScreen.downPlayerMargin)
         {
-            createAndStartAnimation(xPosition, xPosition, yPosition, yPosition+speed);
+            createAndStartAnimation(xPosition, xPosition, yPosition, yPosition+ playerMovingSpeed);
             player.setImageResource(R.drawable.gardener_front);
         }
     }
 
     private void moveDownLeft()
     {
-        if (yPosition <= -downPlayerMargin && xPosition >= (-width/2 + 100f))
+        if (yPosition <= -marginsOfScreen.downPlayerMargin && xPosition >= (-width/2 + 100f))
         {
-            createAndStartAnimation(xPosition, xPosition-speed, yPosition, yPosition+speed);
+            createAndStartAnimation(xPosition, xPosition- playerMovingSpeed, yPosition, yPosition+ playerMovingSpeed);
             player.setImageResource(R.drawable.gardener_left);
         }
     }
 
     private void moveDownRight()
     {
-        if (yPosition <= -downPlayerMargin && xPosition <= (width/2 - 100f))
+        if (yPosition <= -marginsOfScreen.downPlayerMargin && xPosition <= (width/2 - 100f))
         {
-            createAndStartAnimation(xPosition, xPosition+speed, yPosition, yPosition+speed);
+            createAndStartAnimation(xPosition, xPosition+ playerMovingSpeed, yPosition, yPosition+ playerMovingSpeed);
             player.setImageResource(R.drawable.gardener_right);
         }
     }
 
     private void moveRight()
     {
-        if (xPosition <= width/2 - edgePlayerMarin)
+        if (xPosition <= width/2 - marginsOfScreen.edgePlayerMarin)
         {
-            createAndStartAnimation(xPosition, xPosition+speed, yPosition, yPosition);
+            createAndStartAnimation(xPosition, xPosition+ playerMovingSpeed, yPosition, yPosition);
             player.setImageResource(R.drawable.gardener_right);
         }
     }
 
     private void moveLeft()
     {
-        if (xPosition > (-width/2 + edgePlayerMarin))
+        if (xPosition > (-width/2 + marginsOfScreen.edgePlayerMarin))
         {
-            createAndStartAnimation(xPosition, xPosition-speed, yPosition, yPosition);
+            createAndStartAnimation(xPosition, xPosition- playerMovingSpeed, yPosition, yPosition);
             player.setImageResource(R.drawable.gardener_left);
         }
     }

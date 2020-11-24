@@ -8,28 +8,33 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
-/**creates custom List View with ImageView and TextView*/
+/**Creates custom List View with ImageView and TextView*/
 public class CustomAdapter extends BaseAdapter implements ListAdapter
 {
-    private Context context;
+    private static LayoutInflater inflater=null;
     private View parentView;
     private ImageView playerView;
     private ListView lView;
+    private TextView questTextView;
+    private TextView plantInfoTextView;
     private String[] result;
     private int [] imageId;
-    private static LayoutInflater inflater=null;
 
-    public CustomAdapter(Context context, String[] ddListText, int[] ddListImages, View parentView, ImageView playerView, ListView listView)
+    public CustomAdapter(Context context, String[] ddListText, int[] ddListImages, View parentView,
+                         ImageView playerView, ListView listView, TextView questTextView, TextView plantInfoTextView)
     {
         result = ddListText;
         imageId = ddListImages;
-        this.context = context;
         this.parentView = parentView;
         this.playerView = playerView;
+        this.questTextView = questTextView;
         this.lView = listView;
+        this.plantInfoTextView = plantInfoTextView;
+
         /*instantiate the contents of layout XML files into their corresponding View objects*/
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -70,8 +75,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
             {
                 changeVisibilityToPlayScreenRequirements();
                 CurrentPlantAndNumberOfSeeds.setCurrentPlant(position);
-
-                Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
+                PlayGameActivity.resizePlantTextViewInfoOnBottomButtonClick(result[position], plantInfoTextView);
             }
         });
         return adapterView;
@@ -90,6 +94,8 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
     private void changeVisibilityToDropDownListRequirements()
     {
         parentView.setVisibility(View.INVISIBLE);
+        questTextView.setVisibility(View.INVISIBLE);
+        plantInfoTextView.setVisibility(View.INVISIBLE);
         playerView.setImageResource(R.drawable.empty_player);
         lView.setVisibility(View.VISIBLE);
     }
@@ -97,7 +103,9 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
     private void changeVisibilityToPlayScreenRequirements()
     {
         parentView.setVisibility(View.VISIBLE);
-        playerView.setImageResource(R.drawable.gardener_front);   //to be more specified which positon of gardener
+        playerView.setImageResource(R.drawable.gardener_front);
+        questTextView.setVisibility(View.VISIBLE);
+        plantInfoTextView.setVisibility(View.VISIBLE);
         lView.setVisibility(View.INVISIBLE);
     }
 }

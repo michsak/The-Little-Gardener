@@ -1,5 +1,6 @@
 package com.project.TheLittleGardener;
 
+/**Current plant number and total number of seeds*/
 public class CurrentPlantAndNumberOfSeeds
 {
     private static int currentPlant = 0;

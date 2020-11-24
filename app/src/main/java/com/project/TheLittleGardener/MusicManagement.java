@@ -2,6 +2,7 @@ package com.project.TheLittleGardener;
 
 import android.media.MediaPlayer;
 
+/**Sets, plays and stops music*/
 public class MusicManagement
 {
     public MediaPlayer mp;

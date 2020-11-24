@@ -7,7 +7,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.zerokol.views.joystickView.JoystickView;
 
-/**holds necessary views*/
+/**Holds necessary views*/
 public class ViewsHolder
 {
     public ImageView player;

@@ -3,9 +3,9 @@ package com.project.TheLittleGardener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**holds textviews and imageviews from custom adapter*/
+/**Holds textviews and imageviews from custom adapter*/
 public class CustomAdapterContentHolder
 {
-    TextView contentTextView;
-    ImageView contentImageView;
+    public TextView contentTextView;
+    public ImageView contentImageView;
 }

@@ -1,9 +1,9 @@
 package com.project.TheLittleGardener;
 
-/**margin of gaming screen due to bottom navigation bar*/
-public interface MarginsOfScreen
+/**Margin of gaming screen due to bottom navigation bar*/
+public class MarginsOfScreen
 {
-    float downPlayerMargin = 12f;
-    float edgePlayerMarin = 95f;
-    float topPlayerMargin = 420f;
+    public float downPlayerMargin = 12f;
+    public float edgePlayerMarin = 95f;
+    public float topPlayerMargin = 420f;
 }

@@ -1,6 +1,6 @@
 package com.project.TheLittleGardener;
 
-/**holder of drop down list resources*/
+/**Holder of drop down list resources*/
 public enum PlantContainer
 {
     TREE (R.drawable.grown_tree),
@@ -9,9 +9,9 @@ public enum PlantContainer
     BUSH (R.drawable.bush),
     DAISY (R.drawable.daisy),
     CLOVER (R.drawable.clover2),
-    MAIZE (R.drawable.corn),
-    MUSHROOMS (R.drawable.corn),
-    SUNFLOWER (R.drawable.corn),
+    CACTUS (R.drawable.cactus),
+    MUSHROOMS (R.drawable.mushrooms),
+    SUNFLOWER (R.drawable.sunflower),
     NETTLE (R.drawable.corn),
     FERN (R.drawable.corn),
     MOSS (R.drawable.corn),

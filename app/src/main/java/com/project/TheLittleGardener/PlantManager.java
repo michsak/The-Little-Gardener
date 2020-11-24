@@ -5,7 +5,7 @@ import android.widget.Button;
 
 import java.util.HashMap;
 
-/**manages growing growing plant process*/
+/**Manages growing plant process*/
 public class PlantManager extends CurrentPlantAndNumberOfSeeds implements GrowingUpParams
 {
     private HashMap<Integer, InGrowingProcessPlantContainer> growingPlantsContainerWithIndexDict;
@@ -32,7 +32,7 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         growingPlantsContainerWithIndexDict.put(3, InGrowingProcessPlantContainer.BUSH);
         growingPlantsContainerWithIndexDict.put(4, InGrowingProcessPlantContainer.DAISY);
         growingPlantsContainerWithIndexDict.put(5, InGrowingProcessPlantContainer.CLOVER);
-        growingPlantsContainerWithIndexDict.put(6, InGrowingProcessPlantContainer.MAIZE);
+        growingPlantsContainerWithIndexDict.put(6, InGrowingProcessPlantContainer.CACTUS);
         growingPlantsContainerWithIndexDict.put(7, InGrowingProcessPlantContainer.MUSHROOMS);
         growingPlantsContainerWithIndexDict.put(8, InGrowingProcessPlantContainer.SUNFLOWER);
         growingPlantsContainerWithIndexDict.put(9, InGrowingProcessPlantContainer.NETTLE);
@@ -52,7 +52,7 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         rewardForEachPlant.put(PlantContainer.BUSH.name(), 3);
         rewardForEachPlant.put(PlantContainer.DAISY.name(), 4);
         rewardForEachPlant.put(PlantContainer.CLOVER.name(), 4);
-        rewardForEachPlant.put(PlantContainer.MAIZE.name(), 5);
+        rewardForEachPlant.put(PlantContainer.CACTUS.name(), 5);
         rewardForEachPlant.put(PlantContainer.MUSHROOMS.name(), 6);
         rewardForEachPlant.put(PlantContainer.SUNFLOWER.name(), 8);
         rewardForEachPlant.put(PlantContainer.NETTLE.name(), 8);
@@ -72,7 +72,7 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         costOfEachPlant.put(PlantContainer.BUSH.name(), 4);
         costOfEachPlant.put(PlantContainer.DAISY.name(), 5);
         costOfEachPlant.put(PlantContainer.CLOVER.name(), 5);
-        costOfEachPlant.put(PlantContainer.MAIZE.name(), 7);
+        costOfEachPlant.put(PlantContainer.CACTUS.name(), 7);
         costOfEachPlant.put(PlantContainer.MUSHROOMS.name(), 8);
         costOfEachPlant.put(PlantContainer.SUNFLOWER.name(), 10);
         costOfEachPlant.put(PlantContainer.NETTLE.name(), 10);
@@ -149,7 +149,8 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         }
     }
 
-    private void decreaseNumberOfSeedsAndSetText(String nameOfCurrentPlant)
+    @Override
+    public void decreaseNumberOfSeedsAndSetText(String nameOfCurrentPlant)
     {
         int numberOfSeeds;
         numberOfSeeds = getNumberOfSeeds();
@@ -158,7 +159,8 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         PlayGameActivity.setScoreText();
     }
 
-    private void addNumberOfSeedsAndSetText()
+    @Override
+    public void addNumberOfSeedsAndSetText()
     {
         String nameOfCollectedPlant = plantedPlant;
         int numberOfSeeds;
@@ -169,7 +171,8 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         PlayGameActivity.setScoreText();
     }
 
-    private void addAdditionalSeeds(int number)
+    @Override
+    public void addAdditionalSeeds(int number)
     {
         int wholeNumberOfSeeds;
         wholeNumberOfSeeds = getNumberOfSeeds();

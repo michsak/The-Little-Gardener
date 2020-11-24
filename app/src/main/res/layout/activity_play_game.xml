@@ -32,14 +32,6 @@
         app:layout_constraintTop_toBottomOf="@+id/backgroundView" />
 
     <TextView
-        android:id="@+id/plantInfoTextView"
-        android:layout_width="258dp"
-        android:layout_height="97dp"
-        android:layout_centerInParent="true"
-        android:textAlignment="center"
-        android:textColor="@color/yellow" />
-
-    <TextView
         android:id="@+id/plantQuestTextView"
         android:layout_width="230dp"
         android:layout_height="90dp"
@@ -47,6 +39,14 @@
         android:text=""
         android:textAlignment="center"
         android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/plantInfoTextView"
+        android:layout_width="380dp"
+        android:layout_height="97dp"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        android:textColor="@color/yellow" />
 
     <ListView
         android:id="@+id/listView"
@@ -385,10 +385,15 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:background="#FFFFFF"
+                    android:background="@drawable/up_pointing_arrow_2"
                     android:enabled="true"
+                    android:gravity="bottom|left"
                     android:onClick="onClickButtonDropDownBoxList"
-                    android:text="DD LIST" />
+                    android:paddingLeft="15dp"
+                    android:text="LIST OF PLANTS"
+                    android:paddingBottom="0dp"
+                    android:textColor="#CDDC39"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 

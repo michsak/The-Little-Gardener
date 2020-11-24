@@ -2,7 +2,7 @@ package com.project.TheLittleGardener;
 
 import android.widget.Button;
 
-/**contains time variables of growing plants and essential for plant-growing methods*/
+/**Contains time variables of growing plants and essential for plant-growing methods*/
 public interface GrowingUpParams
 {
     int timeOfGrowingSeedling = 10000;
@@ -11,4 +11,7 @@ public interface GrowingUpParams
 
     void countDownToPlantSeedling(Button button);
     void collectOrSetUpPlant(Button button, int resource);
+    void decreaseNumberOfSeedsAndSetText(String nameOfCurrentPlant);
+    void addNumberOfSeedsAndSetText();
+    void addAdditionalSeeds(int number);
 }
