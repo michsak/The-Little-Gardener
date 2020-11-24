@@ -9,7 +9,7 @@ public enum InGrowingProcessPlantContainer
     BEAN (R.drawable.grown_bean_bg),
     BUSH (R.drawable.grown_bush_bg),
     DAISY (R.drawable.grown_daisy_bg),
-    CLOVER (R.drawable.grown_clover_bg),
+    CLOVER (R.drawable.grown_clover_2_bg),
     MAIZE (R.drawable.corn),
     MUSHROOMS (R.drawable.corn),
     SUNFLOWER (R.drawable.corn),

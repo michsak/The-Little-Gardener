@@ -79,6 +79,7 @@ public class Joystick implements MarginsOfScreen
         if (yPosition >= (-height + topPlayerMargin))
         {
             createAndStartAnimation(xPosition, xPosition, yPosition, yPosition - speed);
+            player.setImageResource(R.drawable.gardener_back);
         }
     }
 
@@ -87,6 +88,7 @@ public class Joystick implements MarginsOfScreen
         if (xPosition <= width/2 - 100f && yPosition >= (-height + topPlayerMargin))
         {
             createAndStartAnimation(xPosition, xPosition+speed, yPosition, yPosition-speed);
+            player.setImageResource(R.drawable.gardener_back);
         }
     }
 
@@ -95,6 +97,7 @@ public class Joystick implements MarginsOfScreen
         if (xPosition >= (-width/2 + 100f) && yPosition >= (-height + topPlayerMargin))
         {
             createAndStartAnimation(xPosition, xPosition-speed, yPosition, yPosition-speed);
+            player.setImageResource(R.drawable.gardener_back);
         }
     }
 
@@ -103,6 +106,7 @@ public class Joystick implements MarginsOfScreen
         if (yPosition <= -downPlayerMargin)
         {
             createAndStartAnimation(xPosition, xPosition, yPosition, yPosition+speed);
+            player.setImageResource(R.drawable.gardener_front);
         }
     }
 
@@ -111,6 +115,7 @@ public class Joystick implements MarginsOfScreen
         if (yPosition <= -downPlayerMargin && xPosition >= (-width/2 + 100f))
         {
             createAndStartAnimation(xPosition, xPosition-speed, yPosition, yPosition+speed);
+            player.setImageResource(R.drawable.gardener_left);
         }
     }
 
@@ -119,6 +124,7 @@ public class Joystick implements MarginsOfScreen
         if (yPosition <= -downPlayerMargin && xPosition <= (width/2 - 100f))
         {
             createAndStartAnimation(xPosition, xPosition+speed, yPosition, yPosition+speed);
+            player.setImageResource(R.drawable.gardener_right);
         }
     }
 
@@ -127,6 +133,7 @@ public class Joystick implements MarginsOfScreen
         if (xPosition <= width/2 - edgePlayerMarin)
         {
             createAndStartAnimation(xPosition, xPosition+speed, yPosition, yPosition);
+            player.setImageResource(R.drawable.gardener_right);
         }
     }
 
@@ -135,6 +142,7 @@ public class Joystick implements MarginsOfScreen
         if (xPosition > (-width/2 + edgePlayerMarin))
         {
             createAndStartAnimation(xPosition, xPosition-speed, yPosition, yPosition);
+            player.setImageResource(R.drawable.gardener_left);
         }
     }
 

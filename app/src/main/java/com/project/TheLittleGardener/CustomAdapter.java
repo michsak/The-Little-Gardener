@@ -97,7 +97,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
     private void changeVisibilityToPlayScreenRequirements()
     {
         parentView.setVisibility(View.VISIBLE);
-        playerView.setImageResource(R.drawable.player);
+        playerView.setImageResource(R.drawable.gardener_front);   //to be more specified which positon of gardener
         lView.setVisibility(View.INVISIBLE);
     }
 }

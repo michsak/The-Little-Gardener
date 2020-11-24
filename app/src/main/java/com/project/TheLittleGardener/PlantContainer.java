@@ -8,7 +8,7 @@ public enum PlantContainer
     BEAN (R.drawable.bean),
     BUSH (R.drawable.bush),
     DAISY (R.drawable.daisy),
-    CLOVER (R.drawable.clover),
+    CLOVER (R.drawable.clover2),
     MAIZE (R.drawable.corn),
     MUSHROOMS (R.drawable.corn),
     SUNFLOWER (R.drawable.corn),

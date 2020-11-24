@@ -35,7 +35,7 @@ public class PlayGameActivity extends AppCompatActivity
     private int[] dropDownListImages;
     private String[] dropDownListText;
     private HashSet<Integer> alreadyClickedPlantingButtons;
-    private float distanceFromButton = 230f;
+    private final float distanceFromButton = 230f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -244,97 +244,11 @@ public class PlayGameActivity extends AppCompatActivity
         }.start();
     }
 
-    /*buttons where plants are placed functions*/
-    //START
-    public void button1ContainerOnClick(View view)
+    public void buttonContainerOnClick(View view)
     {
-        int buttonIndex = 0;
-        Button button1 = findViewById(R.id.button);
-        checkPositionAndChangeImage(button1, buttonIndex);
+        int buttonIndex = Integer.parseInt((String) view.getTag());
+        int buttonId = view.getId();
+        Button button = findViewById(buttonId);
+        checkPositionAndChangeImage(button, buttonIndex);
     }
-    public void button2ContainerOnClick(View view)
-    {
-        int buttonIndex = 1;
-        Button button2 = findViewById(R.id.button2);
-        checkPositionAndChangeImage(button2, buttonIndex);
-    }
-    public void button3ContainerOnClick(View view)
-    {
-        int buttonIndex = 2;
-        Button button3 = findViewById(R.id.button3);
-        checkPositionAndChangeImage(button3, buttonIndex);
-    }
-    public void button4ContainerOnClick(View view)
-    {
-        int buttonIndex = 3;
-        Button button4 = findViewById(R.id.button4);
-        checkPositionAndChangeImage(button4, buttonIndex);
-    }
-    public void button5ContainerOnClick(View view)
-    {
-        int buttonIndex = 4;
-        Button button5 = findViewById(R.id.button5);
-        checkPositionAndChangeImage(button5, buttonIndex);
-    }
-    public void button6ContainerOnClick(View view)
-    {
-        int buttonIndex = 5;
-        Button button6 = findViewById(R.id.button6);
-        checkPositionAndChangeImage(button6, buttonIndex);
-    }
-    public void button7ContainerOnClick(View view)
-    {
-        int buttonIndex = 6;
-        Button button7 = findViewById(R.id.button7);
-        checkPositionAndChangeImage(button7, buttonIndex);
-    }
-    public void button8ContainerOnClick(View view)
-    {
-        int buttonIndex = 7;
-        Button button8 = findViewById(R.id.button8);
-        checkPositionAndChangeImage(button8, buttonIndex);
-    }
-    public void button9ContainerOnClick(View view)
-    {
-        int buttonIndex = 8;
-        Button button9 = findViewById(R.id.button9);
-        checkPositionAndChangeImage(button9, buttonIndex);
-    }
-    public void button10ContainerOnClick(View view)
-    {
-        int buttonIndex = 9;
-        Button button10 = findViewById(R.id.button10);
-        checkPositionAndChangeImage(button10, buttonIndex);
-    }
-    public void button11ContainerOnClick(View view)
-    {
-        int buttonIndex = 10;
-        Button button11 = findViewById(R.id.button11);
-        checkPositionAndChangeImage(button11, buttonIndex);
-    }
-    public void button12ContainerOnClick(View view)
-    {
-        int buttonIndex = 11;
-        Button button12 = findViewById(R.id.button12);
-        checkPositionAndChangeImage(button12, buttonIndex);
-    }
-    public void button13ContainerOnClick(View view)
-    {
-        int buttonIndex = 12;
-        Button button13 = findViewById(R.id.button13);
-        checkPositionAndChangeImage(button13, buttonIndex);
-    }
-    public void button14ContainerOnClick(View view)
-    {
-        int buttonIndex = 13;
-        Button button14 = findViewById(R.id.button14);
-        checkPositionAndChangeImage(button14, buttonIndex);
-    }
-    public void button15ContainerOnClick(View view)
-    {
-        int buttonIndex = 14;
-        Button button15 = findViewById(R.id.button15);
-        checkPositionAndChangeImage(button15, buttonIndex);
-    }
-    //END
 }

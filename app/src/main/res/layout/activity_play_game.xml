@@ -94,17 +94,17 @@
                 android:layout_marginTop="12dp"
                 android:background="@drawable/seed"
                 android:enabled="false"
-                android:onClick="button15ContainerOnClick"
                 app:layout_constraintStart_toEndOf="@+id/button12"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/button0"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
                 android:background="@color/brown"
                 android:enabled="true"
-                android:onClick="button1ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button2" />
 
@@ -114,7 +114,8 @@
                 android:layout_height="62dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button2ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button3" />
 
@@ -126,7 +127,8 @@
                 android:layout_marginEnd="60dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button3ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="2"
                 app:layout_constraintEnd_toEndOf="@+id/button4"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -139,7 +141,8 @@
                 android:layout_marginStart="62dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button4ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -149,7 +152,8 @@
                 android:layout_height="62dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button5ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="4"
                 app:layout_constraintStart_toEndOf="@+id/button4"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -159,7 +163,8 @@
                 android:layout_height="62dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button6ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="5"
                 app:layout_constraintStart_toEndOf="@+id/button5"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -169,7 +174,8 @@
                 android:layout_height="62dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button7ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="6"
                 app:layout_constraintStart_toEndOf="@+id/button6"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -179,7 +185,8 @@
                 android:layout_height="62dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button8ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="7"
                 app:layout_constraintStart_toEndOf="@+id/button7"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -189,7 +196,8 @@
                 android:layout_height="62dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button9ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="8"
                 app:layout_constraintStart_toEndOf="@+id/button8"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -199,7 +207,8 @@
                 android:layout_height="62dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button10ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="9"
                 app:layout_constraintStart_toEndOf="@+id/button9"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -209,7 +218,8 @@
                 android:layout_height="62dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button11ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="10"
                 app:layout_constraintStart_toEndOf="@+id/button10"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -219,7 +229,8 @@
                 android:layout_height="62dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button12ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="11"
                 app:layout_constraintStart_toEndOf="@+id/button11"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -230,7 +241,8 @@
                 android:layout_marginTop="50dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button13ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="12"
                 app:layout_constraintStart_toEndOf="@+id/button12"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -240,7 +252,8 @@
                 android:layout_height="62dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button14ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="13"
                 app:layout_constraintStart_toEndOf="@+id/button12"
                 app:layout_constraintTop_toBottomOf="@+id/button13" />
 
@@ -250,7 +263,8 @@
                 android:layout_height="62dp"
                 android:background="#453313"
                 android:enabled="true"
-                android:onClick="button15ContainerOnClick"
+                android:onClick="buttonContainerOnClick"
+                android:tag="14"
                 app:layout_constraintStart_toEndOf="@+id/button12"
                 app:layout_constraintTop_toBottomOf="@+id/button14" />
 
@@ -356,7 +370,7 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/clover_with_border"
+                    android:background="@drawable/clover_2_with_border"
                     android:enabled="true"
                     android:gravity="bottom|center"
                     android:onClick="onBottomButtonWithPlantsClick"
@@ -389,7 +403,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
-        app:srcCompat="@drawable/player"
+        app:srcCompat="@drawable/gardener_front"
         tools:visibility="visible" />
 
 </RelativeLayout>
