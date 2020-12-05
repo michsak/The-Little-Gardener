@@ -5,13 +5,13 @@ public class QuestGeneralDescription
 {
     public static String firstQuest()
     {
-        String task = "plant and collect 5 trees; reward: 5 seeds";
+        String task = "plant and collect 5 trees and 5 corn; reward: 20 seeds";
         return task;
     }
 
     public static String secondQuest()
     {
-        String task = "plant 2 corn and 3 beans; reward: 7 seeds";
+        String task = "plant and collect 7 beans and 4 bushes; reward: 50 seeds";
         return task;
     }
 

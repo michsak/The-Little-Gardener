@@ -4,7 +4,7 @@ package com.project.TheLittleGardener;
 public class CurrentPlantAndNumberOfSeeds
 {
     private static int currentPlant = 0;
-    private static int numberOfSeeds = 35;
+    private static int numberOfSeeds = 50;
 
     public static void setCurrentPlant(int value)
     {

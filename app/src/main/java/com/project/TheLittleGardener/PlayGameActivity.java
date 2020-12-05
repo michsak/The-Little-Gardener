@@ -211,7 +211,21 @@ public class PlayGameActivity extends AppCompatActivity
     public void showQuestDescription(View view)
     {
         String questDescription = QuestDataManager.getQuestDescription();
-        Toast.makeText(getApplicationContext(), questDescription, Toast.LENGTH_LONG).show();
+        if (QuestCompletionChecker.getKeys()[0] != "" || QuestCompletionChecker.getKeys()[1] != "")
+        {
+            Toast.makeText(getApplicationContext(), questDescription + TextCurrentNumberOfQuestPlantedPlants(), Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), questDescription, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private String TextCurrentNumberOfQuestPlantedPlants()
+    {
+        return "\nCurrent number of planted plants:\n" +
+                       QuestCompletionChecker.getKeys()[0] + ": " + QuestCompletionChecker.getValues()[0] + " " +
+                        QuestCompletionChecker.getKeys()[1] + ": " + QuestCompletionChecker.getValues()[1];
     }
 
     public static void showQuestMessage(String beforeQuestDescriptionText)

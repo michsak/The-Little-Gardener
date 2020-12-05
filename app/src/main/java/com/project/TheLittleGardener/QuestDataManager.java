@@ -9,13 +9,13 @@ public class QuestDataManager extends QuestGeneralDescription
     private static ArrayList<String> PlantedPlantsForQuest = new ArrayList<>();
     private static boolean[] firstOccurrenceOfQuest = {false, false, false, false, false};
     private static int currentNumberOfQuest = 0;
-    private static int[] questReward = {5, 7, 10, 15, 20};
+    private static int[] questReward = {20, 50, 10, 15, 20};
 
     /*dictonaries with name of plant and number of those plants required to get quest points*/
     private static HashMap <String, Integer> firstQuestRequirements = new HashMap<String, Integer>(){
-        {put(PlantContainer.TREE.name(), 5);}};
+        {put(PlantContainer.TREE.name(), 5); put(PlantContainer.CORN.name(), 5);}};
     private static HashMap <String, Integer> secondQuestRequirements = new HashMap<String, Integer>(){
-        {put(PlantContainer.CORN.name(), 2); put(PlantContainer.BEAN.name(), 3);}};
+        {put(PlantContainer.BEAN.name(), 7); put(PlantContainer.BUSH.name(), 4);}};
     private static HashMap <String, Integer> thirdQuestRequirements = new HashMap<String, Integer>(){
         {put(PlantContainer.BUSH.name(), 3); put(PlantContainer.DAISY.name(), 5);}};
     private static HashMap <String, Integer> fourthQuestRequirements = new HashMap<String, Integer>(){

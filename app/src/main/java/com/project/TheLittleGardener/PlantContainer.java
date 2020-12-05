@@ -12,9 +12,9 @@ public enum PlantContainer
     CACTUS (R.drawable.cactus),
     MUSHROOMS (R.drawable.mushrooms),
     SUNFLOWER (R.drawable.sunflower),
-    NETTLE (R.drawable.corn),
-    FERN (R.drawable.corn),
-    MOSS (R.drawable.corn),
+    NETTLE (R.drawable.nettle),
+    FERN (R.drawable.fern2),
+    MOSS (R.drawable.moss),
     CABBAGE (R.drawable.corn),
     CATTAIL (R.drawable.corn),
     DANDELION (R.drawable.corn);

@@ -13,9 +13,9 @@ public enum InGrowingProcessPlantContainer
     CACTUS (R.drawable.grown_cactus_bg),
     MUSHROOMS (R.drawable.grown_mushrooms_bg),
     SUNFLOWER (R.drawable.grown_sunflower_bg),
-    NETTLE (R.drawable.corn),
-    FERN (R.drawable.corn),
-    MOSS (R.drawable.corn),
+    NETTLE (R.drawable.grown_nettle_bg),
+    FERN (R.drawable.grown_fern_bg),
+    MOSS (R.drawable.grown_moss),
     CABBAGE (R.drawable.corn),
     CATTAIL (R.drawable.corn),
     DANDELION (R.drawable.corn);
