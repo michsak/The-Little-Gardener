@@ -8,13 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 /**Description of game*/
 public class HelpActivity extends AppCompatActivity
 {
     private MediaPlayer mediaPlayer;
-    private MusicManagement helpMenuMusicManagement;
+    private MusicManager helpMenuMusicManager;
     private TextView descriptionTextView;
     private TextView titleTextView;
 
@@ -86,7 +84,7 @@ public class HelpActivity extends AppCompatActivity
     public void playGame(View view)
     {
         startActivity(new Intent(HelpActivity.this, PlayGameActivity.class));
-        helpMenuMusicManagement.stopMusic();
+        helpMenuMusicManager.stopMusic();
     }
 
     public void exitGame (View view)
@@ -96,8 +94,8 @@ public class HelpActivity extends AppCompatActivity
 
     private void playMusic()
     {
-        helpMenuMusicManagement = new MusicManagement(mediaPlayer);
-        helpMenuMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);
-        helpMenuMusicManagement.playMusic();
+        helpMenuMusicManager = new MusicManager(mediaPlayer);
+        helpMenuMusicManager.mp = MediaPlayer.create(this, R.raw.menu);
+        helpMenuMusicManager.playMusic();
     }
 }

@@ -3,11 +3,11 @@ package com.project.TheLittleGardener;
 import android.media.MediaPlayer;
 
 /**Sets, plays and stops music*/
-public class MusicManagement
+public class MusicManager
 {
     public MediaPlayer mp;
 
-    MusicManagement(MediaPlayer mp)
+    MusicManager(MediaPlayer mp)
     {
         this.mp = mp;
     }

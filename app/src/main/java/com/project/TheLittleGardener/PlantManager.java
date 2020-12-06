@@ -50,17 +50,17 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         rewardForEachPlant.put(PlantContainer.CORN.name(), 2);
         rewardForEachPlant.put(PlantContainer.BEAN.name(), 4);
         rewardForEachPlant.put(PlantContainer.BUSH.name(), 5);
-        rewardForEachPlant.put(PlantContainer.DAISY.name(), 4);   //
-        rewardForEachPlant.put(PlantContainer.CLOVER.name(), 4);
-        rewardForEachPlant.put(PlantContainer.CACTUS.name(), 5);
+        rewardForEachPlant.put(PlantContainer.DAISY.name(), 8);   //
+        rewardForEachPlant.put(PlantContainer.CLOVER.name(), 12);
+        rewardForEachPlant.put(PlantContainer.CACTUS.name(), 4);
         rewardForEachPlant.put(PlantContainer.MUSHROOMS.name(), 6);
-        rewardForEachPlant.put(PlantContainer.SUNFLOWER.name(), 8);
-        rewardForEachPlant.put(PlantContainer.NETTLE.name(), 8);
-        rewardForEachPlant.put(PlantContainer.FERN.name(), 10);
-        rewardForEachPlant.put(PlantContainer.MOSS.name(), 11);
-        rewardForEachPlant.put(PlantContainer.CABBAGE.name(), 12);
-        rewardForEachPlant.put(PlantContainer.CATTAIL.name(), 13);
-        rewardForEachPlant.put(PlantContainer.DANDELION.name(), 15);
+        rewardForEachPlant.put(PlantContainer.SUNFLOWER.name(), 12);
+        rewardForEachPlant.put(PlantContainer.NETTLE.name(), 12);
+        rewardForEachPlant.put(PlantContainer.FERN.name(), 15);
+        rewardForEachPlant.put(PlantContainer.MOSS.name(), 15);
+        rewardForEachPlant.put(PlantContainer.CABBAGE.name(), 17);
+        rewardForEachPlant.put(PlantContainer.CATTAIL.name(), 22);
+        rewardForEachPlant.put(PlantContainer.DANDELION.name(), 10);
     }
 
     private void giveCostToEachPlant()
@@ -70,17 +70,17 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         costOfEachPlant.put(PlantContainer.CORN.name(), 3);
         costOfEachPlant.put(PlantContainer.BEAN.name(), 5);
         costOfEachPlant.put(PlantContainer.BUSH.name(), 7);
-        costOfEachPlant.put(PlantContainer.DAISY.name(), 5);
-        costOfEachPlant.put(PlantContainer.CLOVER.name(), 5);
-        costOfEachPlant.put(PlantContainer.CACTUS.name(), 7);
+        costOfEachPlant.put(PlantContainer.DAISY.name(), 8);
+        costOfEachPlant.put(PlantContainer.CLOVER.name(), 10);
+        costOfEachPlant.put(PlantContainer.CACTUS.name(), 8);
         costOfEachPlant.put(PlantContainer.MUSHROOMS.name(), 8);
-        costOfEachPlant.put(PlantContainer.SUNFLOWER.name(), 10);
-        costOfEachPlant.put(PlantContainer.NETTLE.name(), 10);
-        costOfEachPlant.put(PlantContainer.FERN.name(), 12);
-        costOfEachPlant.put(PlantContainer.MOSS.name(), 13);
-        costOfEachPlant.put(PlantContainer.CABBAGE.name(), 15);
-        costOfEachPlant.put(PlantContainer.CATTAIL.name(), 17);
-        costOfEachPlant.put(PlantContainer.DANDELION.name(), 20);
+        costOfEachPlant.put(PlantContainer.SUNFLOWER.name(), 12);
+        costOfEachPlant.put(PlantContainer.NETTLE.name(), 15);
+        costOfEachPlant.put(PlantContainer.FERN.name(), 16);
+        costOfEachPlant.put(PlantContainer.MOSS.name(), 17);
+        costOfEachPlant.put(PlantContainer.CABBAGE.name(), 18);
+        costOfEachPlant.put(PlantContainer.CATTAIL.name(), 20);
+        costOfEachPlant.put(PlantContainer.DANDELION.name(), 50);
     }
 
     @Override

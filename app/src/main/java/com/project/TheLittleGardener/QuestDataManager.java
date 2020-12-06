@@ -7,9 +7,9 @@ import java.util.HashMap;
 public class QuestDataManager extends QuestGeneralDescription
 {
     private static ArrayList<String> PlantedPlantsForQuest = new ArrayList<>();
-    private static boolean[] firstOccurrenceOfQuest = {false, false, false, false, false};
+    private static boolean[] firstOccurrenceOfQuest = {false, false, false, false, false, false, false, false};
     private static int currentNumberOfQuest = 0;
-    private static int[] questReward = {20, 50, 10, 15, 20};
+    private static int[] questReward = {20, 60, 50, 100, 150, 100, 200, 250};
 
     /*dictonaries with name of plant and number of those plants required to get quest points*/
     private static HashMap <String, Integer> firstQuestRequirements = new HashMap<String, Integer>(){
@@ -17,11 +17,17 @@ public class QuestDataManager extends QuestGeneralDescription
     private static HashMap <String, Integer> secondQuestRequirements = new HashMap<String, Integer>(){
         {put(PlantContainer.BEAN.name(), 7); put(PlantContainer.BUSH.name(), 4);}};
     private static HashMap <String, Integer> thirdQuestRequirements = new HashMap<String, Integer>(){
-        {put(PlantContainer.BUSH.name(), 3); put(PlantContainer.DAISY.name(), 5);}};
+        {put(PlantContainer.DAISY.name(), 10); put(PlantContainer.CLOVER.name(), 10);}};
     private static HashMap <String, Integer> fourthQuestRequirements = new HashMap<String, Integer>(){
-        {put(PlantContainer.CLOVER.name(), 5); put(PlantContainer.DANDELION.name(), 5);}};
+        {put(PlantContainer.CACTUS.name(), 8); put(PlantContainer.MUSHROOMS.name(), 15);}};
     private static HashMap <String, Integer> fifthQuestRequirements = new HashMap<String, Integer>(){
-        {put(PlantContainer.CABBAGE.name(), 3); put(PlantContainer.CATTAIL.name(), 3);}};
+        {put(PlantContainer.SUNFLOWER.name(), 10); put(PlantContainer.NETTLE.name(), 15);}};
+    private static HashMap <String, Integer> sixthQuestRequirements = new HashMap<String, Integer>(){
+        {put(PlantContainer.FERN.name(), 15); put(PlantContainer.MOSS.name(), 15);}};
+    private static HashMap <String, Integer> seventhQuestRequirements = new HashMap<String, Integer>(){
+        {put(PlantContainer.CABBAGE.name(), 20); put(PlantContainer.CATTAIL.name(), 20);}};
+    private static HashMap <String, Integer> eightQuestRequirements = new HashMap<String, Integer>(){
+        {put(PlantContainer.DANDELION.name(), 50);}};
 
 
     public static void addToPlantedPlantsForQuest(String name)
@@ -74,6 +80,13 @@ public class QuestDataManager extends QuestGeneralDescription
                 return fourthQuestRequirements;
             case 4:
                 return fifthQuestRequirements;
+            case 5:
+                return sixthQuestRequirements;
+            case 6:
+                return seventhQuestRequirements;
+            case 7:
+                return eightQuestRequirements;
+
         }
         return null;
     }
@@ -92,6 +105,12 @@ public class QuestDataManager extends QuestGeneralDescription
                 return fourthQuest();
             case 4:
                 return fifthQuest();
+            case 5:
+                return sixthQuest();
+            case 6:
+                return seventhQuest();
+            case 7:
+                return eightQuest();
         }
         return "";
     }

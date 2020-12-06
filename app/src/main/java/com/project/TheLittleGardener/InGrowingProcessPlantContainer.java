@@ -16,9 +16,9 @@ public enum InGrowingProcessPlantContainer
     NETTLE (R.drawable.grown_nettle_bg),
     FERN (R.drawable.grown_fern_bg),
     MOSS (R.drawable.grown_moss),
-    CABBAGE (R.drawable.corn),
-    CATTAIL (R.drawable.corn),
-    DANDELION (R.drawable.corn);
+    CABBAGE (R.drawable.grown_cabbage_bg),
+    CATTAIL (R.drawable.grown_cattail_bg),
+    DANDELION (R.drawable.grown_dandelion_bg);
 
     private int pictureNumber;
 

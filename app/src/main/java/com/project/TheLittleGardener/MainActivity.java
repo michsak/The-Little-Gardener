@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 /**Main game menu*/
 public class MainActivity extends AppCompatActivity
 {
     private MediaPlayer mediaPlayer;
-    private MusicManagement menuMusicManagement;
+    private MusicManager menuMusicManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,7 +27,7 @@ public class MainActivity extends AppCompatActivity
     public void playAction(View view)
     {
         startActivity(new Intent(MainActivity.this, PlayGameActivity.class));
-        menuMusicManagement.stopMusic();
+        menuMusicManager.stopMusic();
     }
 
     public void helpAction(View view)
@@ -44,8 +42,8 @@ public class MainActivity extends AppCompatActivity
 
     private void playMusic()
     {
-        menuMusicManagement = new MusicManagement(mediaPlayer);
-        menuMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);
-        menuMusicManagement.playMusic();
+        menuMusicManager = new MusicManager(mediaPlayer);
+        menuMusicManager.mp = MediaPlayer.create(this, R.raw.menu);
+        menuMusicManager.playMusic();
     }
 }

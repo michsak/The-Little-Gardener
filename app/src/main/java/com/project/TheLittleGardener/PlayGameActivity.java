@@ -4,12 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
-import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,10 +14,13 @@ import android.widget.Toast;
 import java.util.HashSet;
 
 //TODO
-//BETTER QUESTS, BETTER REWARDS, BETTER COST OF PLANTS
-//images of plants, add cost to them
+//add cost to image of plants on play game activity
+//cost and reward of each plant in drop down list
+//reset current quest
 //watering animation with watering system
 
+//gardener walking and watering animation
+//buying avatars
 
 public class PlayGameActivity extends AppCompatActivity
 {
@@ -28,7 +28,7 @@ public class PlayGameActivity extends AppCompatActivity
     private static TextView plantQuestTextView;
     private final float distanceFromButton = 230f;
     private MediaPlayer mediaPlayer;
-    private MusicManagement gameMusicManagement;
+    private MusicManager gameMusicManager;
     private PlantManager[] plantManager;
     private ViewsHolder viewsHolder;
     private Joystick mainJoystick;
@@ -62,9 +62,9 @@ public class PlayGameActivity extends AppCompatActivity
 
     private void playMainSceneMusic()
     {
-        gameMusicManagement = new MusicManagement(mediaPlayer);
-        gameMusicManagement.mp = MediaPlayer.create(this, R.raw.menu);      //to be changed
-        gameMusicManagement.playMusic();
+        gameMusicManager = new MusicManager(mediaPlayer);
+        gameMusicManager.mp = MediaPlayer.create(this, R.raw.menu);      //to be changed
+        gameMusicManager.playMusic();
     }
 
     private void findNecessaryViews()

@@ -15,9 +15,9 @@ public enum PlantContainer
     NETTLE (R.drawable.nettle),
     FERN (R.drawable.fern2),
     MOSS (R.drawable.moss),
-    CABBAGE (R.drawable.corn),
-    CATTAIL (R.drawable.corn),
-    DANDELION (R.drawable.corn);
+    CABBAGE (R.drawable.cabbage),
+    CATTAIL (R.drawable.cattail),
+    DANDELION (R.drawable.dandelion);
 
     private int pictureNumber;
 
