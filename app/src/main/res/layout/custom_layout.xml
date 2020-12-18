@@ -2,6 +2,8 @@
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/customAdapterView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,13 +20,31 @@
 
     <TextView
         android:id="@+id/list_TextView"
-        android:layout_width="295dp"
+        android:layout_width="185dp"
         android:layout_height="100dp"
         android:layout_marginRight="0dp"
         android:gravity="center"
         android:paddingLeft="8dp"
         android:textAlignment="center"
         android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/seedImageView"
+        android:layout_width="172dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/seed" />
+
+    <TextView
+        android:id="@+id/numberOfSeedsTextView"
+        android:layout_width="224dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="3sp"
+        android:layout_weight="1"
+        android:textAlignment="textStart"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
 </LinearLayout>

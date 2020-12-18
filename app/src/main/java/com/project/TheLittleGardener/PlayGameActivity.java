@@ -15,9 +15,8 @@ import java.util.HashSet;
 
 //TODO
 //add cost to image of plants on play game activity
-//cost and reward of each plant in drop down list
 //reset current quest
-//watering animation with watering system
+//final code refactoring
 
 //gardener walking and watering animation
 //buying avatars
@@ -28,7 +27,7 @@ public class PlayGameActivity extends AppCompatActivity
     private static TextView plantQuestTextView;
     private final float distanceFromButton = 230f;
     private MediaPlayer mediaPlayer;
-    private MusicManager gameMusicManager;
+    //private MusicManager gameMusicManager;
     private PlantManager[] plantManager;
     private ViewsHolder viewsHolder;
     private Joystick mainJoystick;
@@ -62,7 +61,7 @@ public class PlayGameActivity extends AppCompatActivity
 
     private void playMainSceneMusic()
     {
-        gameMusicManager = new MusicManager(mediaPlayer);
+        MusicManager gameMusicManager = new MusicManager(mediaPlayer);
         gameMusicManager.mp = MediaPlayer.create(this, R.raw.menu);      //to be changed
         gameMusicManager.playMusic();
     }
@@ -122,12 +121,6 @@ public class PlayGameActivity extends AppCompatActivity
             }
             alreadyClickedPlantingButtons.add(buttonIndex);
         }
-
-        /*
-        Log.i("player x pos", Float.toString(mainJoystick.getXPosition()));
-        Log.i("player y pos", Float.toString(mainJoystick.getYPosition()));
-        Log.i("player button x pos", Float.toString(button.getX()));
-        Log.i("player button y pos", Float.toString(button.getY()));*/
     }
 
     private float countDistance(float buttonXposition, float buttonYposition, float playerXposition, float playerYposition)

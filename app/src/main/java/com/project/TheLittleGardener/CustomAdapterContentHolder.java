@@ -8,4 +8,5 @@ public class CustomAdapterContentHolder
 {
     public TextView contentTextView;
     public ImageView contentImageView;
+    public TextView seedTextView;
 }
