@@ -1,6 +1,7 @@
 package com.project.TheLittleGardener;
 
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.widget.Button;
 
 import java.util.HashMap;
@@ -13,6 +14,9 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
     private HashMap<String, Integer> rewardForEachPlant;
     private String plantedPlant;
     private boolean isReadyToBeCollected = false;
+
+    //TODO
+    //every time too many variables are being initialized
 
     PlantManager(Button button)
     {
@@ -86,34 +90,34 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
     @Override
     public void countDownToPlantSeedling(final Button button)
     {
-        button.setEnabled(false);
-        isReadyToBeCollected = false;
-        plantedPlant = growingPlantsContainerWithIndexDict.get(getCurrentPlant()).name();
-
-        new CountDownTimer(timeOfGrowingSeedling, growingTimeInterval)
+        String nameOfCurrentPlant = growingPlantsContainerWithIndexDict.get(getCurrentPlant()).name();
+        if ((getNumberOfSeeds() - costOfEachPlant.get(nameOfCurrentPlant)) >= 0)
         {
-            int currentTime = wholeGrowingTime;
-            int growingPlantResource = growingPlantsContainerWithIndexDict.get(getCurrentPlant()).getValue();
+            button.setEnabled(false);
+            isReadyToBeCollected = false;
+            plantedPlant = growingPlantsContainerWithIndexDict.get(getCurrentPlant()).name();
 
-            @Override
-            public void onTick(long l)
-            {
-                currentTime -= 1;
-                if (currentTime <= 0)
-                {
-                    button.setBackgroundResource(growingPlantResource);
-                    button.setEnabled(true);
-                    currentTime = wholeGrowingTime;
-                    isReadyToBeCollected = true;
+            new CountDownTimer(timeOfGrowingSeedling, growingTimeInterval) {
+                int currentTime = wholeGrowingTime;
+                int growingPlantResource = growingPlantsContainerWithIndexDict.get(getCurrentPlant()).getValue();
+
+                @Override
+                public void onTick(long l) {
+                    currentTime -= 1;
+                    if (currentTime <= 0) {
+                        button.setBackgroundResource(growingPlantResource);
+                        button.setEnabled(true);
+                        currentTime = wholeGrowingTime;
+                        isReadyToBeCollected = true;
+                    }
                 }
-            }
 
-            @Override
-            public void onFinish()
-            {
+                @Override
+                public void onFinish() {
 
-            }
-        }.start();
+                }
+            }.start();
+        }
     }
 
     @Override
@@ -140,6 +144,7 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         {
             String nameOfCurrentPlant = growingPlantsContainerWithIndexDict.get(getCurrentPlant()).name();
 
+            Log.i("info", Integer.toString(getNumberOfSeeds() - costOfEachPlant.get(nameOfCurrentPlant)));
             if ((getNumberOfSeeds() - costOfEachPlant.get(nameOfCurrentPlant)) >= 0)
             {
                 decreaseNumberOfSeedsAndSetText(nameOfCurrentPlant);
@@ -181,8 +186,9 @@ public class PlantManager extends CurrentPlantAndNumberOfSeeds implements Growin
         PlayGameActivity.setScoreText();
     }
 
-    public HashMap<String, Integer> getCostOfEachPlant()
+    //TO be deleted
+    /*public HashMap<String, Integer> getCostOfEachPlant()
     {
         return costOfEachPlant;
-    }
+    }*/
 }

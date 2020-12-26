@@ -27,7 +27,6 @@ public class PlayGameActivity extends AppCompatActivity
     private static TextView plantQuestTextView;
     private final float distanceFromButton = 230f;
     private MediaPlayer mediaPlayer;
-    //private MusicManager gameMusicManager;
     private PlantManager[] plantManager;
     private ViewsHolder viewsHolder;
     private Joystick mainJoystick;
@@ -62,7 +61,7 @@ public class PlayGameActivity extends AppCompatActivity
     private void playMainSceneMusic()
     {
         MusicManager gameMusicManager = new MusicManager(mediaPlayer);
-        gameMusicManager.mp = MediaPlayer.create(this, R.raw.menu);      //to be changed
+        gameMusicManager.mp = MediaPlayer.create(this, R.raw.plantasia);
         gameMusicManager.playMusic();
     }
 
