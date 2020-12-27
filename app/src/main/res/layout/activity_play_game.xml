@@ -268,6 +268,20 @@
                 app:layout_constraintStart_toEndOf="@+id/button12"
                 app:layout_constraintTop_toBottomOf="@+id/button14" />
 
+            <Button
+                android:id="@+id/resetQuestButton"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/darkGreen"
+                android:onClick="buttonResetQuest"
+                android:text="Reset Quest"
+                android:textColor="@color/yellowishText"
+                android:textSize="12dp"
+                android:paddingLeft="3dp"
+                app:layout_constraintEnd_toEndOf="@+id/button15"
+                app:layout_constraintTop_toBottomOf="@+id/button15" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -299,6 +313,7 @@
                     android:enabled="true"
                     android:gravity="bottom|center"
                     android:onClick="onBottomButtonWithPlantsClick"
+                    android:paddingLeft="3dp"
                     android:paddingBottom="4dp"
                     android:tag="tree"
                     android:text="tree"

@@ -1,7 +1,7 @@
 package com.project.TheLittleGardener;
 
 /**Holder of growing plants resources*/
-public enum InGrowingProcessPlantContainer
+public enum GrownPlantsContainer
 {
     PLANT (R.drawable.small_plant_bg),
     TREE (R.drawable.grown_tree_bg),
@@ -22,7 +22,7 @@ public enum InGrowingProcessPlantContainer
 
     private int pictureNumber;
 
-    InGrowingProcessPlantContainer(int pictureNumber)
+    GrownPlantsContainer(int pictureNumber)
     {
         this.pictureNumber = pictureNumber;
     }

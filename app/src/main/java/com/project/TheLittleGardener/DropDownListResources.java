@@ -1,7 +1,7 @@
 package com.project.TheLittleGardener;
 
 /**Holder of drop down list resources*/
-public enum PlantContainer
+public enum DropDownListResources
 {
     TREE (R.drawable.grown_tree),
     CORN (R.drawable.corn),
@@ -21,7 +21,7 @@ public enum PlantContainer
 
     private int pictureNumber;
 
-    PlantContainer(int pictureNumber)
+    DropDownListResources(int pictureNumber)
     {
         this.pictureNumber = pictureNumber;
     }

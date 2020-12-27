@@ -1,13 +1,12 @@
 package com.project.TheLittleGardener;
 
-
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.zerokol.views.joystickView.JoystickView;
 
-/**Holds necessary views*/
+/**Holds player, parent, joystick, plant info and listview views*/
 public class ViewsHolder
 {
     public ImageView player;

@@ -1,10 +1,11 @@
 package com.project.TheLittleGardener;
 
 /**Current plant number and total number of seeds*/
-public class CurrentPlantAndNumberOfSeeds
+public class SeedsAndPlantNumber
 {
     private static int currentPlant = 0;
     private static int numberOfSeeds = 50;
+    private static int numberOfSeedsBeforeQuestCompletion = numberOfSeeds;
 
     public static void setCurrentPlant(int value)
     {
@@ -16,6 +17,8 @@ public class CurrentPlantAndNumberOfSeeds
         numberOfSeeds = value;
     }
 
+    public static void setNumberOfSeedsBeforeQuestCompletion(int value) { numberOfSeedsBeforeQuestCompletion = value; }
+
     public static int getCurrentPlant()
     {
         return currentPlant;
@@ -25,4 +28,7 @@ public class CurrentPlantAndNumberOfSeeds
     {
         return numberOfSeeds;
     }
+
+    public static int getNumberOfSeedsBeforeQuestCompletion() { return numberOfSeedsBeforeQuestCompletion; }
+
 }

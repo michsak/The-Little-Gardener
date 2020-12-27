@@ -11,23 +11,23 @@ public class QuestDataManager extends QuestGeneralDescription
     private static int currentNumberOfQuest = 0;
     private static int[] questReward = {20, 60, 50, 100, 150, 100, 200, 250};
 
-    /*dictonaries with name of plant and number of those plants required to get quest points*/
+    /*dictionaries with name of plant and number of those plants required to get quest points*/
     private static HashMap <String, Integer> firstQuestRequirements = new HashMap<String, Integer>(){
-        {put(PlantContainer.TREE.name(), 5); put(PlantContainer.CORN.name(), 5);}};
+        {put(DropDownListResources.TREE.name(), 5); put(DropDownListResources.CORN.name(), 5);}};
     private static HashMap <String, Integer> secondQuestRequirements = new HashMap<String, Integer>(){
-        {put(PlantContainer.BEAN.name(), 7); put(PlantContainer.BUSH.name(), 4);}};
+        {put(DropDownListResources.BEAN.name(), 7); put(DropDownListResources.BUSH.name(), 4);}};
     private static HashMap <String, Integer> thirdQuestRequirements = new HashMap<String, Integer>(){
-        {put(PlantContainer.DAISY.name(), 10); put(PlantContainer.CLOVER.name(), 10);}};
+        {put(DropDownListResources.DAISY.name(), 10); put(DropDownListResources.CLOVER.name(), 10);}};
     private static HashMap <String, Integer> fourthQuestRequirements = new HashMap<String, Integer>(){
-        {put(PlantContainer.CACTUS.name(), 8); put(PlantContainer.MUSHROOMS.name(), 15);}};
+        {put(DropDownListResources.CACTUS.name(), 8); put(DropDownListResources.MUSHROOMS.name(), 15);}};
     private static HashMap <String, Integer> fifthQuestRequirements = new HashMap<String, Integer>(){
-        {put(PlantContainer.SUNFLOWER.name(), 10); put(PlantContainer.NETTLE.name(), 15);}};
+        {put(DropDownListResources.SUNFLOWER.name(), 10); put(DropDownListResources.NETTLE.name(), 15);}};
     private static HashMap <String, Integer> sixthQuestRequirements = new HashMap<String, Integer>(){
-        {put(PlantContainer.FERN.name(), 15); put(PlantContainer.MOSS.name(), 15);}};
+        {put(DropDownListResources.FERN.name(), 15); put(DropDownListResources.MOSS.name(), 15);}};
     private static HashMap <String, Integer> seventhQuestRequirements = new HashMap<String, Integer>(){
-        {put(PlantContainer.CABBAGE.name(), 20); put(PlantContainer.CATTAIL.name(), 20);}};
+        {put(DropDownListResources.CABBAGE.name(), 20); put(DropDownListResources.CATTAIL.name(), 20);}};
     private static HashMap <String, Integer> eightQuestRequirements = new HashMap<String, Integer>(){
-        {put(PlantContainer.DANDELION.name(), 50);}};
+        {put(DropDownListResources.DANDELION.name(), 50);}};
 
 
     public static void addToPlantedPlantsForQuest(String name)

@@ -1,8 +1,6 @@
 package com.project.TheLittleGardener;
 
 import android.content.Context;
-import android.os.Debug;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +9,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.HashMap;
-
 
 /**Creates custom List View with ImageView and TextView*/
 public class CustomAdapter extends BaseAdapter implements ListAdapter
@@ -78,7 +72,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
             public void onClick(View view)
             {
                 changeVisibilityToPlayScreenRequirements();
-                CurrentPlantAndNumberOfSeeds.setCurrentPlant(position);
+                SeedsAndPlantNumber.setCurrentPlant(position);
                 PlayGameActivity.resizePlantTextViewInfoOnBottomButtonClick(result[position], plantInfoTextView);
             }
         });
@@ -88,7 +82,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
     private void setCustomAdapterViewsParams(int position, CustomAdapterContentHolder customAdapterContentHolder) {
         customAdapterContentHolder.contentTextView.setText(result[position]);
         customAdapterContentHolder.contentImageView.setImageResource(imageId[position]);
-        int positionOfCost = CostAndRewardForPlants.costOfPlants[position];
+        int positionOfCost = PlantsCostAndReward.costOfPlants[position];
         customAdapterContentHolder.seedTextView.setText(Integer.toString(positionOfCost));
     }
 

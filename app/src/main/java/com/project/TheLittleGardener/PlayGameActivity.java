@@ -14,9 +14,7 @@ import android.widget.Toast;
 import java.util.HashSet;
 
 //TODO
-//add cost to image of plants on play game activity
-//reset current quest
-//final code refactoring
+//wider seed in tree and a little bit smaller seed text
 
 //gardener walking and watering animation
 //buying avatars
@@ -33,6 +31,7 @@ public class PlayGameActivity extends AppCompatActivity
     private int[] dropDownListImages;
     private String[] dropDownListText;
     private HashSet<Integer> alreadyClickedPlantingButtons;
+    private HashSet<PlantManager> plantManagersInUse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -43,6 +42,7 @@ public class PlayGameActivity extends AppCompatActivity
         /*checks if a MenuInflater object exists in memory, used to delete double bar icons*/
         getMenuInflater();
 
+        PlantsCostAndReward.initializePlantsIndexCostAndReward();
         initializePlantsParams();
         playMainSceneMusic();
         findNecessaryViews();
@@ -55,7 +55,8 @@ public class PlayGameActivity extends AppCompatActivity
     private void initializePlantsParams()
     {
         plantManager = new PlantManager[15];
-        alreadyClickedPlantingButtons = new HashSet<>();
+        alreadyClickedPlantingButtons = new HashSet<Integer>();
+        plantManagersInUse = new HashSet<PlantManager>();
     }
 
     private void playMainSceneMusic()
@@ -75,7 +76,7 @@ public class PlayGameActivity extends AppCompatActivity
 
     public static void setScoreText()
     {
-        scoreTextView.setText(Integer.toString(CurrentPlantAndNumberOfSeeds.getNumberOfSeeds()));
+        scoreTextView.setText(Integer.toString(SeedsAndPlantNumber.getNumberOfSeeds()));
     }
 
     private void crateJoystick()
@@ -86,17 +87,17 @@ public class PlayGameActivity extends AppCompatActivity
 
     private void initializeDropDownListParams()
     {
-        dropDownListText = new String[] {PlantContainer.TREE.name(), PlantContainer.CORN.name(), PlantContainer.BEAN.name(),
-                PlantContainer.BUSH.name(), PlantContainer.DAISY.name(), PlantContainer.CLOVER.name(), PlantContainer.CACTUS.name(),
-                PlantContainer.MUSHROOMS.name(), PlantContainer.SUNFLOWER.name(), PlantContainer.NETTLE.name(),
-                PlantContainer.FERN.name(), PlantContainer.MOSS.name(), PlantContainer.CABBAGE.name(),
-                PlantContainer.CATTAIL.name(), PlantContainer.DANDELION.name()};
+        dropDownListText = new String[] {DropDownListResources.TREE.name(), DropDownListResources.CORN.name(), DropDownListResources.BEAN.name(),
+                DropDownListResources.BUSH.name(), DropDownListResources.DAISY.name(), DropDownListResources.CLOVER.name(), DropDownListResources.CACTUS.name(),
+                DropDownListResources.MUSHROOMS.name(), DropDownListResources.SUNFLOWER.name(), DropDownListResources.NETTLE.name(),
+                DropDownListResources.FERN.name(), DropDownListResources.MOSS.name(), DropDownListResources.CABBAGE.name(),
+                DropDownListResources.CATTAIL.name(), DropDownListResources.DANDELION.name()};
 
-        dropDownListImages = new int[] {PlantContainer.TREE.getValue(), PlantContainer.CORN.getValue(), PlantContainer.BEAN.getValue(),
-                PlantContainer.BUSH.getValue(), PlantContainer.DAISY.getValue(), PlantContainer.CLOVER.getValue(),
-                PlantContainer.CACTUS.getValue(), PlantContainer.MUSHROOMS.getValue(), PlantContainer.SUNFLOWER.getValue(),
-                PlantContainer.NETTLE.getValue(), PlantContainer.FERN.getValue(), PlantContainer.MOSS.getValue(),
-                PlantContainer.CABBAGE.getValue(), PlantContainer.CATTAIL.getValue(), PlantContainer.DANDELION.getValue()};
+        dropDownListImages = new int[] {DropDownListResources.TREE.getValue(), DropDownListResources.CORN.getValue(), DropDownListResources.BEAN.getValue(),
+                DropDownListResources.BUSH.getValue(), DropDownListResources.DAISY.getValue(), DropDownListResources.CLOVER.getValue(),
+                DropDownListResources.CACTUS.getValue(), DropDownListResources.MUSHROOMS.getValue(), DropDownListResources.SUNFLOWER.getValue(),
+                DropDownListResources.NETTLE.getValue(), DropDownListResources.FERN.getValue(), DropDownListResources.MOSS.getValue(),
+                DropDownListResources.CABBAGE.getValue(), DropDownListResources.CATTAIL.getValue(), DropDownListResources.DANDELION.getValue()};
     }
 
     public void checkPositionAndChangeImage (Button button, int buttonIndex)
@@ -106,12 +107,13 @@ public class PlayGameActivity extends AppCompatActivity
             if (!alreadyClickedPlantingButtons.contains(buttonIndex))
             {
                 plantManager[buttonIndex] = new PlantManager(button);
+                plantManagersInUse.add(plantManager[buttonIndex]);
             }
             else
             {
                 try
                 {
-                    plantManager[buttonIndex].collectOrSetUpPlant(button, InGrowingProcessPlantContainer.PLANT.getValue());
+                    plantManager[buttonIndex].collectOrSetUpPlant(button, GrownPlantsContainer.PLANT.getValue());
                 }
                catch (Exception e)
                 {
@@ -136,28 +138,28 @@ public class PlayGameActivity extends AppCompatActivity
         switch (view.getTag().toString())
         {
             case "tree":
-                CurrentPlantAndNumberOfSeeds.setCurrentPlant(0);
-                resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.TREE.name(), viewsHolder.plantInfoTextView);
+                SeedsAndPlantNumber.setCurrentPlant(0);
+                resizePlantTextViewInfoOnBottomButtonClick(DropDownListResources.TREE.name(), viewsHolder.plantInfoTextView);
                 break;
             case "corn":
-                CurrentPlantAndNumberOfSeeds.setCurrentPlant(1);
-                resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.CORN.name(),viewsHolder.plantInfoTextView);
+                SeedsAndPlantNumber.setCurrentPlant(1);
+                resizePlantTextViewInfoOnBottomButtonClick(DropDownListResources.CORN.name(),viewsHolder.plantInfoTextView);
                 break;
             case "bean":
-                CurrentPlantAndNumberOfSeeds.setCurrentPlant(2);
-                resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.BEAN.name(), viewsHolder.plantInfoTextView);
+                SeedsAndPlantNumber.setCurrentPlant(2);
+                resizePlantTextViewInfoOnBottomButtonClick(DropDownListResources.BEAN.name(), viewsHolder.plantInfoTextView);
                 break;
             case "bush":
-                CurrentPlantAndNumberOfSeeds.setCurrentPlant(3);
-                resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.BUSH.name(), viewsHolder.plantInfoTextView);
+                SeedsAndPlantNumber.setCurrentPlant(3);
+                resizePlantTextViewInfoOnBottomButtonClick(DropDownListResources.BUSH.name(), viewsHolder.plantInfoTextView);
                 break;
             case "daisy":
-                CurrentPlantAndNumberOfSeeds.setCurrentPlant(4);
-                resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.DAISY.name(), viewsHolder.plantInfoTextView);
+                SeedsAndPlantNumber.setCurrentPlant(4);
+                resizePlantTextViewInfoOnBottomButtonClick(DropDownListResources.DAISY.name(), viewsHolder.plantInfoTextView);
                 break;
             case "clover":
-                CurrentPlantAndNumberOfSeeds.setCurrentPlant(5);
-                resizePlantTextViewInfoOnBottomButtonClick(PlantContainer.CLOVER.name(), viewsHolder.plantInfoTextView);
+                SeedsAndPlantNumber.setCurrentPlant(5);
+                resizePlantTextViewInfoOnBottomButtonClick(DropDownListResources.CLOVER.name(), viewsHolder.plantInfoTextView);
                 break;
         }
     }
@@ -246,5 +248,17 @@ public class PlayGameActivity extends AppCompatActivity
         int buttonId = view.getId();
         Button button = findViewById(buttonId);
         checkPositionAndChangeImage(button, buttonIndex);
+    }
+
+    public void buttonResetQuest (View view)
+    {
+        for (PlantManager currentPlantManager : plantManagersInUse)
+        {
+            currentPlantManager.clearCurrentPlant();
+        }
+        QuestDataManager.clearListOfPlantedPlantsForQuest();
+        SeedsAndPlantNumber.setNumberOfSeeds(SeedsAndPlantNumber.getNumberOfSeedsBeforeQuestCompletion());
+        QuestCompletionChecker.clearValues();
+        setScoreText();
     }
 }

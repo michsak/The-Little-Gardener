@@ -5,4 +5,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="yellow">#FFFF00</color>
     <color name="brown">#FF453313</color>
+    <color name="darkGreen">#13452f</color>
+    <color name="yellowishText">#CDDC39</color>
 </resources>

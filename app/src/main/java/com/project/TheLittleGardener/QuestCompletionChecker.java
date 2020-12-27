@@ -52,4 +52,12 @@ public class QuestCompletionChecker
     {
         return values;
     }
+
+    public static void clearValues()
+    {
+        for (int i=0; i<values.length; i++)
+        {
+            values[i] = 0;
+        }
+    }
 }
