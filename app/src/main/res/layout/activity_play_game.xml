@@ -309,7 +309,7 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_margin="0px"
-                    android:background="@drawable/tree_with_border_and_cost_new"
+                    android:background="@drawable/tree_with_border_and_cost_new2"
                     android:enabled="true"
                     android:gravity="bottom|center"
                     android:onClick="onBottomButtonWithPlantsClick"

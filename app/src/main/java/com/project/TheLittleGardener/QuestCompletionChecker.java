@@ -33,7 +33,7 @@ public class QuestCompletionChecker
         int secondKeyOccurrences = Collections.frequency(QuestDataManager.getPlantedPlantsForQuest(), key[1]);
         values[1] = secondKeyOccurrences;
 
-        if (firstKeyOccurrences >= value[0] && secondKeyOccurrences >= value[1])
+        if (questRequirementsAreFulfilled(firstKeyOccurrences >= value[0], secondKeyOccurrences >= value[1]))
         {
             QuestDataManager.clearListOfPlantedPlantsForQuest();
             keys[0] = "";
@@ -41,6 +41,11 @@ public class QuestCompletionChecker
             return true;
         }
         return false;
+    }
+
+    private static boolean questRequirementsAreFulfilled(boolean b, boolean b1)
+    {
+        return b && b1;
     }
 
     public static String[] getKeys()

@@ -25,13 +25,14 @@ public class PlantManager extends SeedsAndPlantNumber implements GrowingUpParams
     {
         plantedPlant = PlantsCostAndReward.getPlantsIndex().get(getCurrentPlant()).name();
 
-        if (initialSeedsNumber - PlantsCostAndReward.getCostOfEachPlant().get(plantedPlant) >= 0)
+        if (numberOfSeedsAboveZero())
         {
             plantIsRising = true;
             button.setEnabled(false);
             isReadyToBeCollected = false;
 
-            new CountDownTimer(timeOfGrowingSeedling, growingTimeInterval) {
+            new CountDownTimer(timeOfGrowingSeedling, growingTimeInterval)
+            {
                 int growingPlantResource = PlantsCostAndReward.getPlantsIndex().get(getCurrentPlant()).getValue();
 
                 @Override
@@ -50,6 +51,11 @@ public class PlantManager extends SeedsAndPlantNumber implements GrowingUpParams
         }
     }
 
+    private boolean numberOfSeedsAboveZero()
+    {
+        return initialSeedsNumber - PlantsCostAndReward.getCostOfEachPlant().get((plantedPlant)) >= 0;
+    }
+
     @Override
     public void collectOrSetUpPlant(Button button, int resource)
     {
@@ -61,9 +67,10 @@ public class PlantManager extends SeedsAndPlantNumber implements GrowingUpParams
             addNumberOfSeedsAndSetText();
 
             /*checking if quest is completed*/
-            if (QuestCompletionChecker.checkIfQuestIsCompleted() && !QuestDataManager.getOccurrenceOfQuest()[QuestDataManager.getCurrentNumberOfQuest()])
+            if (questIsCompleted())
             {
-                addAdditionalSeeds(QuestDataManager.getQuestReward(QuestDataManager.getCurrentNumberOfQuest()));
+                int questReward = QuestDataManager.getQuestReward(QuestDataManager.getCurrentNumberOfQuest());
+                addAdditionalSeeds(questReward);
                 QuestDataManager.changeOccurrenceOfQuest(QuestDataManager.getCurrentNumberOfQuest());
                 PlayGameActivity.showQuestMessage("Congratulations! You have completed quest " +
                         QuestDataManager.getCurrentNumberOfQuest() + ".\nNow ");
@@ -82,6 +89,11 @@ public class PlantManager extends SeedsAndPlantNumber implements GrowingUpParams
                 countDownToPlantSeedling(button);
             }
         }
+    }
+
+    private boolean questIsCompleted()
+    {
+        return QuestCompletionChecker.checkIfQuestIsCompleted() && !QuestDataManager.getOccurrenceOfQuest()[QuestDataManager.getCurrentNumberOfQuest()];
     }
 
     @Override
