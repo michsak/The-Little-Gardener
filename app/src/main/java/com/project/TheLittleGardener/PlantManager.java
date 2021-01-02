@@ -2,7 +2,6 @@ package com.project.TheLittleGardener;
 
 import android.graphics.Color;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.widget.Button;
 
 /**Manages growing plant process*/

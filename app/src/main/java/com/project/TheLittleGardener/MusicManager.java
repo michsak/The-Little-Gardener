@@ -10,6 +10,7 @@ public class MusicManager
     MusicManager(MediaPlayer mp)
     {
         this.mp = mp;
+        mp.setLooping(true);
     }
 
     public void playMusic()

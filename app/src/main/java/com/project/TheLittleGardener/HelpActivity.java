@@ -10,21 +10,20 @@ import android.widget.TextView;
 /**Description of game*/
 public class HelpActivity extends AppCompatActivity
 {
-    private MediaPlayer mediaPlayer;
-    private MusicManager helpMenuMusicManager;
     private TextView descriptionTextView;
     private TextView titleTextView;
+    private MusicManager helpMusicManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
-        playMusic();
 
         //checks if a MenuInflater object exists in memory, used to delete double bar icons
         getMenuInflater();
 
+        playMusic();
         descriptionTextView = findViewById(R.id.gameDescriptionTextView);
         descriptionTextView.setText(getTextInEng());
         titleTextView = findViewById(R.id.howToPlayTextView);
@@ -83,7 +82,7 @@ public class HelpActivity extends AppCompatActivity
     public void playGame(View view)
     {
         startActivity(new Intent(HelpActivity.this, PlayGameActivity.class));
-        helpMenuMusicManager.stopMusic();
+        helpMusicManager.stopMusic();
     }
 
     public void exitGame (View view)
@@ -93,8 +92,8 @@ public class HelpActivity extends AppCompatActivity
 
     private void playMusic()
     {
-        helpMenuMusicManager = new MusicManager(mediaPlayer);
-        helpMenuMusicManager.mp = MediaPlayer.create(this, R.raw.menu);
-        helpMenuMusicManager.playMusic();
+        helpMusicManager = new MusicManager(new MediaPlayer());
+        helpMusicManager.mp = MediaPlayer.create(this, R.raw.menu);
+        helpMusicManager.playMusic();
     }
 }

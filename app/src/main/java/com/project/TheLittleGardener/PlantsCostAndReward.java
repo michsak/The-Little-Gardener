@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class PlantsCostAndReward
 {
     public final static int[] costOfPlants = new int [] {2, 3, 5, 7, 8, 10, 8, 8, 12, 15, 16, 17, 18, 20, 50};
-    public final static int[] rewardOfPlants = new int [] {1, 2, 4, 5, 8, 12, 4, 6, 12, 12, 15, 15, 17, 22, 10};
+    public final static int[] rewardOfPlants = new int [] {1, 2, 4, 5, 8, 12, 4, 6, 12, 12, 15, 15, 17, 22, 30};
 
     private static HashMap<Integer, GrownPlantsContainer> growingPlantsContainerWithIndexDict;
     private static HashMap<String, Integer> costOfEachPlant;

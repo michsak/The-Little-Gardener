@@ -9,7 +9,6 @@ import android.view.View;
 /**Main game menu*/
 public class MainActivity extends AppCompatActivity
 {
-    private MediaPlayer mediaPlayer;
     private MusicManager menuMusicManager;
 
     @Override
@@ -33,6 +32,7 @@ public class MainActivity extends AppCompatActivity
     public void helpAction(View view)
     {
         startActivity(new Intent(MainActivity.this, HelpActivity.class));
+        menuMusicManager.stopMusic();
     }
 
     public void exitGame (View view)
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
 
     private void playMusic()
     {
-        menuMusicManager = new MusicManager(mediaPlayer);
+        menuMusicManager = new MusicManager(new MediaPlayer());
         menuMusicManager.mp = MediaPlayer.create(this, R.raw.menu);
         menuMusicManager.playMusic();
     }

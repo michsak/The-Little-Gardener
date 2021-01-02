@@ -19,11 +19,14 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
     private ListView lView;
     private TextView questTextView;
     private TextView plantInfoTextView;
+    private ImageView backgroundImage1;
+    private ImageView backgroundImage2;
     private String[] result;
     private int [] imageId;
 
     public CustomAdapter(Context context, String[] ddListText, int[] ddListImages, View parentView,
-                         ImageView playerView, ListView listView, TextView questTextView, TextView plantInfoTextView)
+                         ImageView playerView, ListView listView, TextView questTextView, TextView plantInfoTextView,
+                         ImageView backgroundImage1, ImageView backgroundImage2)
     {
         result = ddListText;
         imageId = ddListImages;
@@ -32,6 +35,8 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
         this.questTextView = questTextView;
         this.lView = listView;
         this.plantInfoTextView = plantInfoTextView;
+        this.backgroundImage1 = backgroundImage1;
+        this.backgroundImage2 = backgroundImage2;
 
         /*instantiate the contents of layout XML files into their corresponding View objects*/
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -98,6 +103,8 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
         questTextView.setVisibility(View.INVISIBLE);
         plantInfoTextView.setVisibility(View.INVISIBLE);
         playerView.setImageResource(R.drawable.empty_player);
+        backgroundImage1.setVisibility(View.INVISIBLE);
+        backgroundImage2.setVisibility(View.INVISIBLE);
         lView.setVisibility(View.VISIBLE);
     }
 
@@ -108,5 +115,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
         questTextView.setVisibility(View.VISIBLE);
         plantInfoTextView.setVisibility(View.VISIBLE);
         lView.setVisibility(View.INVISIBLE);
+        backgroundImage1.setVisibility(View.VISIBLE);
+        backgroundImage2.setVisibility(View.VISIBLE);
     }
 }

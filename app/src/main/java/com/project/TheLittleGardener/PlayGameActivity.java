@@ -14,17 +14,16 @@ import android.widget.Toast;
 import java.util.HashSet;
 
 //TODO
-//wider seed in tree and a little bit smaller seed text
-
 //gardener walking and watering animation
 //buying avatars
+//better movement system
+//better graphics
 
 public class PlayGameActivity extends AppCompatActivity
 {
     private static TextView scoreTextView;
     private static TextView plantQuestTextView;
-    private final float distanceFromButton = 230f;
-    private MediaPlayer mediaPlayer;
+    private final float distanceFromButton = 330f;
     private PlantManager[] plantManager;
     private ViewsHolder viewsHolder;
     private Joystick mainJoystick;
@@ -61,7 +60,7 @@ public class PlayGameActivity extends AppCompatActivity
 
     private void playMainSceneMusic()
     {
-        MusicManager gameMusicManager = new MusicManager(mediaPlayer);
+        MusicManager gameMusicManager = new MusicManager(new MediaPlayer());
         gameMusicManager.mp = MediaPlayer.create(this, R.raw.plantasia);
         gameMusicManager.playMusic();
     }
@@ -69,7 +68,8 @@ public class PlayGameActivity extends AppCompatActivity
     private void findNecessaryViews()
     {
         viewsHolder = new ViewsHolder(findViewById(R.id.playerView), findViewById(R.id.constraintLayout),
-                findViewById(R.id.joystickView), findViewById(R.id.plantInfoTextView), findViewById(R.id.listView));
+                findViewById(R.id.joystickView), findViewById(R.id.plantInfoTextView), findViewById(R.id.listView),
+                findViewById(R.id.backgroundView2), findViewById(R.id.backgroundView3));
         scoreTextView = findViewById(R.id.scoreText);
         plantQuestTextView = findViewById(R.id.plantQuestTextView);
     }
@@ -167,7 +167,8 @@ public class PlayGameActivity extends AppCompatActivity
     public void onClickButtonDropDownBoxList (View view)
     {
         CustomAdapter adapter = new CustomAdapter(this, dropDownListText, dropDownListImages, viewsHolder.parentView,
-                viewsHolder.player, viewsHolder.listView, plantQuestTextView, viewsHolder.plantInfoTextView);
+                viewsHolder.player, viewsHolder.listView, plantQuestTextView, viewsHolder.plantInfoTextView, viewsHolder.backgroundViewUnderPerch,
+                viewsHolder.backgroundViewUnderScore);
         viewsHolder.listView.setAdapter(adapter);
     }
 
