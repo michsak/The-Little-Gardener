@@ -4,6 +4,6 @@ package com.project.TheLittleGardener;
 public class MarginsOfScreen
 {
     public float downPlayerMargin = 12f;
-    public float edgePlayerMarin = 95f;
-    public float topPlayerMargin = 420f;
+    public float edgePlayerMarin = 70f;
+    public float topPlayerMargin = 500f;
 }

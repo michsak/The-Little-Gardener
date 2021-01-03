@@ -111,7 +111,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
     private void changeVisibilityToPlayScreenRequirements()
     {
         parentView.setVisibility(View.VISIBLE);
-        playerView.setImageResource(R.drawable.gardener_front);
+        playerView.setImageResource(R.drawable.f1);
         questTextView.setVisibility(View.VISIBLE);
         plantInfoTextView.setVisibility(View.VISIBLE);
         lView.setVisibility(View.INVISIBLE);

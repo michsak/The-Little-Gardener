@@ -14,7 +14,7 @@ import android.widget.Toast;
 import java.util.HashSet;
 
 //TODO
-//gardener walking and watering animation
+//gardener watering animation
 //buying avatars
 //better movement system
 //better graphics

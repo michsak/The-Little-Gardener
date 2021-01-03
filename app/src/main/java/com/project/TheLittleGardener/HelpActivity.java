@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.Serializable;
+
 /**Description of game*/
 public class HelpActivity extends AppCompatActivity
 {

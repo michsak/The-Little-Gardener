@@ -445,12 +445,12 @@
 
     <ImageView
         android:id="@+id/playerView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
-        app:srcCompat="@drawable/gardener_front"
+        app:srcCompat="@drawable/b1"
         tools:visibility="visible" />
 
 </RelativeLayout>

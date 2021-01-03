@@ -6,6 +6,9 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**Main game menu*/
 public class MainActivity extends AppCompatActivity
 {
@@ -31,7 +34,8 @@ public class MainActivity extends AppCompatActivity
 
     public void helpAction(View view)
     {
-        startActivity(new Intent(MainActivity.this, HelpActivity.class));
+        Intent intent = new Intent(MainActivity.this, HelpActivity.class);
+        startActivity(intent);
         menuMusicManager.stopMusic();
     }
 

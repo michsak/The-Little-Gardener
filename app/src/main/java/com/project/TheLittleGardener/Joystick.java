@@ -11,10 +11,11 @@ public class Joystick extends MetricsOfScreen
     private JoystickView joystick;
     private ImageView player;
     private MarginsOfScreen marginsOfScreen;
+    private PlayerAnimationResources playerAnimation;
     private float xPosition = 0f;
     private float yPosition = -10f;
-    private final int durationOfAnim = 100;
-    private final float playerMovingSpeed = 15f;
+    private final float playerMovingSpeed = 16f;
+
 
     Joystick(JoystickView joystick, ImageView player, Context context)
     {
@@ -22,6 +23,7 @@ public class Joystick extends MetricsOfScreen
         this.joystick = joystick;
         this.player = player;
         marginsOfScreen = new MarginsOfScreen();
+        playerAnimation = new PlayerAnimationResources();
     }
 
     public void createJoysticks()
@@ -66,7 +68,7 @@ public class Joystick extends MetricsOfScreen
     private void createAndStartAnimation(float xPosition, float xFinalPosition, float yPosition, float yFinalPosition)
     {
         TranslateAnimation animation = new TranslateAnimation(xPosition, xFinalPosition, yPosition, yFinalPosition);
-        animation.setDuration(durationOfAnim);
+        animation.setDuration(playerAnimation.getDurationOfAnimation());
         animation.setFillAfter(true);
         player.startAnimation(animation);
         this.xPosition = xFinalPosition;
@@ -78,7 +80,7 @@ public class Joystick extends MetricsOfScreen
         if (yPosition >= (-height + marginsOfScreen.topPlayerMargin))
         {
             createAndStartAnimation(xPosition, xPosition, yPosition, yPosition - playerMovingSpeed);
-            player.setImageResource(R.drawable.gardener_back);
+            moveInSpecifiedDirection(PlayerAnimationResources.AnimDirection.UP);
         }
     }
 
@@ -87,7 +89,7 @@ public class Joystick extends MetricsOfScreen
         if (xPosition <= width/2 - 100f && yPosition >= (-height + marginsOfScreen.topPlayerMargin))
         {
             createAndStartAnimation(xPosition, xPosition+ playerMovingSpeed, yPosition, yPosition- playerMovingSpeed);
-            player.setImageResource(R.drawable.gardener_back);
+            moveInSpecifiedDirection(PlayerAnimationResources.AnimDirection.RIGHT);
         }
     }
 
@@ -96,7 +98,7 @@ public class Joystick extends MetricsOfScreen
         if (xPosition >= (-width/2 + 100f) && yPosition >= (-height + marginsOfScreen.topPlayerMargin))
         {
             createAndStartAnimation(xPosition, xPosition- playerMovingSpeed, yPosition, yPosition- playerMovingSpeed);
-            player.setImageResource(R.drawable.gardener_back);
+            moveInSpecifiedDirection(PlayerAnimationResources.AnimDirection.LEFT);
         }
     }
 
@@ -105,7 +107,7 @@ public class Joystick extends MetricsOfScreen
         if (yPosition <= -marginsOfScreen.downPlayerMargin)
         {
             createAndStartAnimation(xPosition, xPosition, yPosition, yPosition+ playerMovingSpeed);
-            player.setImageResource(R.drawable.gardener_front);
+            moveInSpecifiedDirection(PlayerAnimationResources.AnimDirection.DOWN);
         }
     }
 
@@ -114,7 +116,7 @@ public class Joystick extends MetricsOfScreen
         if (yPosition <= -marginsOfScreen.downPlayerMargin && xPosition >= (-width/2 + 100f))
         {
             createAndStartAnimation(xPosition, xPosition- playerMovingSpeed, yPosition, yPosition+ playerMovingSpeed);
-            player.setImageResource(R.drawable.gardener_left);
+            moveInSpecifiedDirection(PlayerAnimationResources.AnimDirection.LEFT);
         }
     }
 
@@ -123,7 +125,7 @@ public class Joystick extends MetricsOfScreen
         if (yPosition <= -marginsOfScreen.downPlayerMargin && xPosition <= (width/2 - 100f))
         {
             createAndStartAnimation(xPosition, xPosition+ playerMovingSpeed, yPosition, yPosition+ playerMovingSpeed);
-            player.setImageResource(R.drawable.gardener_right);
+            moveInSpecifiedDirection(PlayerAnimationResources.AnimDirection.RIGHT);
         }
     }
 
@@ -132,7 +134,7 @@ public class Joystick extends MetricsOfScreen
         if (xPosition <= width/2 - marginsOfScreen.edgePlayerMarin)
         {
             createAndStartAnimation(xPosition, xPosition+ playerMovingSpeed, yPosition, yPosition);
-            player.setImageResource(R.drawable.gardener_right);
+            moveInSpecifiedDirection(PlayerAnimationResources.AnimDirection.RIGHT);
         }
     }
 
@@ -141,8 +143,45 @@ public class Joystick extends MetricsOfScreen
         if (xPosition > (-width/2 + marginsOfScreen.edgePlayerMarin))
         {
             createAndStartAnimation(xPosition, xPosition- playerMovingSpeed, yPosition, yPosition);
-            player.setImageResource(R.drawable.gardener_left);
+            moveInSpecifiedDirection(PlayerAnimationResources.AnimDirection.LEFT);
         }
+    }
+
+    private void moveInSpecifiedDirection(PlayerAnimationResources.AnimDirection specificDirection)
+    {
+        int[] resource = checkDirection(specificDirection);
+        int currentImageNumber = playerAnimation.getAndSetNumberOfCurrentImage();
+        try
+        {
+            Thread.sleep(playerAnimation.getSpeedOfAnimation());
+            player.setImageResource(resource[currentImageNumber]);
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private int[] checkDirection(PlayerAnimationResources.AnimDirection specificDirection)
+    {
+        int[] currentResource;
+        if (specificDirection == PlayerAnimationResources.AnimDirection.UP)
+        {
+            currentResource = playerAnimation.getPlayerMovingUpResources();
+        }
+        else if(specificDirection == PlayerAnimationResources.AnimDirection.DOWN)
+        {
+            currentResource = playerAnimation.getPlayerMovingBackResources();
+        }
+        else if(specificDirection == PlayerAnimationResources.AnimDirection.LEFT)
+        {
+            currentResource = playerAnimation.getPlayerMovingLeftResources();
+        }
+        else //specificDirection == RIGHT
+        {
+            currentResource = playerAnimation.getPlayerMovingRightResources();
+        }
+        return currentResource;
     }
 
     public float getXPosition()
