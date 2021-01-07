@@ -3,9 +3,8 @@ package com.project.TheLittleGardener;
 import android.content.Context;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-import com.zerokol.views.joystickView.JoystickView;
 
-/**Creates joystick and enables user move in the wanted direction*/
+/**Contains all methods which enable user to move in the specific direction*/
 public class Joystick extends MetricsOfScreen
 {
     private JoystickView joystick;
@@ -26,6 +25,7 @@ public class Joystick extends MetricsOfScreen
         playerAnimation = new PlayerAnimationResources();
     }
 
+    /**Creates joystick and switches the direction of player movement*/
     public void createJoysticks()
     {
         joystick.setOnJoystickMoveListener(new JoystickView.OnJoystickMoveListener() {
@@ -162,6 +162,9 @@ public class Joystick extends MetricsOfScreen
         }
     }
 
+    /**This method checks direction and sets proper animation resources
+     * @param specificDirection specific player movement direction
+     */
     private int[] checkDirection(PlayerAnimationResources.AnimDirection specificDirection)
     {
         int[] currentResource;

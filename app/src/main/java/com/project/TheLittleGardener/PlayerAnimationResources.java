@@ -1,5 +1,6 @@
 package com.project.TheLittleGardener;
 
+/**Contains resources of player sprites*/
 public class PlayerAnimationResources
 {
     private int numberOfCurrentPicture = 0;

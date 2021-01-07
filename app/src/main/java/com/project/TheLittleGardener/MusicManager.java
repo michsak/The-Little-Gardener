@@ -2,9 +2,7 @@ package com.project.TheLittleGardener;
 
 import android.media.MediaPlayer;
 
-import java.io.Serializable;
-
-/**Set, play and stop music*/
+/**Sets, plays and stops music*/
 public class MusicManager
 {
     public MediaPlayer mp;

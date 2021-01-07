@@ -19,6 +19,8 @@ import java.util.HashSet;
 //better movement system
 //better graphics
 
+
+/**Contains methods connected with game screen and all methods connected with buttons, which are placed in the play scene*/
 public class PlayGameActivity extends AppCompatActivity
 {
     private static TextView scoreTextView;
@@ -100,6 +102,10 @@ public class PlayGameActivity extends AppCompatActivity
                 DropDownListResources.CABBAGE.getValue(), DropDownListResources.CATTAIL.getValue(), DropDownListResources.DANDELION.getValue()};
     }
 
+    /**Checks position of the player. If player is close enough and clicked button is not empty method enables player to collect plant.
+     * In case that clicked button is empty sets up growing plant
+     * @param button clicked button
+     * @param buttonIndex index of the clicked button*/
     public void checkPositionAndChangeImage (Button button, int buttonIndex)
     {
         if (countDistance(button.getX(), button.getY(), mainJoystick.getXPosition(), mainJoystick.getYPosition()) < distanceFromButton)
@@ -133,6 +139,8 @@ public class PlayGameActivity extends AppCompatActivity
         return distance;
     }
 
+    /**Sets current plant and shows name of the chosen plant
+     *@param view current view*/
     public void onBottomButtonWithPlantsClick(View view)
     {
         switch (view.getTag().toString())
@@ -164,6 +172,8 @@ public class PlayGameActivity extends AppCompatActivity
         }
     }
 
+    /**Initializes CustomAdapter class
+     * @param view current view*/
     public void onClickButtonDropDownBoxList (View view)
     {
         CustomAdapter adapter = new CustomAdapter(this, dropDownListText, dropDownListImages, viewsHolder.parentView,

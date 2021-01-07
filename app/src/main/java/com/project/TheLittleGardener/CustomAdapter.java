@@ -10,7 +10,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-/**Creates custom List View with ImageView and TextView*/
+/**Contains methods which enable to create custom List View with ImageView and TextView*/
 public class CustomAdapter extends BaseAdapter implements ListAdapter
 {
     private static LayoutInflater inflater=null;

@@ -19,6 +19,9 @@ public class PlantManager extends SeedsAndPlantNumber implements GrowingUpParams
         countDownToPlantSeedling(button);
     }
 
+    /**Counts down to the moment when plant is ready to be collected and when it is sets proper button image
+     * @param button final growing place for planted plant
+     */
     @Override
     public void countDownToPlantSeedling(final Button button)
     {
@@ -55,6 +58,13 @@ public class PlantManager extends SeedsAndPlantNumber implements GrowingUpParams
         return initialSeedsNumber - PlantsCostAndReward.getCostOfEachPlant().get((plantedPlant)) >= 0;
     }
 
+    /**If plant is ready to be collected this method sets button image as fully grown plant and adds proper number of points for collected plant.
+     * In other case sets chosen image as brown, decreases number of seeds and starts count down.
+     * It also checks if current quest is already completed, if indeed it is than this method adds additional seeds for completing the quest
+     * and shows message which informs that current quest is completed.
+     * @param button currently clicked button
+     * @param resource current plant resource
+     */
     @Override
     public void collectOrSetUpPlant(Button button, int resource)
     {

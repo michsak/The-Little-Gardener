@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.io.Serializable;
-
-/**Description of game*/
+/**Contains description of game and method which plays music at the very beginning of this scene*/
 public class HelpActivity extends AppCompatActivity
 {
     private TextView descriptionTextView;

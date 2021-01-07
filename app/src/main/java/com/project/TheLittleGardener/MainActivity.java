@@ -6,10 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-
-/**Main game menu*/
+/**Main game menu class. Contains all methods connected with buttons on the main GUI and method which enables playing the music*/
 public class MainActivity extends AppCompatActivity
 {
     private MusicManager menuMusicManager;

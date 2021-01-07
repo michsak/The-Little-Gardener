@@ -2,7 +2,7 @@ package com.project.TheLittleGardener;
 
 import java.util.Collections;
 
-/**Checks if quest is completed*/
+/**Contains methods essential to check if quest is completed and methods to reset quest*/
 public class QuestCompletionChecker
 {
     private static String[] keys = {"",""};
