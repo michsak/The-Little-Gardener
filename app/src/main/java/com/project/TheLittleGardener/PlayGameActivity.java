@@ -25,6 +25,7 @@ public class PlayGameActivity extends AppCompatActivity
 {
     private static TextView scoreTextView;
     private static TextView plantQuestTextView;
+    private static Boolean isTextAnimating = false;
     private final float distanceFromButton = 330f;
     private PlantManager[] plantManager;
     private ViewsHolder viewsHolder;
@@ -187,30 +188,37 @@ public class PlayGameActivity extends AppCompatActivity
         int startTextSize = 20;
         int endTextSize = 60;
         int animationDuration = 2000;
-        textView.setText(text);
-        textView.setVisibility(View.VISIBLE);
 
-        /*animate changing size of TextView*/
-        ValueAnimator animator = ValueAnimator.ofFloat(startTextSize, endTextSize);
-        animator.setDuration(animationDuration);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+        if (!isTextAnimating)
         {
-            @Override
-            public void onAnimationUpdate(ValueAnimator valueAnimator)
+            isTextAnimating = true;
+            textView.setText(text);
+            textView.setVisibility(View.VISIBLE);
+
+            /*animate changing size of TextView*/
+            ValueAnimator animator = ValueAnimator.ofFloat(startTextSize, endTextSize);
+            animator.setDuration(animationDuration);
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
             {
-                float animatedValue = (float) valueAnimator.getAnimatedValue();
-                textView.setTextSize(animatedValue);
-            }
-        });
-        animator.addListener(new AnimatorListenerAdapter()
-        {
-            @Override
-            public void onAnimationEnd(Animator animation)
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator)
+                {
+                    float animatedValue = (float) valueAnimator.getAnimatedValue();
+                    textView.setTextSize(animatedValue);
+                }
+            });
+            animator.addListener(new AnimatorListenerAdapter()
             {
-                textView.setVisibility(View.INVISIBLE);
-            }
-        });
-        animator.start();
+                @Override
+                public void onAnimationEnd(Animator animation)
+                {
+                    textView.setVisibility(View.INVISIBLE);
+                    isTextAnimating = false;
+                }
+            });
+            animator.start();
+
+        }
     }
 
     public void showQuestDescription(View view)
