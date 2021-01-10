@@ -8,4 +8,5 @@
     <color name="darkGreen">#13452f</color>
     <color name="yellowishText">#CDDC39</color>
     <color name="purple">#3a1345</color>
+    <color name="additionalBackground">#575959</color>
 </resources>

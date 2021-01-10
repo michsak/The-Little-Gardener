@@ -21,8 +21,8 @@
 
     <ImageView
         android:id="@+id/backgroundView2"
-        android:layout_width="62dp"
-        android:layout_height="55dp"
+        android:layout_width="200dp"
+        android:layout_height="51dp"
         android:foregroundGravity="center_vertical|center_horizontal"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,9 +32,22 @@
         app:srcCompat="@color/purple" />
 
     <ImageView
-        android:id="@+id/backgroundView3"
+        android:id="@+id/backgroundView4"
         android:layout_width="110dp"
-        android:layout_height="55dp"
+        android:layout_height="236dp"
+        android:foregroundGravity="center_vertical|center_horizontal"
+        android:scaleType="centerCrop"
+        android:layout_alignEnd="@id/backgroundView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/additionalBackground" />
+
+    <ImageView
+        android:id="@+id/backgroundView3"
+        android:layout_width="250dp"
+        android:layout_height="51dp"
         android:foregroundGravity="center_vertical|center_horizontal"
         android:scaleType="centerCrop"
         android:layout_alignEnd="@id/backgroundView"
@@ -94,7 +107,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
 
         <com.project.TheLittleGardener.JoystickView
             android:id="@+id/joystickView"
@@ -110,7 +124,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -302,12 +315,22 @@
                 android:layout_marginTop="7dp"
                 android:background="@color/darkGreen"
                 android:onClick="buttonResetQuest"
+                android:paddingLeft="3dp"
                 android:text="Reset Quest"
                 android:textColor="@color/yellowishText"
                 android:textSize="12dp"
-                android:paddingLeft="3dp"
                 app:layout_constraintEnd_toEndOf="@+id/button15"
                 app:layout_constraintTop_toBottomOf="@+id/button15" />
+
+            <Button
+                android:id="@+id/buttonAdditional"
+                android:layout_width="100dp"
+                android:layout_height="62dp"
+                android:background="@color/additionalBackground"
+                android:enabled="false"
+                app:layout_constraintBottom_toBottomOf="@+id/resetQuestButton"
+                app:layout_constraintStart_toEndOf="@+id/resetQuestButton"
+                app:layout_constraintTop_toTopOf="@+id/resetQuestButton" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -425,15 +448,15 @@
                 <Button
                     android:id="@+id/flower2Button"
                     style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="100dp"
+                    android:layout_width="95dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/up_pointing_arrow_2"
                     android:enabled="true"
                     android:gravity="bottom|left"
                     android:onClick="onClickButtonDropDownBoxList"
                     android:paddingLeft="15dp"
-                    android:text="LIST OF PLANTS"
                     android:paddingBottom="0dp"
+                    android:text="LIST OF PLANTS"
                     android:textColor="#CDDC39"
                     android:textSize="14sp" />
 

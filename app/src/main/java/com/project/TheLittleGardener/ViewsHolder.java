@@ -15,9 +15,10 @@ public class ViewsHolder
     public ListView listView;
     public ImageView backgroundViewUnderPerch;
     public ImageView backgroundViewUnderScore;
+    public ImageView additionalGrayBackground;
 
     ViewsHolder(View player, View parentView, View joystickView, View plantInfoTextView, View listView,
-                View backgroundViewUnderPerch, View backgroundViewUnderScore)
+                View backgroundViewUnderPerch, View backgroundViewUnderScore, View additionalGrayBackground)
     {
         this.player = (ImageView) player;
         this.parentView = (View) parentView;
@@ -26,5 +27,6 @@ public class ViewsHolder
         this.listView = (ListView) listView;
         this.backgroundViewUnderPerch = (ImageView) backgroundViewUnderPerch;
         this.backgroundViewUnderScore = (ImageView) backgroundViewUnderScore;
+        this.additionalGrayBackground = (ImageView) additionalGrayBackground;
     }
 }

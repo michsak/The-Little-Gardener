@@ -39,7 +39,8 @@ public class JoystickView extends View implements Runnable
     private int lastAngle = 0;
     private int lastPower = 0;
 
-    public JoystickView(Context context) {
+    public JoystickView(Context context)
+    {
         super(context);
     }
 
@@ -79,7 +80,8 @@ public class JoystickView extends View implements Runnable
     }
 
     @Override
-    protected void onFinishInflate() {
+    protected void onFinishInflate()
+    {
         super.onFinishInflate();
     }
 
@@ -93,20 +95,20 @@ public class JoystickView extends View implements Runnable
         int d = Math.min(xNew, yNew);
         buttonRadius = (int) (d / 2 * 0.25);
         joystickRadius = (int) (d / 2 * 0.75);
-
     }
 
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
+    {
         // setting the measured values to resize the view to a certain width and
         // height
         int d = Math.min(measure(widthMeasureSpec), measure(heightMeasureSpec));
 
         setMeasuredDimension(d, d);
-
     }
 
-    private int measure(int measureSpec) {
+    private int measure(int measureSpec)
+    {
         int result = 0;
 
         // Decode the measurement specifications.
@@ -125,8 +127,8 @@ public class JoystickView extends View implements Runnable
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        // super.onDraw(canvas);
+    protected void onDraw(Canvas canvas)
+    {
         centerX = (getWidth()) / 2;
         centerY = (getHeight()) / 2;
 
@@ -150,66 +152,89 @@ public class JoystickView extends View implements Runnable
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(MotionEvent event)
+    {
         xPosition = (int) event.getX();
         yPosition = (int) event.getY();
         double abs = Math.sqrt((xPosition - centerX) * (xPosition - centerX)
                 + (yPosition - centerY) * (yPosition - centerY));
-        if (abs > joystickRadius) {
+        if (abs > joystickRadius)
+        {
             xPosition = (int) ((xPosition - centerX) * joystickRadius / abs + centerX);
             yPosition = (int) ((yPosition - centerY) * joystickRadius / abs + centerY);
         }
         invalidate();
-        if (event.getAction() == MotionEvent.ACTION_UP) {
+        if (event.getAction() == MotionEvent.ACTION_UP)
+        {
             xPosition = (int) centerX;
             yPosition = (int) centerY;
             thread.interrupt();
             if (onJoystickMoveListener != null)
-                onJoystickMoveListener.onValueChanged(getAngle(), getPower(),
-                        getDirection());
+                onJoystickMoveListener.onValueChanged(getAngle(), getPower(), getDirection());
         }
         if (onJoystickMoveListener != null
-                && event.getAction() == MotionEvent.ACTION_DOWN) {
-            if (thread != null && thread.isAlive()) {
+                && event.getAction() == MotionEvent.ACTION_DOWN)
+        {
+            if (thread != null && thread.isAlive())
+            {
                 thread.interrupt();
             }
             thread = new Thread(this);
             thread.start();
             if (onJoystickMoveListener != null)
-                onJoystickMoveListener.onValueChanged(getAngle(), getPower(),
-                        getDirection());
+                onJoystickMoveListener.onValueChanged(getAngle(), getPower(), getDirection());
         }
         return true;
     }
 
-    private int getAngle() {
-        if (xPosition > centerX) {
-            if (yPosition < centerY) {
+    private int getAngle()
+    {
+        if (xPosition > centerX)
+        {
+            if (yPosition < centerY)
+            {
                 return lastAngle = (int) (Math.atan((yPosition - centerY)
                         / (xPosition - centerX))
                         * RAD + 90);
-            } else if (yPosition > centerY) {
+            }
+            else if (yPosition > centerY)
+            {
                 return lastAngle = (int) (Math.atan((yPosition - centerY)
                         / (xPosition - centerX)) * RAD) + 90;
-            } else {
+            }
+            else
+            {
                 return lastAngle = 90;
             }
-        } else if (xPosition < centerX) {
-            if (yPosition < centerY) {
+        }
+        else if (xPosition < centerX)
+        {
+            if (yPosition < centerY)
+            {
                 return lastAngle = (int) (Math.atan((yPosition - centerY)
                         / (xPosition - centerX))
                         * RAD - 90);
-            } else if (yPosition > centerY) {
+            }
+            else if (yPosition > centerY)
+            {
                 return lastAngle = (int) (Math.atan((yPosition - centerY)
                         / (xPosition - centerX)) * RAD) - 90;
-            } else {
+            }
+            else
+            {
                 return lastAngle = -90;
             }
-        } else {
-            if (yPosition <= centerY) {
+        }
+        else
+        {
+            if (yPosition <= centerY)
+            {
                 return lastAngle = 0;
-            } else {
-                if (lastAngle < 0) {
+            }
+            else
+            {
+                if (lastAngle < 0)
+                {
                     return lastAngle = -180;
                 } else {
                     return lastAngle = 180;
@@ -218,57 +243,76 @@ public class JoystickView extends View implements Runnable
         }
     }
 
-    private int getPower() {
+    private int getPower()
+    {
         return (int) (100 * Math.sqrt((xPosition - centerX)
                 * (xPosition - centerX) + (yPosition - centerY)
                 * (yPosition - centerY)) / joystickRadius);
     }
 
-    private int getDirection() {
-        if (lastPower == 0 && lastAngle == 0) {
+    private int getDirection()
+    {
+        if (lastPower == 0 && lastAngle == 0)
+        {
             return 0;
         }
         int a = 0;
-        if (lastAngle <= 0) {
+        if (lastAngle <= 0)
+        {
             a = (lastAngle * -1) + 90;
-        } else if (lastAngle > 0) {
-            if (lastAngle <= 90) {
+        }
+        else if (lastAngle > 0)
+        {
+            if (lastAngle <= 90)
+            {
                 a = 90 - lastAngle;
-            } else {
+            }
+            else
+            {
                 a = 360 - (lastAngle - 90);
             }
         }
 
         int direction = (int) (((a + 22) / 45) + 1);
 
-        if (direction > 8) {
+        if (direction > 8)
+        {
             direction = 1;
         }
         return direction;
     }
 
-    public void setOnJoystickMoveListener(OnJoystickMoveListener listener, long repeatInterval) {
+    public void setOnJoystickMoveListener(OnJoystickMoveListener listener, long repeatInterval)
+    {
         this.onJoystickMoveListener = listener;
         this.loopInterval = repeatInterval;
     }
 
-    public interface OnJoystickMoveListener {
+    public interface OnJoystickMoveListener
+    {
         public void onValueChanged(int angle, int power, int direction);
     }
 
     @Override
-    public void run() {
-        while (!Thread.interrupted()) {
-            post(new Runnable() {
-                public void run() {
+    public void run()
+    {
+        while (!Thread.interrupted())
+        {
+            post(new Runnable()
+            {
+                public void run()
+                {
                     if (onJoystickMoveListener != null)
                         onJoystickMoveListener.onValueChanged(getAngle(),
                                 getPower(), getDirection());
                 }
             });
-            try {
+            try
+            {
                 Thread.sleep(loopInterval);
-            } catch (InterruptedException e) {
+            }
+            catch (InterruptedException e)
+            {
                 break;
             }
         }

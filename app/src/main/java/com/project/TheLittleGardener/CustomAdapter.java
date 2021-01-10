@@ -21,12 +21,13 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
     private TextView plantInfoTextView;
     private ImageView backgroundImage1;
     private ImageView backgroundImage2;
+    private ImageView backgroundImage3;
     private String[] result;
     private int [] imageId;
 
     public CustomAdapter(Context context, String[] ddListText, int[] ddListImages, View parentView,
                          ImageView playerView, ListView listView, TextView questTextView, TextView plantInfoTextView,
-                         ImageView backgroundImage1, ImageView backgroundImage2)
+                         ImageView backgroundImage1, ImageView backgroundImage2, ImageView backgroundImage3)
     {
         result = ddListText;
         imageId = ddListImages;
@@ -37,6 +38,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
         this.plantInfoTextView = plantInfoTextView;
         this.backgroundImage1 = backgroundImage1;
         this.backgroundImage2 = backgroundImage2;
+        this.backgroundImage3 = backgroundImage3;
 
         /*instantiate the contents of layout XML files into their corresponding View objects*/
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -105,6 +107,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
         playerView.setImageResource(R.drawable.empty_player);
         backgroundImage1.setVisibility(View.INVISIBLE);
         backgroundImage2.setVisibility(View.INVISIBLE);
+        backgroundImage3.setVisibility(View.INVISIBLE);
         lView.setVisibility(View.VISIBLE);
     }
 
@@ -117,5 +120,6 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter
         lView.setVisibility(View.INVISIBLE);
         backgroundImage1.setVisibility(View.VISIBLE);
         backgroundImage2.setVisibility(View.VISIBLE);
+        backgroundImage3.setVisibility(View.VISIBLE);
     }
 }

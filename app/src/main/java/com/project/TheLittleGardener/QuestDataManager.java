@@ -3,7 +3,7 @@ package com.project.TheLittleGardener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**Contains all quests data*/
+/**All quests data*/
 public class QuestDataManager extends QuestGeneralDescription
 {
     private static ArrayList<String> PlantedPlantsForQuest = new ArrayList<>();

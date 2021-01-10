@@ -1,6 +1,8 @@
 package com.project.TheLittleGardener;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.Log;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
@@ -22,7 +24,20 @@ public class Joystick extends MetricsOfScreen
         this.joystick = joystick;
         this.player = player;
         marginsOfScreen = new MarginsOfScreen();
+        checkIfProperScreensMargins();
         playerAnimation = new PlayerAnimationResources();
+    }
+
+    private void checkIfProperScreensMargins()
+    {
+        if (getScreenWidth() > 1200)
+        {
+            marginsOfScreen.topPlayerMargin = 650f;
+        }
+        if (getScreenHeight() > 2200)
+        {
+            marginsOfScreen.edgePlayerMargin = 100f;
+        }
     }
 
     /**Creates joystick and switches the direction of player movement*/
@@ -131,7 +146,7 @@ public class Joystick extends MetricsOfScreen
 
     private void moveRight()
     {
-        if (xPosition <= width/2 - marginsOfScreen.edgePlayerMarin)
+        if (xPosition <= width/2 - marginsOfScreen.edgePlayerMargin)
         {
             createAndStartAnimation(xPosition, xPosition+ playerMovingSpeed, yPosition, yPosition);
             moveInSpecifiedDirection(PlayerAnimationResources.AnimDirection.RIGHT);
@@ -140,7 +155,7 @@ public class Joystick extends MetricsOfScreen
 
     private void moveLeft()
     {
-        if (xPosition > (-width/2 + marginsOfScreen.edgePlayerMarin))
+        if (xPosition > (-width/2 + marginsOfScreen.edgePlayerMargin))
         {
             createAndStartAnimation(xPosition, xPosition- playerMovingSpeed, yPosition, yPosition);
             moveInSpecifiedDirection(PlayerAnimationResources.AnimDirection.LEFT);
@@ -187,13 +202,35 @@ public class Joystick extends MetricsOfScreen
         return currentResource;
     }
 
-    public float getXPosition()
+    public static int getScreenWidth()
     {
-        return xPosition + 850f; // adding due to change of layout
+        return Resources.getSystem().getDisplayMetrics().widthPixels;
     }
 
-    public float getYPosition()
+    public static int getScreenHeight()
     {
-        return yPosition*0.9f + 600f; // adding due to change of layout
+        return Resources.getSystem().getDisplayMetrics().heightPixels;
+    }
+
+    public float getXPosition()      // adding due to change of layout
+    {
+        if (getScreenHeight() > 2000)
+        {
+            Log.i("position", Float.toString(xPosition + getScreenHeight()/2 -200f) + " real x pos");
+            PlayGameActivity.setDistanceFromButton(400f);
+            return xPosition + getScreenHeight()/2 -200f;
+        }
+        else
+            return xPosition + 850f;
+    }
+
+    public float getYPosition()     // adding due to change of layout
+    {
+        if (getScreenWidth() > 1200)
+        {
+            return yPosition*0.9f + getScreenWidth()/2;
+        }
+        else
+            return yPosition*0.9f + 600f;
     }
 }

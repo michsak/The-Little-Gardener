@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -13,20 +14,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.HashSet;
 
-//TODO
+//possible TODO in the future
 //gardener watering animation
 //buying avatars
 //better movement system
 //better graphics
+//responsiveness for all screens
 
-
-/**Contains methods connected with game screen and all methods connected with buttons, which are placed in the play scene*/
+/**Contains methods connected with game screen and methods connected with buttons, which are placed on the play scene*/
 public class PlayGameActivity extends AppCompatActivity
 {
     private static TextView scoreTextView;
     private static TextView plantQuestTextView;
     private static Boolean isTextAnimating = false;
-    private final float distanceFromButton = 330f;
+    private static float distanceFromButton = 330f;
     private PlantManager[] plantManager;
     private ViewsHolder viewsHolder;
     private Joystick mainJoystick;
@@ -36,8 +37,7 @@ public class PlayGameActivity extends AppCompatActivity
     private HashSet<PlantManager> plantManagersInUse;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_game);
 
@@ -72,7 +72,7 @@ public class PlayGameActivity extends AppCompatActivity
     {
         viewsHolder = new ViewsHolder(findViewById(R.id.playerView), findViewById(R.id.constraintLayout),
                 findViewById(R.id.joystickView), findViewById(R.id.plantInfoTextView), findViewById(R.id.listView),
-                findViewById(R.id.backgroundView2), findViewById(R.id.backgroundView3));
+                findViewById(R.id.backgroundView2), findViewById(R.id.backgroundView3), findViewById(R.id.backgroundView4));
         scoreTextView = findViewById(R.id.scoreText);
         plantQuestTextView = findViewById(R.id.plantQuestTextView);
     }
@@ -137,6 +137,7 @@ public class PlayGameActivity extends AppCompatActivity
         double ySquareDifference = Math.pow((buttonYposition-playerYposition), 2);
         double difference = xSquareDifference + ySquareDifference;
         float distance = (float) Math.sqrt(difference);
+
         return distance;
     }
 
@@ -179,7 +180,7 @@ public class PlayGameActivity extends AppCompatActivity
     {
         CustomAdapter adapter = new CustomAdapter(this, dropDownListText, dropDownListImages, viewsHolder.parentView,
                 viewsHolder.player, viewsHolder.listView, plantQuestTextView, viewsHolder.plantInfoTextView, viewsHolder.backgroundViewUnderPerch,
-                viewsHolder.backgroundViewUnderScore);
+                viewsHolder.backgroundViewUnderScore, viewsHolder.additionalGrayBackground);
         viewsHolder.listView.setAdapter(adapter);
     }
 
@@ -284,5 +285,10 @@ public class PlayGameActivity extends AppCompatActivity
         SeedsAndPlantNumber.setNumberOfSeeds(SeedsAndPlantNumber.getNumberOfSeedsBeforeQuestCompletion());
         QuestCompletionChecker.clearValues();
         setScoreText();
+    }
+
+    public static void setDistanceFromButton(float value)
+    {
+        distanceFromButton = value;
     }
 }
