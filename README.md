@@ -8,3 +8,5 @@ Player gets seeds, needed for planting plants, by completeing quests or collecti
 Player can also reset quest if planting method used to complete quest was wrong. <br>
 
 ## Quick Overwiev
+![Screenshot](overview1.png)
+![Screenshot](overview2.png)
