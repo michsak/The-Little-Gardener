@@ -72,7 +72,7 @@ public class PlayGameActivity extends AppCompatActivity
     {
         viewsHolder = new ViewsHolder(findViewById(R.id.playerView), findViewById(R.id.constraintLayout),
                 findViewById(R.id.joystickView), findViewById(R.id.plantInfoTextView), findViewById(R.id.listView),
-                findViewById(R.id.backgroundView2), findViewById(R.id.backgroundView3), findViewById(R.id.backgroundView4));
+                findViewById(R.id.backgroundView2), findViewById(R.id.backgroundView3));
         scoreTextView = findViewById(R.id.scoreText);
         plantQuestTextView = findViewById(R.id.plantQuestTextView);
     }
@@ -180,7 +180,7 @@ public class PlayGameActivity extends AppCompatActivity
     {
         CustomAdapter adapter = new CustomAdapter(this, dropDownListText, dropDownListImages, viewsHolder.parentView,
                 viewsHolder.player, viewsHolder.listView, plantQuestTextView, viewsHolder.plantInfoTextView, viewsHolder.backgroundViewUnderPerch,
-                viewsHolder.backgroundViewUnderScore, viewsHolder.additionalGrayBackground);
+                viewsHolder.backgroundViewUnderScore);
         viewsHolder.listView.setAdapter(adapter);
     }
 

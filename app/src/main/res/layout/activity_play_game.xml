@@ -32,19 +32,6 @@
         app:srcCompat="@color/purple" />
 
     <ImageView
-        android:id="@+id/backgroundView4"
-        android:layout_width="110dp"
-        android:layout_height="236dp"
-        android:foregroundGravity="center_vertical|center_horizontal"
-        android:scaleType="centerCrop"
-        android:layout_alignEnd="@id/backgroundView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/additionalBackground" />
-
-    <ImageView
         android:id="@+id/backgroundView3"
         android:layout_width="250dp"
         android:layout_height="51dp"
@@ -331,6 +318,16 @@
                 app:layout_constraintBottom_toBottomOf="@+id/resetQuestButton"
                 app:layout_constraintStart_toEndOf="@+id/resetQuestButton"
                 app:layout_constraintTop_toTopOf="@+id/resetQuestButton" />
+
+            <Button
+                android:id="@+id/buttonAdditional2"
+                android:layout_width="100dp"
+                android:layout_height="183dp"
+                android:background="@color/additionalBackground"
+                app:layout_constraintBottom_toBottomOf="@+id/button15"
+                app:layout_constraintStart_toEndOf="@+id/button14"
+                app:layout_constraintTop_toTopOf="@+id/button13" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
